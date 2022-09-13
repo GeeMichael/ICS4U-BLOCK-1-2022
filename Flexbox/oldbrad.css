@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    background: #f4f4f4;
+    /* justify-content: space-around; /* Always on MAIN AXIS */
+    /* align-items: center; /* Always on CROSS AXIS */
+    /*flex-wrap: wrap;*/
+}
+
+.item {
+    flex: 1;
+    height: 100px;
+    background: blue;
+    margin: 10px;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item:nth-of-type(1) {
+ 
+}
+.item:nth-of-type(2) {
+ 
+}
+.item:nth-of-type(3) {
+ 
+}
