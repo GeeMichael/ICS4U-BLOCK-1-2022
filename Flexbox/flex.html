@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox Examples</title>
     <style>
-        #container{
+        #container {
             background-color: lightsalmon;
             display: flex;
             justify-content: space-around;
             height: 500px;
             align-items: center;
         }
-        .item{
+
+        .item {
             background-color: cornsilk;
             height: 100px;
             flex-basis: 18%;
         }
-        .bigger{
+
+        .bigger {
             flex-basis: 25%;
             order: 4;
         }
@@ -27,12 +29,12 @@
 </head>
 
 <body>
-<div id="container">
-    <div class="item">1</div>
-    <div class="item bigger">2</div>
-    <div class="item">3</div>
-    <div class="item">4</div>
-</div>
+    <div id="container">
+        <div class="item">1</div>
+        <div class="item bigger">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
 </body>
 
 </html>

@@ -18,7 +18,8 @@ img {
     max-width: 100%;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin-bottom: 15px;
 }
 
@@ -32,7 +33,7 @@ ul {
     padding: 0 30px;
 }
 
-.navbar  {
+.navbar {
     background: #006cb8;
     color: white;
     height: 60px;
@@ -83,10 +84,10 @@ ul {
 
 .header img {
     max-width: 300px;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
-.header .container{
+.header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
