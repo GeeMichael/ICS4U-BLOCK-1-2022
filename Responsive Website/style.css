@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap'); 
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+ul {
+    list-style: none;
+}
+
+/** Core Styles */
+
+body {
+    margin: 0;
+    font-family: 'Archivo', Helvetica, Arial, sans-serif;
+    background: #333;
+    color: #fff;
+    font-size: 1.1em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+
+/** Navigation Bar */
+
+.navbar {
+    background: #ffffff;
+    color: black;
+    height: 60px;
+}
+
+.navbar img {
+    display: block;
+    width: 200px;
+    height: auto;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: light;
+    display: block;
+}
+
+.navbar a:hover {
+    color: rgb(80, 183, 39);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar li {
+    padding: 20px;
+}
+
+.navbar ul #nav-right {
+    justify-content: right;
+}
+
+/** Title Card */
+
+.title-card {
+    background: green;
+    border-radius: 8px;
+}
+
