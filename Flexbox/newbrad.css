@@ -62,6 +62,10 @@ ul {
     height: 100%;
 }
 
+ul .nav-right {
+    justify-content: space-around;
+}
+
 .navbar ul {
     display: flex;
 }
