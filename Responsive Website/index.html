@@ -12,10 +12,10 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <img src="images/logo-algaebot.png" alt="logo">
-            </div>
-            <ul class="nav-left">
+            <ul class="menu-items">
+                <div class="logo">
+                    <img src="images/logo-algaebot.png" alt="Algaebot logo">
+                </div>
                 <li>
                     <a href="index.html">Home</a>
                 </li>
@@ -26,7 +26,7 @@
                     <a href="mission.html">Our Mission</a>
                 </li>
             </ul>
-            <ul class="nav-right">
+            <ul>
                 <li>
                     <a href="login.html">Log In</a>
                 </li>
@@ -37,35 +37,75 @@
         </div>
     </nav>
 
-    <header>
-        <div class="title-card">
-            <div>
-                <h1>A Green Revolution.</h1>
-                <p>Prices start at $250.</p>
-            </div>
-            <img src="#" alt="product image">
+    <header id="showcase">
+        <div class="bg-image"></div>
+        <div>
+            <h1>A Green Revolution.</h1>
+            <button>See more.</button>
+            <p>Prices start at $250</p>
         </div>
     </header>
 
-    <section class="boxes">
+    <section class="products">
         <div class="container">
             <div class="box">
-                <h2><i class="fas fa-arrows-alt-v"></i>Alignment & Space</h2>
-                <p>This is an example of a site made using Flexbox, from a tutorial from the great lord almighty Brad
-                    Traversy.</p>
+                <div class="product-image">
+                    <img src="#" alt="Algaebot">
+                </div>
+                <h2><i class="fas fa-arrows-alt-v"></i>Shop Algaebots</h2>
             </div>
             <div class="box">
-                <h2><i class="fas fa-arrows-alt"></i>Tricky Positioning</h2>
-                <p>This is an example of a site made using Flexbox, from a tutorial from the great lord almighty Brad
-                    Traversy.</p>
+                <div class="product-image">
+                    <img src="#" alt="Accessories">
+                </div>
+                <h2><i class="fas fa-arrows-alt-v"></i>Shop Accessories</h2>
             </div>
             <div class="box">
-                <h2><i class="fas fa-mobile"></i>Responsive Design</h2>
-                <p>This is an example of a site made using Flexbox, from a tutorial from the great lord almighty Brad
-                    Traversy.</p>
+                <div class="product-image">
+                    <img src="#" alt="Bundles">
+                </div>
+                <h2><i class="fas fa-arrows-alt-v"></i>Shop Bundles</h2>
+            </div>
+            <div class="box">
+                <div class="product-image">
+                    <img src="#" alt="Supplies">
+                </div>
+                <h2><i class="fas fa-arrows-alt-v"></i>Shop Random Robot Parts</h2>
+            </div>
+            <div class="box">
+                <div class="product-image">
+                    <img src="#" alt="More algaebots">
+                </div>
+                <h2><i class="fas fa-arrows-alt-v"></i>Shop More Algaebots</h2>
             </div>
         </div>
     </section>
+
+    <section class="panel">
+        <div class="container">
+            <div class="box-left">
+                <div class="box">
+                    <h2><i class="fas fa-arrows-alt-v"></i>Introducing the new Algaebot CS-4+</h2>
+                    <p>Featuring cutting-edge algae-aliasing technology. Starting at 399.99</p>
+                </div>
+            </div>
+            <div class="box-right">
+                <div class="box">
+                    <h2><i class="fas fa-arrows-alt"></i>Don't want to spend your life savings on Algae tech?</h2>
+                    <p>Take a look at our outdated models.</p>
+                </div>
+                <div class="box">
+                    <h2><i class="fas fa-mobile"></i>Who we are</h2>
+                    <p>Explore our mission to improve the wellbeing of Canadians.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer" class="grid">
+        <div>&copy; Algaebot Industries 2022</div>
+        <div>Contractually owned by <a href="https://shad.ca" target="_blank">SHAD Canada</a></div>
+    </footer>
 </body>
 
 </html>

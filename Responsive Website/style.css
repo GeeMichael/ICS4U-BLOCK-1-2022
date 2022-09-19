@@ -35,13 +35,23 @@ body {
 .navbar {
     background: #ffffff;
     color: black;
-    height: 60px;
+    height: 80px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
 }
 
 .navbar img {
     display: block;
     width: 200px;
     height: auto;
+    padding-right: 20px;
 }
 
 .navbar a {
@@ -56,29 +66,63 @@ body {
     color: rgb(80, 183, 39);
 }
 
-.navbar .container {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    height: 100%;
+.navbar .nav-left {
+    justify-content: center;
+    width: 700px;
 }
 
 .navbar ul {
     display: flex;
 }
 
+.navbar .nav-left .menu-items{
+    height: inherit;
+}
+
 .navbar li {
     padding: 20px;
 }
 
-.navbar ul #nav-right {
-    justify-content: right;
-}
 
 /** Title Card */
 
 .title-card {
     background: green;
     border-radius: 8px;
+    height: 500px;
 }
 
+header .bg-image {
+    position: absolute;
+    background: #333 url('https://s3files.core77.com/blog/images/lead_n_spotlight/1308865_title__116809_TXpGMJU4D.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 450px;
+    z-index: -1;
+}
+
+/** Box Panel */
+
+.panel {
+    background: #ffffff;
+    color: green;
+    height: 500px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+/** Footer */
+
+#main-footer {
+    padding: 2em;
+    background: #000;
+    color: #fff;
+    text-align: center;
+}
+
+#main-footer a{
+    color: #2690d4;
+    text-decoration: none;
+}
