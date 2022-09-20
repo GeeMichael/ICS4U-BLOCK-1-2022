@@ -21,14 +21,12 @@ ul {
 body {
     margin: 0;
     font-family: 'Archivo', Helvetica, Arial, sans-serif;
-    background: #333;
+    background: #fff;
     color: #fff;
     font-size: 1.1em;
     line-height: 1.5;
     text-align: center;
 }
-
-
 
 /** Navigation Bar */
 
@@ -36,22 +34,21 @@ body {
     background: #ffffff;
     color: black;
     height: 80px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .navbar .container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 50px;
+    align-items: bottom;
+    height: 40px;
 }
 
 .navbar img {
     display: block;
-    width: 200px;
+    width: 170px;
     height: auto;
-    padding-right: 20px;
 }
 
 .navbar a {
@@ -80,21 +77,14 @@ body {
 }
 
 .navbar li {
-    padding: 20px;
+    margin: auto 20px;
 }
 
-
-/** Title Card */
-
-.title-card {
-    background: green;
-    border-radius: 8px;
-    height: 500px;
-}
+/** Showcase */
 
 header .bg-image {
     position: absolute;
-    background: #333 url('https://s3files.core77.com/blog/images/lead_n_spotlight/1308865_title__116809_TXpGMJU4D.jpg');
+    background: green url(#);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -103,12 +93,54 @@ header .bg-image {
     z-index: -1;
 }
 
-/** Box Panel */
+header .showcase-text {
+    text-align: start;
+    margin-left: 20%;
+}
+
+header h1 {
+    padding-top: 300px;
+}
+
+header p {
+    padding-bottom: 100px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: light;
+    display: block;
+}
+
+header a:hover {
+    color: rgb(80, 183, 39);
+}
+
+/** Products */
+
+.box {
+    background: darkolivegreen;
+    color: white;
+    height: 185px;
+    width: 185px;
+    border-radius: 20px;
+    margin: 20px 10px;
+    padding: 15px 20px;
+}
+
+.products .container{
+    display: flex;
+    justify-content: space-around;
+}
+
+/** Box Panels */
 
 .panel {
     background: #ffffff;
     color: green;
-    height: 500px;
+    height: 200px;
     padding-top: 25px;
     padding-bottom: 25px;
 }
