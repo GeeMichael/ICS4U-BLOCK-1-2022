@@ -60,7 +60,7 @@ body {
 }
 
 .navbar a:hover {
-    color: rgb(80, 183, 39);
+    color: #AAD297;
 }
 
 .navbar .nav-left {
@@ -115,20 +115,37 @@ header a {
 }
 
 header a:hover {
-    color: rgb(80, 183, 39);
+    color: #AAD297;
 }
 
 /** Products */
 
 .box {
-    background: darkolivegreen;
     color: white;
     height: 185px;
     width: 185px;
     border-radius: 20px;
     margin: 20px 10px;
     padding: 15px 20px;
+    text-shadow: 0px 1px 5px slategrey;  
 }
+
+.box:nth-of-type(4) {
+    background-color: #57AFA0;
+}
+.box:nth-of-type(1) {
+    background-color: seagreen;
+}
+.box:nth-of-type(5) {
+    background-color: #71BDBF;
+}
+.box:nth-of-type(2) {
+    background-color: lightseagreen;
+}
+.box:nth-of-type(3) {
+    background-color: #AAD297;
+}
+
 
 .products .container{
     display: flex;
@@ -137,12 +154,43 @@ header a:hover {
 
 /** Box Panels */
 
+.panels .container {
+    grid-template-columns: 2fr 1fr;
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 10px;
+    display: grid;
+    gap: 20px;
+}
+
 .panel {
-    background: #ffffff;
-    color: green;
-    height: 200px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    background-color: #ffffff;
+    color: ffffff;
+    height: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    background-color: grey;
+    text-align: start;
+}
+
+.panel img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.panel:nth-of-type(1){
+    height: 100%;
+    grid-row: 1/3;
+}
+
+.panel:nth-of-type(2){
+    background-image: url("images/algae2.jpg");
+    background-size: contain; 
+    text-shadow: 0px 1px 20px black;   
+}
+
+.panel:nth-of-type(3){
 }
 
 /** Footer */
