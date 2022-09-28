@@ -16,6 +16,11 @@ ul {
     list-style: none;
 }
 
+i {
+    margin-right: 10px;
+    
+}
+
 /** Core Styles */
 
 body {
@@ -181,19 +186,19 @@ header a:hover {
 }
 
 .box:nth-of-type(4) {
-    background-color: #57AFA0;
+    background-color: #AAD297;
 }
 .box:nth-of-type(5) {
-    background-color: seagreen;
+    background-color: #9CCC99;
 }
 .box:nth-of-type(3) {
-    background-color: #71BDBF;
+    background-color: #8EC69A;
 }
 .box:nth-of-type(2) {
-    background-color: lightseagreen;
+    background-color: #81C19C;
 }
 .box:nth-of-type(1) {
-    background-color: #AAD297;
+    background-color: #73BB9D;
 }
 
 .products .container{
@@ -201,31 +206,46 @@ header a:hover {
     justify-content: space-around;
 }
 
+/** Bar */
+
+.bars{
+    background-color: gainsboro;
+    height: 200px;
+    width: 100%;
+}
+
 /** Box Panels */
+
+.panels {
+    background-color: #f9f9f9;
+}
 
 .panels .container {
     grid-template-columns: 2fr 1fr;
-    max-width: 1100px;
+    width: 100%;
     margin: 100px auto;
-    padding: 10px;
     display: grid;
     gap: 20px;
+    color: #000;
 }
 
 .panel {
-    background-color: #ffffff;
-    color: #ffffff;
-    height: 300px;
     padding: 25px;
     border-radius: 15px;
-    background-color: grey;
+    background-color: #fff;
     text-align: start;
+    box-shadow: 0px 0px 20px rgba(46, 46, 46, 0.05)
 }
 
 .panel img {
     max-width: 100%;
     border-radius: 10px;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.panel .title {
+    font-weight: 700;
 }
 
 .panel:nth-of-type(1){
@@ -233,25 +253,43 @@ header a:hover {
     grid-row: 1/3;
 }
 
-.panel:nth-of-type(2){
-    background-image: url("images/algae2.jpg");
-    background-size: contain; 
-    text-shadow: 0px 1px 20px black;   
+.panel:nth-of-type(2) img{
+    width: 300px;
+    height: 100px;
+    object-fit: cover;
 }
 
-.panel:nth-of-type(3){
+.panel:nth-of-type(3){ 
+    height: 100%;
 }
 
 /** Footer */
 
 #main-footer {
-    padding: 2em;
-    background: #000;
+    background: darkgreen;
     color: #fff;
-    text-align: center;
+    text-align: left;
+    height: 450px;
+    padding: 4em 0px;
 }
 
-#main-footer a{
-    color: #2690d4;
-    text-decoration: none;
+footer .container{
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+}
+
+footer h1 {
+    font-size: 20px;
+}
+
+footer p {
+    font-size: 15px;
+}
+
+footer a{
+    color: #fff;
+}
+.column:nth-of-type(1){
+    width: 400px;
 }
