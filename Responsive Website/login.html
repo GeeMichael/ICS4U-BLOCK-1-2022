@@ -5,21 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
     <title>Log In</title>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="container">
             <ul class="menu-items">
                 <div class="logo">
-                    <img src="images/logo-algaebot.png" alt="Algaebot logo">
+                    <a href="index.html"><img src="images/logo-algaebot.png" alt="Algaebot logo"></a>
                 </div>
                 <li>
                     <a href="index.html">Home</a>
@@ -42,39 +39,96 @@
         </div>
     </nav>
 
-    <footer id="main-footer" class="grid">
+    <section id="form">
+        <h3>Log In</h3>
+        <form class="log-in">
+            <div>
+                <label>Name</label><br>
+                <input type="name" placeholder="Username">
+            </div>
+            <div>
+                <label>Email Address</label><br>
+                <input type="email" placeholder="Email Address">
+            </div>
+            <div>
+                <label>Password</label><br>
+                <input type="password" placeholder="Password">
+            </div>
+            <button class="button_1" type="submit">Log In</button>
+        </form>
+    </section>
+
+    <footer id="main-footer">
         <div class="container">
-            <div class="column">
-                <p>&copy; Algaebot Industries 2022</p>
+            <ul class="column">
+                <div class="column-title">&copy; Algaebot Industries 2022</div>
                 <p>Contractually owned by <a href="https://shad.ca" target="_blank">Shad Canada</a></p>
-                <p><br>To learn how we use your data to train our Artificial Intelligence technology, read our <a href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">Privacy Policy</a></p>
-            </div>
-            <div class="column">
-                <h1>About<br>Algaebot&trade;</h1>
-                <p><br><a href="mission.html">Our Mission</a></p>
-                <p><a href="mission.html">History</a></p>
-                <p><a href="mission.html">Our Staff</a></p>
-            </div>
-            <div class="column">
-                <h1>Our<br>Products</h1>
-                <p><br><a href="products.html">Algaebots&trade;</a></p>
-                <p><a href="products.html">Accessories and Add-ons</a></p>
-                <p><a href="products.html">Bundles and Deals</a></p>
-                <p><a href="products.html">Random Robot Parts</a></p>
-                <p><a href="products.html">Outdated Models&trade;</a></p>
-            </div>
-            <div class="column">
-                <h1>Billing<br>& Support</h1>
-                <p><br><a href="login.html">Subscriptions</a></p>
-                <p><a href="login.html">Contact Us</a></p>
-                <p><a href="login.html">Order Status</a></p>
-                <p><a href="products.html">AlgaeInsurance&reg;</a></p>
-                <p><a href="products.html">AlgaeForums&reg;</a></p>
-                <p><a href="login.html">Returns and Warranties</a></p>
-                <p><a href="mission.html">Canadian Government Discount</a></p>
-            </div>
+                <p><br>To learn how we use your data to train our Artificial Intelligence technology, read our <a
+                        href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">Privacy Policy</a></p>
+                </ul>
+            <ul class="column">
+                <div class="column-title">About Algaebot&trade;</div>
+                <div class="links">
+                    <li>
+                        <span><a href="mission.html">Our Mission</a></span>
+                    </li>
+                    <li>
+                        <span><a href="mission.html">History</a></span>
+                    </li>
+                    <li>
+                        <span><a href="mission.html">Our Staff</a></span>
+                    </li>
+                </div>
+            </ul>
+            <ul class="column">
+                <div class="column-title">Our Products</div>
+                <div class="links">
+                    <li>
+                        <span><a href="products.html">Algaebots&trade;</a></span>
+                    </li>
+                    <li>
+                        <span><a href="products.html">Accessories and Add-ons</a></span>
+                    </li>
+                    <li>
+                        <span><a href="products.html">Bundles and Deals</a></span>
+                    </li>
+                    <li>
+                        <span><a href="products.html">Random Robot Parts</a></span>
+                    </li>
+                    <li>
+                        <span><a href="products.html">Outdated Models&trade;</a></span>
+                    </li>
+                </div>
+            </ul>
+            <ul class="column">
+                <div class="column-title">Billing & Support</div>
+                <div class="links">
+                    <li>
+                        <a href="login.html">Subscriptions</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Order Status</a>
+                    </li>
+                    <li>
+                        <a href="products.html">AlgaeInsurance&reg;</a>
+                    </li>
+                    <li>
+                        <a href="products.html">AlgaeForums&reg;</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Returns and Warranties</a>
+                    </li>
+                    <li>
+                        <a href="mission.html">Canadian Government Discount</a>
+                    </li>
+                </div>
+            </ul>
         </div>
     </footer>
-    
+
 </body>
+
 </html>

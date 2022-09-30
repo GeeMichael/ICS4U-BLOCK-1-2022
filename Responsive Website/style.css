@@ -18,7 +18,6 @@ ul {
 
 i {
     margin-right: 10px;
-    
 }
 
 /** Core Styles */
@@ -26,7 +25,7 @@ i {
 body {
     margin: 0;
     font-family: 'DM Sans', Helvetica, Arial, sans-serif;
-    background: #fff;
+    background-color: #fff;
     color: #fff;
     font-size: 1.1em;
     line-height: 1.5;
@@ -73,6 +72,8 @@ body {
     margin: auto 20px;
 }
 
+/** Sign Up Button Glow */
+
 .glow-on-hover {
     font-family: 'DM Sans', Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -90,22 +91,18 @@ body {
 
 .glow-on-hover:before {
     content: '';
-    background: linear-gradient(45deg, #AAD297, #9CCC99, #8EC69A, #81C19C, #73BB9D, #81C19C, #8EC69A, #9CCC99, #AAD297);
+    background: linear-gradient(45deg, #AAD297, #9CCC99, #8EC69A, #81C19C, #73BB9D);
     position: absolute;
     top: -1px;
     left:-1px;
     background-size: 200%;
     z-index: -1;
-    filter: blur(20px);
+    filter: blur(15px);
     width: calc(100%);
     height: calc(100%);
     animation: glowing 20s linear infinite;
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity .3s ease-in-out;
-}
-
-.glow-on-hover:active {
-    color: #000
 }
 
 .glow-on-hover:active:after {
@@ -126,12 +123,6 @@ body {
     left: 0;
     top: 0;
     border-radius: 20px;
-}
-
-@keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
 }
 
 /** Showcase */
@@ -223,7 +214,6 @@ header a:hover {
 .panels .container {
     grid-template-columns: 2fr 1fr;
     width: 100%;
-    margin: 100px auto;
     display: grid;
     gap: 20px;
     color: #000;
@@ -234,7 +224,7 @@ header a:hover {
     border-radius: 15px;
     background-color: #fff;
     text-align: start;
-    box-shadow: 0px 0px 20px rgba(46, 46, 46, 0.05)
+    box-shadow: 0px 0px 20px rgba(46, 46, 46, 0.05);
 }
 
 .panel img {
@@ -277,19 +267,27 @@ footer .container{
     display: flex;
     align-items: top;
     justify-content: space-between;
+    width: 1100px;
+    
 }
 
-footer h1 {
+footer .column-title {
     font-size: 20px;
+    margin-bottom: 20px;
 }
 
-footer p {
+footer .links, p {
     font-size: 15px;
 }
 
 footer a{
     color: #fff;
 }
+
+footer li {
+    margin-bottom: 5px;
+}
+
 .column:nth-of-type(1){
     width: 400px;
 }
