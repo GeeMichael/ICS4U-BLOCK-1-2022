@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Home - Algaebot Industries</title>
+    <title>Products - Algaebot Industries</title>
 </head>
 
 <body>
@@ -41,51 +41,38 @@
         </div>
     </nav>
 
-    <header id="showcase">
-        <div class="bg-image"></div>
-        <div class="showcase-text">
-            <h1>A green revolution.</h1>
-            <p>Prices start at 250. <a href="products.html"><i class="fa-solid fa-circle-chevron-right"></i>See more</a>
-            </p>
-        </div>
-    </header>
-
     <section class="products">
         <div class="container">
-            <div class="box">
-                <h2><i class="fa-solid fa-leaf"></i>Shop Algaebots</h2>
-            </div>
-            <div class="box">
-                <h2><i class="fa-solid fa-gun"></i>Shop Accessories</h2>
-            </div>
-            <div class="box">
-                <h2><i class="fa-solid fa-boxes-packing"></i>Shop Bundles</h2>
-            </div>
-            <div class="box">
-                <h2><i class="fa-solid fa-shuffle"></i>Shop Random Junk</h2>
-            </div>
-            <div class="box">
-                <h2><i class="fa-solid fa-seedling"></i>Shop More Algaebots</h2>
-            </div>
-        </div>
-    </section>
-
-    <section class="panels">
-        <div class="container">
-            <div class="panel">
-                <img src="images/algae1.jpg" alt="algae">
-                <h2>Introducing the new Algaebot ICS-4+</h2>
-                <p>Featuring cutting-edge algae-aliasing technology. Starting at 399.99</p>
-            </div>
-            <div class="panel">
-                <img src="images/algae2.jpg" alt="broken tech">
-                <p class="title">Don't want to give us your life savings? Take a look at our outdated models.<br><i
-                        class="fa-solid fa-circle-chevron-right"></i></p>
-            </div>
-            <div class="panel">
-                <p class="title">Explore our mission to improve the wellbeing of Canadians.<i
-                        class="fa-solid fa-circle-chevron-right"></i></p>
-            </div>
+            <ul class="tabs">
+                <li class="tab">
+                     <input type="radio" name="tabs" checked="checked" id="tab1"/>
+                     <label for="tab1">Algaebot ICS-4+</label>
+                     <div id="tab-content1" class="content">The Algaebot ICS-4+ is the definitive model from our 2022 collection.
+                        Comes with automatic algae-aliasing and auto-algification.
+                        Subscriptions start at 999.99</div>
+                </li>
+                <li class="tab">
+                     <input type="radio" name="tabs" checked="checked" id="tab2"/>
+                     <label for="tab2">ICS-4 Legacy Edition</label>
+                     <div id="tab-content2" class="content">This legacy edition will totally be supported in 10+ years.
+                        Comes with Algae&trade; preinstalled. 
+                        Subscriptions start at 999.98</div>
+                </li>
+                <li class="tab">
+                    <input type="radio" name="tabs" checked="checked" id="tab3"/>
+                    <label for="tab3">ICS-3 Mini</label>
+                    <div id="tab-content3" class="content">A mini version for your mini pond. 
+                        Doesn't come with anything. Please buy our newer models.
+                        Subscriptions start at 499.99</div>
+               </li>
+               <li class="tab">
+                <input type="radio" name="tabs" checked="checked" id="tab4"/>
+                <label for="tab4">ICS-3 Classic & Older</label>
+                <div id="tab-content4" class="content">
+                    Unfortunately, we do not support outdated models.
+                    Please buy our newer and more expensive products.</div>
+           </li>
+              </ul>  
         </div>
     </section>
 
