@@ -68,7 +68,7 @@ body {
 .navbar a {
     color: #3C4453;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1em;
     font-weight: light;
     display: block;
 }
@@ -163,7 +163,7 @@ body {
 }
 
 #form h1 {
-    font-size: 45px;
+    font-size: 35px;
     color: #447355;
     display: block;
     text-align: center;
@@ -311,12 +311,19 @@ input:checked+.slider:before {
     background: #DCE9D5;
 }
 
+.products .container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 800px;
+}
+
 .tabs {
-    width: 1100px;
     display: block;
     margin: 100px auto;
     position: relative;
-    height: 500px;
+    height: 300px;
+    width: 1100px;
 }
 
 .tabs .tab {
@@ -338,7 +345,7 @@ input:checked+.slider:before {
     position: relative;
     color: #3C4453;
     background: white;
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 30px;
 }
 
 .tabs .content {
@@ -349,12 +356,14 @@ input:checked+.slider:before {
     width: 100%;
     padding: 25px;
     position: absolute;
-    top: 27px;
+    top: 0;
     left: 0;
     background: white;
     color: #3C4453;
     opacity: 0;
     transition: opacity 400ms ease-out;
+    border-radius: 50px;
+    margin-top: 50px;
 }
 
 .tabs>.tab>[id^="tab"]:checked+label {
@@ -373,7 +382,7 @@ input:checked+.slider:before {
 
 header .bg-image {
     position: absolute;
-    background: #447355 url(#);
+    background: #447355 url(images/roomba2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -382,30 +391,14 @@ header .bg-image {
     z-index: -1;
 }
 
-header .bg-image-1 {
-    position: absolute;
-    background: #447355 url(images/roomba1.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 400px;
-    z-index: -1;
-}
-
 header .showcase-text {
     text-align: start;
     font-size: 20px;
     margin-left: 20%;
+    padding-top: 250px;
+    padding-bottom: 60px;
 }
 
-header h1 {
-    padding-top: 300px;
-}
-
-header p {
-    padding-bottom: 100px;
-}
 
 header a {
     color: white;
@@ -451,7 +444,7 @@ header a:hover {
     background-color: #73BB9D;
 }
 
-.products .container {
+.boxes .container {
     display: flex;
     justify-content: space-around;
 }
@@ -476,6 +469,7 @@ header a:hover {
     display: grid;
     gap: 20px;
     color: #3C4453;
+    padding: 5em 0em 5em 0em;
 }
 
 .panel {
@@ -556,7 +550,7 @@ footer .link-bar li {
 }
 
 footer .socials {
-    width: 400px;
+    width: 300px;
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
@@ -576,22 +570,48 @@ footer .socials {
 
 /** Media Queries */
 
+
 @media(max-width: 960px) {
+    header nav,
+    header nav li,
+    #boxes .box,
+    article {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+
     footer .link-bar {
         display: inline-block;
-        padding: 1em 0px;
     }
 
     .column:nth-of-type(1) {
         width: 90%;
     }
-}
 
-@media screen and (max-width: 925px) {
-    .navbar a:not(:first-child) {display: none;}
-    .navbar a.icon {
-      float: right;
-      display: block;
+    nav .menu-items {
+        display: inline-block;
+        float: none;
     }
 }
 
+
+@media(max-width: 475px){
+    footer .socials {
+        width: 100%;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+    .socials li {
+        padding-top: 13px;
+    }
+
+    #form{
+        padding: 50px 0px 50px 0px;
+    }
+
+    .products .container{
+       padding: 50px 0px 50px 0px;
+    }
+}
