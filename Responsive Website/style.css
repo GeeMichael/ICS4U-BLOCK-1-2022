@@ -58,6 +58,11 @@ body {
     justify-content: space-between;
 }
 
+.navbar .checkbox {
+    width: 0;
+    height: 0;
+}
+
 .navbar img {
     display: block;
     height: 40px;
@@ -315,12 +320,12 @@ input:checked+.slider:before {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: 800px;
+    height: 400px;
 }
 
 .tabs {
     display: block;
-    margin: 100px auto;
+    margin: 50px auto;
     position: relative;
     height: 300px;
     width: 1100px;
@@ -380,6 +385,10 @@ input:checked+.slider:before {
 
 /** Showcase */
 
+header #showcase {
+    height: 100px;
+}
+
 header .bg-image {
     position: absolute;
     background: #447355 url(images/roomba2.jpg);
@@ -387,7 +396,7 @@ header .bg-image {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 450px;
+    height: 400px;
     z-index: -1;
 }
 
@@ -396,7 +405,7 @@ header .showcase-text {
     font-size: 20px;
     margin-left: 20%;
     padding-top: 250px;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
 }
 
 
@@ -416,12 +425,29 @@ header a:hover {
 
 .box {
     color: white;
-    height: 185px;
-    width: 185px;
-    border-radius: 20px;
-    margin: 20px 10px;
+    height: 175px;
+    width: 175px;
+    border-radius: 20%;
     padding: 15px 20px;
-    text-shadow: 0px 1px 5px slategrey;
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, .3);
+    font-size: 15px;
+    margin: 10px 5px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, .3);
+}
+
+.boxes .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.box h2 {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    height: 100%;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .box:nth-of-type(4) {
@@ -444,11 +470,6 @@ header a:hover {
     background-color: #73BB9D;
 }
 
-.boxes .container {
-    display: flex;
-    justify-content: space-around;
-}
-
 /** Bar */
 
 .bars {
@@ -465,6 +486,7 @@ header a:hover {
 
 .panels .container {
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
     width: 100%;
     display: grid;
     gap: 20px;
@@ -497,13 +519,14 @@ header a:hover {
 }
 
 .panel:nth-of-type(2) img {
-    width: 300px;
-    height: 100px;
-    object-fit: cover;
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-.panel:nth-of-type(3) {
-    height: 100%;
+.panels p {
+    font-size: 20px;
 }
 
 /** Footer */
@@ -561,7 +584,7 @@ footer .socials {
     height: 50px;
     width: 50px;
     border-radius: 100%;
-    padding-top: 3%;
+    padding-top: 13px;
 }
 
 .socials i {
@@ -572,9 +595,10 @@ footer .socials {
 
 
 @media(max-width: 960px) {
+
     header nav,
     header nav li,
-    #boxes .box,
+    .boxes,
     article {
         float: none;
         text-align: center;
@@ -593,10 +617,98 @@ footer .socials {
         display: inline-block;
         float: none;
     }
+
+    .boxes .container {
+        flex-wrap: wrap;
+    }
+
+    .products .container {
+        height: 550px;
+    }
+
+    nav .container .checkbox {
+        position: absolute;
+        display: block;
+        height: 32px;
+        width: 32px;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    nav .container .hamburger-lines {
+        display: block;
+        height: 26px;
+        width: 32px;
+        position: absolute;
+        top: 17px;
+        left: 20px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    nav .container .hamburger-lines .line {
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #0e2431;
+    }
+
+    nav .container .hamburger-lines .line1 {
+        transform-origin: 0% 0%;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    nav .container .hamburger-lines .line2 {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    nav .container .hamburger-lines .line3 {
+        transform-origin: 0% 100%;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .navbar .menu-items {
+        background: white;
+        box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+        height: 100vh;
+        width: 100%;
+        transform: translate(-200%);
+        display: flex;
+        flex-direction: column;
+        margin-left: -40px;
+        margin-right: 40px;
+        padding-left: 50px;
+        margin-top: 68px;
+        transition: transform 0.5s ease-in-out;
+        text-align: center;
+    }
+
+    .navbar .menu-items li {
+        margin-bottom: 1.2rem;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    nav .container input[type="checkbox"]:checked~.menu-items {
+        transform: translateX(0);
+    }
+
+    nav .container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+        transform: rotateZ(45deg) scaleX(1.25);
+    }
+
+    nav .container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+        transform: rotateZ(-45deg) scaleX(1.25) translate(3px, -8px);
+    }
 }
 
-
-@media(max-width: 475px){
+@media(max-width: 475px) {
     footer .socials {
         width: 100%;
         margin: auto;
@@ -605,13 +717,19 @@ footer .socials {
 
     .socials li {
         padding-top: 13px;
+        margin-top: 40px;
     }
 
-    #form{
+    #form {
         padding: 50px 0px 50px 0px;
     }
 
-    .products .container{
-       padding: 50px 0px 50px 0px;
+    .products .container {
+        padding: 50px 0px 50px 0px;
+        height: 700px;
+    }
+
+    .boxes .container {
+        padding: 0;
     }
 }
