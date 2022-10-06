@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <title>Bulma Examples</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+
+    <span class="icon is-large">
+        <i class="fa-solid fa-baseball"></i>
+        <p>base</p>
+    </span>
+    <span class="icon has-text-info">
+        <p>ball</p>
+        <i class="fa-solid fa-baseball fa-xl"></i>
+    </span>
+    <!-- Style is removed from all of the elements!
+    <h1>Header 1</h1> <- These all have the same size and 
+    <h2>Header 2</h2>
+    <h3>Header 3</h3>
+     -->
+
+    <!-- Apply classes to style the elements 
+    <h1 class="button is-danger">Warning! You have unsaved changes</h1>
+    <h1 class="button is-success">Exit anyway</h1>
+
+    <button>Header 1</button> <- Gross HTML button >o<
+    -->
+    <p>Most Bulma elements have alternative styles. To apply them, you only need to append one of the modifier classes.
+        They all start with is- or has-.</p>
+    <button class="button is-primary">
+        Primary
+    </button>
+    <button class="button is-link">
+        Link
+    </button>
+    <button class="button is-info">
+        Info
+    </button>
+    <button class="button is-success">
+        Success!
+    </button>
+    <button class="button is-warning">
+        Warning!
+    </button>
+    <button class="button is-danger">
+        DANGER
+    </button>
+
+    <button class="button is-small">
+        smol
+    </button>
+    <button class="button">
+        Button
+    </button>
+    <button class="button is-medium">
+        Medium&trade;
+    </button>
+    <button class="button is-large">
+        LARGE
+    </button>
+
+    <button class="button is-primary is-outlined">
+        Outline
+    </button>
+    <button class="button is-loading">
+        Loading
+    </button>
+    <button class="button" disabled>
+        Disabled!
+    </button>
+
+
+
+    <div class="container">
+        <!-- Starts to stack after Tablet Size-->
+        <!-- Media Queries are already included! woooo -->
+        <div class="columns is-tablet is-multiline">
+            <div class="column is-four-fifths">
+                <p class="is-primary notification">
+                    Column 1
+                </p>
+            </div>
+            <div class="column">
+                <p class="is-success notification">
+                    Column 2
+                </p>
+            </div>
+            <div class="column">
+                <p class="is-info notification">
+                    Column 3
+                </p>
+            </div>
+            <div class="column">
+                <p class="is-link notification">
+                    Column 4
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns is-multiline">
+        <div class="column is-2">
+            <p class="is-link notification">
+                Home
+            </p>
+        </div>
+        <div class="column is-5">
+            <p class="is-info notification">
+                Prices
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="hero has-background-link-dark">
+            <div class="hero-body">
+                <p class="title has-text-link-light">
+                    Hero title
+                </p>
+                <p class="subtitle has-text-link-light">
+                    Hero subtitle
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <div class="container">
+        <section class="section is-medium has-background-danger-light">
+            <h1 class="title">Welcome back!</h1>
+            <h2 class="subtitle">
+                A simple container to divide your page into <strong>sections</strong>, like the one you're currently
+                reading.
+            </h2>
+
+            <div class="field">
+                <label class="label">First Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Name">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-danger" type="text" placeholder="Text input" value="Username">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+                <p class="help is-danger">This username is unavailable</p>
+            </div>
+
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                </div>
+                <p class="help is-danger">This email is invalid</p>
+            </div>
+
+            <div class="field">
+                <label class="label">Subject</label>
+                <div class="control">
+                    <div class="select">
+                        <select>
+                            <option>Select dropdown</option>
+                            <option>North America</option>
+                            <option>Western Europe</option>
+                            <option>Latin and South America</option>
+                            <option>Central and Northern Europe</option>
+                            <option>East Asia</option>
+                            <option>China Mainland</option>
+                            <option>South Asia</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Message</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Send us a message!"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        I agree to the <a href="https://en.wikipedia.org/wiki/contractual_term">terms and conditions</a>
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Do you understand?</label>
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="question">
+                        Yes
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="question">
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light">Cancel</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer has-background-warning-light">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
