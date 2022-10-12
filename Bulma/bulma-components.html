@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bulma Components</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+</head>
+
+<body>
+
+    <!-- Form Controls -->
+    <section class="section">
+        <div class="hero is-dark">
+            <div class="container">
+                <div class="title">Form Controls</div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                              <input class="input" type="text" placeholder="Text input">
+                            </div>
+                          </div>
+                          
+                          <div class="field">
+                            <label class="label">Username</label>
+                            <div class="control has-icons-left has-icons-right">
+                              <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                              </span>
+                              <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                              </span>
+                            </div>
+                            <p class="help is-success">This username is available</p>
+                          </div>
+                          
+                          <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control has-icons-left has-icons-right">
+                              <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                              </span>
+                              <span class="icon is-small is-right">
+                                <i class="fas fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+                            <p class="help is-danger">This email is invalid</p>
+                          </div>
+                          
+                          <div class="field">
+                            <label class="label">Subject</label>
+                            <div class="control">
+                              <div class="select">
+                                <select>
+                                  <option>Select dropdown</option>
+                                  <option>With options</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="field">
+                            <label class="label">Message</label>
+                            <div class="control">
+                              <textarea class="textarea" placeholder="Textarea"></textarea>
+                            </div>
+                          </div>
+                          
+                          <div class="field">
+                            <div class="control">
+                              <label class="checkbox">
+                                <input type="checkbox">
+                                I agree to the <a href="#">terms and conditions</a>
+                              </label>
+                            </div>
+                          </div>
+                          
+                          <div class="field">
+                            <div class="control">
+                              <label class="radio">
+                                <input type="radio" name="question">
+                                Yes
+                              </label>
+                              <label class="radio">
+                                <input type="radio" name="question">
+                                No
+                              </label>
+                            </div>
+                          </div>
+                          
+                          <div class="field is-grouped">
+                            <div class="control">
+                              <button class="button is-link">Submit</button>
+                            </div>
+                            <div class="control">
+                              <button class="button is-link is-light">Cancel</button>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                
+            </div>
+            <div class="column">
+                
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Levels -->
+    <section class="section">
+        <div class="hero is-dark">
+            <div class="container">
+                <div class="title">Levels</div>
+            </div>
+        </div>
+
+        <nav class="level">
+            <!-- Left side -->
+            <div class="level-left">
+                <div class="level-item">
+                    <p class="subtitle is-5">
+                        <strong>∞</strong> posts
+                    </p>
+                </div>
+                <div class="level-item">
+                    <div class="field has-addons">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Find a post">
+                        </p>
+                        <p class="control">
+                            <button class="button">
+                                Search
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side -->
+            <div class="level-right">
+                <p class="level-item"><strong>All</strong></p>
+                <p class="level-item"><a>Published</a></p>
+                <p class="level-item"><a>Drafts</a></p>
+                <p class="level-item"><a>Deleted</a></p>
+                <p class="level-item"><a class="button is-success">New</a></p>
+            </div>
+        </nav>
+
+        <nav class="level">
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Tweets</p>
+                <p class="title">3,456</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Following</p>
+                <p class="title">123</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Followers</p>
+                <p class="title">456K</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Likes</p>
+                <p class="title">789</p>
+              </div>
+            </div>
+          </nav>
+    </section>
+
+    <!-- Cards -->
+    <section class="section">
+        <div class="hero is-dark">
+            <div class="container">
+                <div class="title">Cards</div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">
+                            “Profound quote.”
+                        </p>
+                        <p class="title is-4">Kevin DesLauriers</p>
+                        <p class="subtitle is-6">@kdeslauriers</p>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <span>
+                                View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                            </span>
+                        </p>
+                        <p class="card-footer-item">
+                            <span>
+                                Buy me a <a href="#">Coffee</a>
+                            </span>
+                        </p>
+                    </footer>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">Kevin DesLauriers</p>
+                                <p class="subtitle is-6">@kdeslauriers</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Profound quote. <a>@kdeslauriers</a>.
+                            <a href="#">#kdeslauriers</a> <a href="#">#kevin</a>
+                            <br>
+                            <time datetime="2016-1-1">9:13 AM - 12 Oct 2022</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <article class="media">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <strong>Kevin DesLauriers</strong> <small>@kdeslauriers</small> <small>Just
+                                            now</small>
+                                        <br>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna
+                                        eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam
+                                        finibus odio quis feugiat facilisis.
+                                    </p>
+                                </div>
+                                <nav class="level is-mobile">
+                                    <div class="level-left">
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                                        </a>
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                        </a>
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="media-right">
+                                <button class="delete"></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tags -->
+    <section class="section">
+        <!-- Hero -->
+        <div class="hero is-dark">
+            <div class="container">
+                <div class="title">Tags</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <span class="tag">
+                Tag label
+            </span>
+
+            <!-- Tags of all colours and sizes -->
+            <div class="tags">
+                <span class="tag is-danger is-large">
+                    LARGE LABEL
+                    <button class="delete"></button>
+                </span>
+                <span class="tag is-warning is-medium">
+                    Medium Label
+                    <button class="delete"></button>
+                </span>
+                <span class="tag is-info is-small">
+                    small label
+                    <button class="delete"></button>
+                </span>
+            </div>
+
+            <!-- You can group tags together! -->
+            <div class="tags has-addons">
+                <span class="tag is-dark is-large">Michael Gee</span>
+                <a class="tag is-delete is-danger is-large"></a>
+            </div>
+            <div class="tags are-medium has-addons">
+                <span class="tag is-success">All</span>
+                <span class="tag is-info">Medium</span>
+                <span class="tag is-link">Size</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tables -->
+    <section class="section">
+        <div class="hero is-dark">
+            <div class="container">
+                <div class="title">Tables</div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Student</th>
+                            <th>Math</th>
+                            <th>Computer Science</th>
+                            <th>Physics</th>
+                            <th>Anthropology</th>
+                        </tr>
+                        <tr>
+                            <td>Jack Henry</td>
+                            <td>87</td>
+                            <td>93</td>
+                            <td>91</td>
+                            <td>71</td>
+                        </tr>
+                        <tr>
+                            <td>Henry Jack</td>
+                            <td>78</td>
+                            <td>39</td>
+                            <td>19</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>Jackson Henryson</td>
+                            <td>43</td>
+                            <td>41</td>
+                            <td>40</td>
+                            <td>30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="column">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><abbr title="Rankings">Rank</th>
+                            <th>School</th>
+                            <th><abbr title="Played">Pld</abbr></th>
+                            <th><abbr title="Won">W</abbr></th>
+                            <th><abbr title="Drawn">D</abbr></th>
+                            <th><abbr title="Lost">L</abbr></th>
+                            <th><abbr title="Goals for">GF</abbr></th>
+                            <th><abbr title="Goals against">GA</abbr></th>
+                            <th><abbr title="Goal difference">GD</abbr></th>
+                            <th><abbr title="Points">Pts</abbr></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th><abbr title="Rankings">Rankings</abbr></th>
+                            <th>School</th>
+                            <th><abbr title="Played">Pld</abbr></th>
+                            <th><abbr title="Won">W</abbr></th>
+                            <th><abbr title="Drawn">D</abbr></th>
+                            <th><abbr title="Lost">L</abbr></th>
+                            <th><abbr title="Goals for">GF</abbr></th>
+                            <th><abbr title="Goals against">GA</abbr></th>
+                            <th><abbr title="Goal difference">GD</abbr></th>
+                            <th><abbr title="Points">Pts</abbr></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Bayview_Glen_School"
+                                    title="Bayview Glen Independent School">Bayview Glen</a>
+                            </td>
+                            <td>38</td>
+                            <td>23</td>
+                            <td>12</td>
+                            <td>3</td>
+                            <td>68</td>
+                            <td>36</td>
+                            <td>+32</td>
+                            <td>81</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Poop school">Crescent</a>
+                            </td>
+                            <td>38</td>
+                            <td>20</td>
+                            <td>11</td>
+                            <td>7</td>
+                            <td>65</td>
+                            <td>36</td>
+                            <td>+29</td>
+                            <td>71</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C."
+                                    title="Tottenham Hotspur F.C.">Tottenham Hotspur</a></td>
+                            <td>38</td>
+                            <td>19</td>
+                            <td>13</td>
+                            <td>6</td>
+                            <td>69</td>
+                            <td>35</td>
+                            <td>+34</td>
+                            <td>70</td>
+                        </tr>
+                        <tr class="is-selected">
+                            <th>4</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C."
+                                    title="Manchester City F.C.">Manchester City</a></td>
+                            <td>38</td>
+                            <td>19</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>71</td>
+                            <td>41</td>
+                            <td>+30</td>
+                            <td>66</td>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C."
+                                    title="Manchester United F.C.">Manchester United</a></td>
+                            <td>38</td>
+                            <td>19</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>49</td>
+                            <td>35</td>
+                            <td>+14</td>
+                            <td>66</td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Southampton_F.C."
+                                    title="Southampton F.C.">Southampton</a></td>
+                            <td>38</td>
+                            <td>18</td>
+                            <td>9</td>
+                            <td>11</td>
+                            <td>59</td>
+                            <td>41</td>
+                            <td>+18</td>
+                            <td>63</td>
+                        </tr>
+                        <tr>
+                            <th>7</th>
+                            <td><a href="https://en.wikipedia.org/wiki/West_Ham_United_F.C."
+                                    title="West Ham United F.C.">West Ham United</a></td>
+                            <td>38</td>
+                            <td>16</td>
+                            <td>14</td>
+                            <td>8</td>
+                            <td>65</td>
+                            <td>51</td>
+                            <td>+14</td>
+                            <td>62</td>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Liverpool_F.C."
+                                    title="Liverpool F.C.">Liverpool</a></td>
+                            <td>38</td>
+                            <td>16</td>
+                            <td>12</td>
+                            <td>10</td>
+                            <td>63</td>
+                            <td>50</td>
+                            <td>+13</td>
+                            <td>60</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>9</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Stoke_City_F.C." title="Stoke City F.C.">Stoke
+                                    City</a></td>
+                            <td>38</td>
+                            <td>14</td>
+                            <td>9</td>
+                            <td>15</td>
+                            <td>41</td>
+                            <td>55</td>
+                            <td>−14</td>
+                            <td>51</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>10</th>
+                            <td><a href="https://en.wikipedia.org/wiki/Chelsea_F.C." title="Chelsea F.C.">Chelsea</a>
+                            </td>
+                            <td>38</td>
+                            <td>12</td>
+                            <td>14</td>
+                            <td>12</td>
+                            <td>59</td>
+                            <td>53</td>
+                            <td>+6</td>
+                            <td>50</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
