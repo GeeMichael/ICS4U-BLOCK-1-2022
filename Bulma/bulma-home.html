@@ -11,7 +11,7 @@
 
 <body>
     <section>
-        <nav class="navbar pl-6 is-white" role="navigation" aria-label="main navigation">
+        <nav class="navbar pl-6 is-white" role="navigation">
             <div class="navbar-brand">
                 <a class="navbar-item has-text-weight-light">Bulma Admin</a>
             </div>
@@ -87,12 +87,12 @@
                 </div>
                 <div class="column is-9">
                     <section class="breadcrumb mt-4">
-                        <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <nav class="breadcrumb">
                             <ul>
-                                <li><a href="#">Bulma</a></li>
-                                <li><a href="#">Templates</a></li>
-                                <li><a href="#">Examples</a></li>
-                                <li class="is-active"><a href="#" aria-current="page">Admin</a></li>
+                                <li><a>Bulma</a></li>
+                                <li><a>Templates</a></li>
+                                <li><a>Examples</a></li>
+                                <li class="is-active"><a>Admin</a></li>
                             </ul>
                         </nav>
                     </section>
@@ -137,46 +137,117 @@
                     <div class="columns">
                         <div class="column is-6">
                             <section class="cards">
-                                <div class="card">
+                                <div class="card mt-4">
                                     <header class="card-header">
-                                      <p class="card-header-title has-text-grey has-text-weight-normal">
-                                        Events
-                                      </p>
-                                      <button class="card-header-icon" aria-label="more options">
-                                        <span class="icon">
-                                          <i class="fas fa-angle-down is-info" aria-hidden="true"></i>
-                                        </span>
-                                      </button>
+                                        <p class="card-header-title has-text-grey has-text-weight-normal">
+                                            Events
+                                        </p>
+                                        <button class="card-header-icon">
+                                            <span class="icon">
+                                                <i class="fas fa-angle-down is-info"></i>
+                                            </span>
+                                        </button>
                                     </header>
-                                  </div>
+                                    <div class="card-content">
+                                        <div class="table-container">
+                                            <table class="table is-striped is-fullwidth">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="fa-solid fa-bell"></i></td>
+                                                        <td>Lorem ipsum dolem aire</td>
+                                                        <td class="level-right"><a
+                                                                class="button is-small is-primary">Action</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa-solid fa-bell"></i></td>
+                                                        <td>Lorem ipsum dolem aire</td>
+                                                        <td class="level-right"><a
+                                                                class="button is-small is-primary">Action</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa-solid fa-bell"></i></td>
+                                                        <td>Lorem ipsum dolem aire</td>
+                                                        <td class="level-right"><a
+                                                                class="button is-small is-primary">Action</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa-solid fa-bell"></i></td>
+                                                        <td>Lorem ipsum dolem aire</td>
+                                                        <td class="level-right"><a
+                                                                class="button is-small is-primary">Action</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa-solid fa-bell"></i></td>
+                                                        <td>Lorem ipsum dolem aire</td>
+                                                        <td class="level-right"><a
+                                                                class="button is-small is-primary">Action</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <div class="container">
+                                            <p class="card-header-title has-text-grey-light has-text-weight-bold is-centered">
+                                                View All
+                                            </p>
+                                        </div>
+                                    </footer>
+                                </div>
                             </section>
                         </div>
                         <div class="column is-6">
                             <section class="cards">
-                                <div class="card">
+                                <div class="card mt-4">
                                     <header class="card-header">
-                                      <p class="card-header-title has-text-grey has-text-weight-normal">
-                                        Inventory Search
-                                      </p>
-                                      <button class="card-header-icon" aria-label="more options">
-                                        <span class="icon">
-                                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                        </span>
-                                      </button>
+                                        <p class="card-header-title has-text-grey has-text-weight-normal">
+                                            Inventory Search
+                                        </p>
+                                        <button class="card-header-icon">
+                                            <span class="icon">
+                                                <i class="fas fa-angle-down"></i>
+                                            </span>
+                                        </button>
                                     </header>
-                                  </div>
-                                  <div class="card">
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <div class="control has-icons-left has-icons-right">
+                                                <input class="input is-large" type="text" placeholder="">
+                                                <span class="icon is-medium is-left">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </span>
+                                                <span class="icon is-medium is-right">
+                                                    <i class="fa-solid fa-check"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mt-6">
                                     <header class="card-header">
-                                      <p class="card-header-title has-text-grey has-text-weight-normal">
-                                        User Search
-                                      </p>
-                                      <button class="card-header-icon" aria-label="more options">
-                                        <span class="icon">
-                                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                        </span>
-                                      </button>
+                                        <p class="card-header-title has-text-grey has-text-weight-normal">
+                                            User Search
+                                        </p>
+                                        <button class="card-header-icon">
+                                            <span class="icon">
+                                                <i class="fas fa-angle-down"></i>
+                                            </span>
+                                        </button>
                                     </header>
-                                  </div>
+                                    <div class="card-content">
+                                        <div class="content">
+                                            <div class="control has-icons-left has-icons-right">
+                                                <input class="input is-large" type="text" placeholder="">
+                                                <span class="icon is-medium is-left">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </span>
+                                                <span class="icon is-medium is-right">
+                                                    <i class="fa-solid fa-check"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </section>
                         </div>
                     </div>
