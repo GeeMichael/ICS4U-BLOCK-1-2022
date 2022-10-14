@@ -11,7 +11,7 @@
 
 <body>
     <section>
-        <nav class="navbar is-dark pl-6" role="navigation" aria-label="main navigation">
+        <nav class="navbar pl-6 is-white" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item has-text-weight-light">Bulma Admin</a>
             </div>
@@ -42,16 +42,144 @@
         </nav>
     </section>
 
-    <section>
+    <section class="has-background-light">
         <div class="container">
             <div class="columns">
-                <div class="column is-one-third">
-                    <div class="container">
-                        <p>General</p>
-                    </div>
+                <div class="column is-3">
+                    <aside class="menu mt-4 has-text-weight-bold">
+                        <p class="menu-label">
+                            General
+                        </p>
+                        <ul class="menu-list">
+                            <li><a class="has-text-link">Dashboard</a></li>
+                            <li><a>Customers</a></li>
+                            <li><a>Other</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Administration
+                        </p>
+                        <ul class="menu-list">
+                            <li><a>Team Settings</a></li>
+                            <li>
+                                <a>Manage Your Team</a>
+                                <ul>
+                                    <li><a>Members</a></li>
+                                    <li><a>Plugins</a></li>
+                                    <li><a>Add a member</a></li>
+                                    <li><a>Remove a member</a></li>
+                                </ul>
+                            </li>
+                            <li><a>Invitations</a></li>
+                            <li><a>Cloud Storage Environment Settings</a></li>
+                            <li><a>Authentication</a></li>
+                            <li><a>Payments</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Transactions
+                        </p>
+                        <ul class="menu-list">
+                            <li><a>Payments</a></li>
+                            <li><a>Transfers</a></li>
+                            <li><a>Balance</a></li>
+                            <li><a>Reports</a></li>
+                        </ul>
+                    </aside>
                 </div>
-                <div class="column">
-                    Second column
+                <div class="column is-9">
+                    <section class="breadcrumb mt-4">
+                        <nav class="breadcrumb" aria-label="breadcrumbs">
+                            <ul>
+                                <li><a href="#">Bulma</a></li>
+                                <li><a href="#">Templates</a></li>
+                                <li><a href="#">Examples</a></li>
+                                <li class="is-active"><a href="#" aria-current="page">Admin</a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                    <section class="hero is-info is-small">
+                        <div class="hero-body">
+                            <p class="title">
+                                Hello Admin,
+                            </p>
+                            <p class="subtitle">
+                                I hope you are having a great day!
+                            </p>
+                        </div>
+                    </section>
+                    <section class="tiles mt-4">
+                        <div class="tile is-ancestor has-text-centered">
+                            <div class="tile is-parent">
+                                <article class="tile is-child box">
+                                    <p class="title">439k</p>
+                                    <p class="subtitle has-text-weight-light">Users</p>
+                                </article>
+                            </div>
+                            <div class="tile is-parent">
+                                <article class="tile is-child box">
+                                    <p class="title">59k</p>
+                                    <p class="subtitle has-text-weight-light">Products</p>
+                                </article>
+                            </div>
+                            <div class="tile is-parent">
+                                <article class="tile is-child box">
+                                    <p class="title">3.4k</p>
+                                    <p class="subtitle has-text-weight-light">Open Orders</p>
+                                </article>
+                            </div>
+                            <div class="tile is-parent">
+                                <article class="tile is-child box">
+                                    <p class="title">19</p>
+                                    <p class="subtitle has-text-weight-light">Exceptions</p>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="columns">
+                        <div class="column is-6">
+                            <section class="cards">
+                                <div class="card">
+                                    <header class="card-header">
+                                      <p class="card-header-title has-text-grey has-text-weight-normal">
+                                        Events
+                                      </p>
+                                      <button class="card-header-icon" aria-label="more options">
+                                        <span class="icon">
+                                          <i class="fas fa-angle-down is-info" aria-hidden="true"></i>
+                                        </span>
+                                      </button>
+                                    </header>
+                                  </div>
+                            </section>
+                        </div>
+                        <div class="column is-6">
+                            <section class="cards">
+                                <div class="card">
+                                    <header class="card-header">
+                                      <p class="card-header-title has-text-grey has-text-weight-normal">
+                                        Inventory Search
+                                      </p>
+                                      <button class="card-header-icon" aria-label="more options">
+                                        <span class="icon">
+                                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                        </span>
+                                      </button>
+                                    </header>
+                                  </div>
+                                  <div class="card">
+                                    <header class="card-header">
+                                      <p class="card-header-title has-text-grey has-text-weight-normal">
+                                        User Search
+                                      </p>
+                                      <button class="card-header-icon" aria-label="more options">
+                                        <span class="icon">
+                                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                        </span>
+                                      </button>
+                                    </header>
+                                  </div>
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
     </section>
