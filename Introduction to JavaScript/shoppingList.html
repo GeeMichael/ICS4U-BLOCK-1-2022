@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <p>Enter a new item: <input type="text" name="" id=""><button>Add item</button></p>
+    </section>
+    <ul id="shoppingList"></ul>
+</body>
+<script>
+    document.querySelector('section button').onclick = function(){
+        const item = document.createElement('li');
+        item.textContent = "a";
+        ul.appendChild(item);
+    }
+</script>
+</html>
