@@ -6,6 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .listItem {
+        margin-left: 8px;
+    }
+    .cursor {
+        cursor: pointer;
+    }
+    .buttons { 
+        border-radius: 20px;
+        font-size: 10px;
+        color: white;
+        border: none;
+        background-color: red;
+        width: 13px;
+        cursor: pointer;
+        padding-left: 3.25px;
+    }
+    .list {
+        list-style: none;
+    }
+</style>
 <body>
     <section>
         <p>Enter a new item: <input type="text" name="" id=""><button>Add item</button></p>
@@ -13,10 +34,36 @@
     <ul id="shoppingList"></ul>
 </body>
 <script>
-    document.querySelector('section button').onclick = function(){
+    const input =  document.querySelector('input');
+    const list =  document.querySelector('ul');
+    list.classList.add('list');
+    const button = document.querySelector('section button');
+    button.classList.add('cursor');
+
+    button.onclick = function(){
         const item = document.createElement('li');
-        item.textContent = "a";
-        ul.appendChild(item);
+        const span = document.createElement('span');
+        const remove = document.createElement('button');
+
+        item.appendChild(remove);
+        item.appendChild(span);
+        
+        
+
+        span.textContent = input.value;
+        span.classList.add('listItem');
+        
+        remove.textContent = "X";
+        remove.classList.add('buttons');
+
+        input.value = "";
+        list.appendChild(item);
+
+        remove.onclick = function(){
+            item.remove();
+        }
+
+        input.focus();
     }
 </script>
 </html>
