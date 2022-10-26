@@ -12,4 +12,6 @@ const wordAppend = ["a", "b", "a"];
 const wordAppend2 = ["a", "b", "a", "c", "a", "d", "a"];
 const wordAppend3 = ["a", "", "a"];
 
+const words = wordAppend.map(function(word) {
 
+});
