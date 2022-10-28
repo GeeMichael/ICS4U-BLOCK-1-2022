@@ -82,6 +82,7 @@
             return;
         }
         if (key === '=') {
+            displayAnswer = true;
             try {
                 resultElement.textContent = eval(resultElement.textContent);
             } catch (error) {
@@ -106,61 +107,6 @@
 
     function clear() {
         resultElement.textContent = "";
-    }
-
-    function equals() {
-        const equation = resultElement.textContent;
-        displayAnswer = true;
-        if (operatorIndex(equation) === -1) {
-            return;
-        }
-        let first = equation.substring(0, operatorIndex(equation));
-        let last = equation.substring(operatorIndex(equation) + 1);
-
-        /*
-        last = last.substring(0, operatorIndex(last));
-        let last2 = last;
-        if (operatorIndex(last) !== -1){
-            last2 = last.substring(operatorIndex(last) + 1);
-        }
-        */
-
-        console.log("equation is " + equation);
-        console.log("first is " + first);
-        console.log("last is " + last);
-        //console.log("last2 is " + last2);
-
-        //if (last === last2) {
-        if (!isNaN(first) && !isNaN(last)) {
-            if (equation.charAt(operatorIndex(equation)) === "+") {
-                addNum(first, last);
-            } else if (equation.charAt(operatorIndex(equation)) === "-") {
-                subtractNum(first, last);
-            } else if (equation.charAt(operatorIndex(equation)) === "*") {
-                multiplyNum(first, last);
-            } else if (equation.charAt(operatorIndex(equation)) === "/") {
-                divideNum(first, last);
-            }
-        } else {
-            resultElement.textContent = "ERR";
-        }
-        //}
-    }
-
-    const addNum = (first, last) => {
-        resultElement.textContent = parseFloat(first) + parseFloat(last);
-    }
-
-    const subtractNum = (first, last) => {
-        resultElement.textContent = parseFloat(first) - parseFloat(last);
-    }
-
-    const multiplyNum = (first, last) => {
-        resultElement.textContent = parseFloat(first) * parseFloat(last);
-    }
-
-    const divideNum = (first, last) => {
-        resultElement.textContent = parseFloat(first) / parseFloat(last);
     }
 
     function operatorIndex(exp) {
