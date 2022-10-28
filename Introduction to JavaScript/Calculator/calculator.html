@@ -82,7 +82,12 @@
             return;
         }
         if (key === '=') {
-            equals();
+            try {
+                resultElement.textContent = eval(resultElement.textContent);
+            } catch (error) {
+                resultElement.textContent = "ERR";
+            }
+            //equals();
             return;
         }
         addKey(key);
