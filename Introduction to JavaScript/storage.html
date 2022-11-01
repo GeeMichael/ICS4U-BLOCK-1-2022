@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage</title>
+</head>
+<style>
+    #click-me {
+        background-color: blue;
+        color: aliceblue;
+    }
+</style>
+
+<body onload="console.log(localStorage['temp']);">
+    <div id="click-me" onclick="console.log(sessionStorage['test']);">Click Me!</div>
+</body>
+<script>
+    let teams = [];
+    let team = {};
+    team['name'] = 'Toronto';
+    team['id'] = 1;
+    team['w'] = 0;
+    team['l'] = 0;
+    teams.push(team);
+
+    team = {};
+    team['name'] = 'New York';
+    team['id'] = 1;
+    team['w'] = 0;
+    team['l'] = 0;
+    teams.push(team);
+
+    sessionStorage.setItem('test', 'green');
+    localStorage.setItem('test', 'purple');
+
+    localStorage.setItem('teams', JSON.stringify(teams));
+</script>
+
+</html>
