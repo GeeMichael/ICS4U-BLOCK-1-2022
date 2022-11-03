@@ -5,6 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
    <title>Document</title>
    <style>
       #clickme {
@@ -17,57 +18,63 @@
 
 <body onload="getTeams();">
    <div id="clickme" onclick="addGame();">Click Me</div>
+   <div>
+      <table class="table is-striped" id="standings">
+         <thead>
+            <tr>
+               <th onclick="sort('Name')">Name</th>
+               <th onclick="sort('W')">Wins</th>
+               <th onclick="sort('L')">Losses</th>
+               <th onclick="sort('PTS')">PTS</th>
+            </tr>
+         </thead>
+         <tbody>
+         </tbody>
+      </table>
+   </div>
 </body>
 <script>
-   let teamData;
+   let sumoData;
 
    function getTeams() {
-      teamData = JSON.parse(localStorage['teams']);
+      sumoData = JSON.parse(localStorage['sumo']);
+   }
+
+   createTable(sumoData);
+
+   function createTable(sumoData) {
+      let tableBody = document.querySelector('#standings tbody');
+      tableBody.replaceChildren();
+
+      sumoData.forEach((wrestler) => {
+         const row = document.createElement('tr');
+
+         let td = document.createElement('td');
+         td.textContent = wrestler.Name;
+         row.appendChild(td);
+
+         td = document.createElement('td');
+         td.textContent = wrestler.W;
+         row.appendChild(td);
+
+         td = document.createElement('td');
+         td.textContent = wrestler.L;
+         row.appendChild(td);
+
+         tableBody.appendChild(row);
+      });
    }
 
    function addGame() {
       const game = {
          'opp': 7,
-         'homescore': 8,
-         'awayscore': 6
+         'ourscore': 8,
+         'oppscore': 6
       };
 
-      teamData[1].games.push(game);
-      localStorage.setItem('teams', JSON.stringify(teamData));
+      sumoData[1].games.push(game);
+      localStorage.setItem('sumo', JSON.stringify(sumoData));
    }
-
-   let teams = [];
-   let team = {};
-   team['name'] = 'Toronto';
-   team['id'] = 1;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [];
-   teams.push(team);
-
-   team = {};
-   team['name'] = 'New York';
-   team['id'] = 2;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [];
-   teams.push(team);
-
-   team = {};
-   team['name'] = 'Houston';
-   team['id'] = 3;
-   team['w'] = 0;
-   team['L'] = 0;
-   team['games'] = [{
-      'opp': 1
-   }, {
-      'opp': 2
-   }];
-   teams.push(team);
-
-
-
-   localStorage.setItem('teams', JSON.stringify(teams));
 </script>
 
 </html>

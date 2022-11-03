@@ -1,29 +1,59 @@
-team = {
-    id: 1,
-    city: 'Toronto',
-    nickname: 'Toronto Blue Jays',
+const sumo = [];
 
-    wins: 6,
-    losses: 6,
+let wrestler = {
+    "id": 1,
+    "Name": "Name",
 
-    games: [
+    "Wins": 6,
+    "Losses": 6,
+
+    "Games": [
         {
-            opponent: 7,
-            ourscore: 5,
-            oppscore: 3,
-            home: true
+            "Opp": 7,
+            "OurScore": 5,
+            "OppScore": 3,
         },
         {
-            opponent: 7,
-            ourscore: 5,
-            oppscore: 3,
-            home: true
+            "Opp": 7,
+            "OurScore": 5,
+            "OppScore": 3,
         },
         {
-            opponent: 7,
-            ourscore: 5,
-            oppscore: 3,
-            home: true
+            "Opp": 7,
+            "OurScore": 5,
+            "OppScore": 3,
         }
     ]
 }
+sumo.push(wrestler);
+console.log(JSON.stringify(wrestler));
+
+wrestler = {
+    "id": 2,
+    "Name": "Name",
+
+    "Wins": 6,
+    "Losses": 6,
+
+    "Games": [
+        {
+            "Opp": 7,
+            "OurScore": 5,
+            "OppScore": 3,
+        },
+        {
+            "Opp": 7,
+            "OurScore": 5,
+            "OppScore": 3,
+        },
+        {
+            "Opp": 7,
+            "OurScore": 5,
+            "OppScore": 3,
+        }
+    ]
+}
+sumo.push(wrestler);
+
+
+localStorage.setItem('sumo', JSON.stringify(sumo));
