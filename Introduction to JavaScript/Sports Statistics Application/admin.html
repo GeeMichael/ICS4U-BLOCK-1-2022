@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const sumo = [
+    {
+        "id": 1,
+        "surname": "Terunofuji",
+        "firstname": "Haruo",
+        "name": "Seizan Suginomori",
+        "rank": "Yokozuna",
+        "rankNum": "1",
+
+        "w": 50,
+        "l": 26,
+
+        "games": [
+            {
+                "opp": 2,
+                "east": true,
+                "score": 5,
+                "oppScore": 3,
+            },
+            {
+                "opp": 3,
+                "east": false,
+                "score": 2,
+                "oppScore": 4,
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "surname": "Takakeishō",
+        "firstname": "Mitsunobu",
+        "name": "Takanobu Satō",
+        "rank": "Ōzeki",
+        "rankNum": "2",
+
+        "w": 50,
+        "l": 29,
+
+        "games": [
+            {
+                "opp": 3,
+                "east": false,
+                "score": 2,
+                "oppScore": 4,
+            },
+            {
+                "opp": 3,
+                "east": false,
+                "score": 2,
+                "oppScore": 4,
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "surname": "Shōdai",
+        "firstname": "Naoya",
+        "name": "Shōdai Naoya",
+        "rank": "Ōzeki",
+        "rankNum": "2",
+
+        "w": 43,
+        "l": 47,
+
+        "games": [
+            {
+                "opp": 3,
+                "east": false,
+                "score": 2,
+                "oppScore": 4,
+            },
+            {
+                "opp": 3,
+                "east": false,
+                "score": 2,
+                "oppScore": 4,
+            }
+        ]
+    }
+    ];
+
+    localStorage.setItem('sumo', JSON.stringify(sumo));
+
+    // add game
+    // update data in js
+    // turn data into string
+    // re-save into local storage
+</script>
+
+</html>

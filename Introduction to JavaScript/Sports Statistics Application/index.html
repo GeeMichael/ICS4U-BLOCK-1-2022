@@ -2,79 +2,147 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-   <title>Document</title>
-   <style>
-      #clickme {
-         background-color: blue;
-         color: aliceblue;
-      }
-   </style>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Document</title>
 </head>
 
-<body onload="getTeams();">
-   <div id="clickme" onclick="addGame();">Click Me</div>
-   <div>
-      <table class="table is-striped" id="standings">
-         <thead>
-            <tr>
-               <th onclick="sort('Name')">Name</th>
-               <th onclick="sort('W')">Wins</th>
-               <th onclick="sort('L')">Losses</th>
-               <th onclick="sort('PTS')">PTS</th>
-            </tr>
-         </thead>
-         <tbody>
-         </tbody>
-      </table>
-   </div>
+<body onload="getData();">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">Sumo League</a>
+          
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+                Wrestlers
+            </a>
+      
+            <a class="navbar-item">
+                Matches
+            </a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        Admin Page
+                    </a>
+                </div>
+            </div>
+        </div>
+      </nav>
+
+    <div>
+        <table class="table is-striped" id="standings">
+            <thead>
+                <tr>
+                    <th onclick="sort('Surname')">Name</th>
+                    <th onclick="sort('Name')">Real Name</th>
+                    <th onclick="sort('Wins')">Wins</th>
+                    <th onclick="sort('Losses')">Losses</th>
+                    <th onclick="sort('Rank')">Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </body>
 <script>
-   let sumoData;
+    let sumoData;
+    let currentSort = "none";
 
-   function getTeams() {
+
+    function getData() {
       sumoData = JSON.parse(localStorage['sumo']);
    }
 
-   createTable(sumoData);
+    sumoData = JSON.parse(localStorage.getItem('sumo'));
+    console.log(sumoData);
+    createTable(sumoData);
 
-   function createTable(sumoData) {
-      let tableBody = document.querySelector('#standings tbody');
-      tableBody.replaceChildren();
+    function createTable(sumoData) {
+        let tableBody = document.querySelector('#standings tbody');
+        tableBody.replaceChildren();
 
-      sumoData.forEach((wrestler) => {
-         const row = document.createElement('tr');
+        sumoData.forEach((sumo) => {
+            const row = document.createElement('tr');
 
-         let td = document.createElement('td');
-         td.textContent = wrestler.Name;
-         row.appendChild(td);
+            let td = document.createElement('td');
+            td.textContent = sumo.surname;
+            row.appendChild(td);
 
-         td = document.createElement('td');
-         td.textContent = wrestler.W;
-         row.appendChild(td);
+            td = document.createElement('td');
+            td.textContent = sumo.name;
+            row.appendChild(td);
 
-         td = document.createElement('td');
-         td.textContent = wrestler.L;
-         row.appendChild(td);
+            td = document.createElement('td');
+            td.textContent = sumo.w;
+            row.appendChild(td);
 
-         tableBody.appendChild(row);
-      });
-   }
+            td = document.createElement('td');
+            td.textContent = sumo.l;
+            row.appendChild(td);
 
-   function addGame() {
-      const game = {
-         'opp': 7,
-         'ourscore': 8,
-         'oppscore': 6
-      };
+            td = document.createElement('td');
+            td.textContent = sumo.rank;
+            row.appendChild(td);
 
-      sumoData[1].games.push(game);
-      localStorage.setItem('sumo', JSON.stringify(sumoData));
-   }
+            tableBody.appendChild(row);
+        });
+    }
+
+    function sort(field) {
+        if (field === 'Surname') {
+            if (currentSort === 'surname'){
+                sumoData = sumoData.sort((teamA, teamB) => {
+                return (teamA.surname > teamB.surname) ? -1 : 1;
+                });
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                return (teamA.surname < teamB.surname) ? -1 : 1;
+                });
+                currentSort = 'surname';
+            }
+        } else if (field === 'Name') {
+            if (currentSort === 'name'){
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (teamA.name > teamB.name) ? -1 : 1;
+                });
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (teamA.name < teamB.name) ? -1 : 1;
+                });
+                currentSort = 'name';
+            }
+        } else if (field === 'Wins') {
+            if (currentSort === 'wins') {
+                sumoData = sumoData.sort((teamA, teamB) => teamA.w - teamB.w);
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => teamB.w - teamA.w);
+                currentSort = 'wins';
+            }
+        } else if (field === 'Losses') {
+            sumoData = sumoData.sort((teamA, teamB) => teamB.l - teamA.l);
+        } else if (field === 'Rank') {
+            sumoData = sumoData.sort((teamA, teamB) => teamA.rankNum - teamB.rankNum);
+        }
+        createTable(sumoData);
+    }
 </script>
-
 </html>
