@@ -6,43 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <title>Document</title>
+    <title>Sumo Profile | Sumo League</title>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
+
+    * {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 500;
+    }
+
+    .extrabold {
+        font-weight: 800;
+    }
+</style>
 
 <body onload="start();">
-    
-    <div id="test"></div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="title"><a class="navbar-item has-text-danger extrabold" href="index.html">Sumo League</a></h1>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Wrestlers
+                </a>
+
+                <a class="navbar-item">
+                    Matches
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="admin.html">
+                            Admin Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title" id="name">
+                </h1>
+            </div>
+        </div>
+    </section>
     <div>
-        <table class="table is-striped" id="standings">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sumo Name</td>
-                    <td id="sumo-name"></td>
-                </tr>
-                <tr>
-                    <td>Real Name</td>
-                    <td id="real-name"></td>
-                </tr>
-                <tr>
-                    <td>Wins</td>
-                    <td id="wins"></td>
-                </tr>
-                <tr>
-                    <td>Losses</td>
-                    <td id="losses"></td>
-                </tr>
-                <tr>
-                    <td>Rank</td>
-                    <td id="rank"></td>
-                </tr>
-            </tbody>
-        </table>
+        <section class="hero">
+            <div class="hero-body">
+                <section class="info-tiles">
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Sumo Name</p>
+                                <p class="title" id="sumo-name"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Real Name</p>
+                                <p class="title" id="real-name"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Wins - Losses</p>
+                                <p class="title" id="win-loss"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Rank</p>
+                                <p class="title" id="rank"></p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
     </div>
 </body>
 <script>
@@ -50,17 +105,13 @@
         const dataString = localStorage.getItem('sumo');
         const sumos = JSON.parse(dataString);
         let params = (new URL(document.location)).searchParams;
-
         const sumo = sumos.filter(sumo => sumo.id == params.get('id'));
-
-        document.querySelector('#test').textContent = sumo[0].surname + " " + sumo[0].firstname;
-
         let tableBody = document.querySelector('#standings tbody');
 
-        document.querySelector('#sumo-name').textContent = document.querySelector('#test').textContent;
+        document.querySelector('#name').textContent = sumo[0].surname + " " + sumo[0].firstname;
+        document.querySelector('#sumo-name').textContent = document.querySelector('#name').textContent;
         document.querySelector('#real-name').textContent = sumo[0].name;
-        document.querySelector('#wins').textContent = sumo[0].w;
-        document.querySelector('#losses').textContent = sumo[0].l;
+        document.querySelector('#win-loss').textContent = sumo[0].w + " - " + sumo[0].l;
         document.querySelector('#rank').textContent = sumo[0].rank;
     }
 

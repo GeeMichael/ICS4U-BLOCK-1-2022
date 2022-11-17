@@ -5,95 +5,347 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
+    <title>Admin | Sumo League</title>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
 
-<body>
+    * {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 500;
+    }
+
+    .extrabold {
+        font-weight: 800;
+    }
+</style>
+
+<body onload="loadPlease();">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="title"><a class="navbar-item has-text-danger extrabold" href="index.html">Sumo League</a></h1>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Wrestlers
+                </a>
+
+                <a class="navbar-item">
+                    Matches
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="admin.html">
+                            Admin Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <div>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="columns">
+
+                    <div class="column">
+                        <label class="label">East Wrestler</label>
+                        <div class="field has-addons">
+                            <div class="control has-icons-left">
+                                <div class="select is-rounded">
+                                    <select class="option-1">
+                                    </select>
+                                </div>
+                                <div class="icon is-small is-left">
+                                    <i class="fa-solid fa-baby"></i>
+                                </div>
+                            </div>
+                            <div class="control">
+                                <input class="input score-1" type="text" placeholder="Score">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <label class="label">West Wrestler</label>
+                        <div class="field has-addons">
+                            <div class="control has-icons-left">
+                                <div class="select is-rounded">
+                                    <select class="option-2">
+                                    </select>
+                                </div>
+                                <div class="icon is-small is-left">
+                                    <i class="fa-solid fa-baby"></i>
+                                </div>
+                            </div>
+                            <div class="control">
+                                <input class="input score-2" type="text" placeholder="Score">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            I agree that I am not violating any <a
+                                href="https://en.wikipedia.org/wiki/Terms_and_Conditions">sitewide rules</a> and that I
+                            am a good person!
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="question">
+                            Yes
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="question">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link submit" disabled>Add Game</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light"><a href="admin.html">Cancel</a></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 </body>
 <script>
-    const sumo = [
-    {
-        "id": 1,
-        "surname": "Terunofuji",
-        "firstname": "Haruo",
-        "name": "Seizan Suginomori",
-        "rank": "Yokozuna",
-        "rankNum": "1",
-
-        "w": 50,
-        "l": 26,
-
-        "games": [
-            {
-                "opp": 2,
-                "east": true,
-                "score": 5,
-                "oppScore": 3,
-            },
-            {
-                "opp": 3,
-                "east": false,
-                "score": 2,
-                "oppScore": 4,
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "surname": "Takakeishō",
-        "firstname": "Mitsunobu",
-        "name": "Takanobu Satō",
-        "rank": "Ōzeki",
-        "rankNum": "2",
-
-        "w": 50,
-        "l": 29,
-
-        "games": [
-            {
-                "opp": 3,
-                "east": false,
-                "score": 2,
-                "oppScore": 4,
-            },
-            {
-                "opp": 3,
-                "east": false,
-                "score": 2,
-                "oppScore": 4,
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "surname": "Shōdai",
-        "firstname": "Naoya",
-        "name": "Shōdai Naoya",
-        "rank": "Ōzeki",
-        "rankNum": "2",
-
-        "w": 43,
-        "l": 47,
-
-        "games": [
-            {
-                "opp": 3,
-                "east": false,
-                "score": 2,
-                "oppScore": 4,
-            },
-            {
-                "opp": 3,
-                "east": false,
-                "score": 2,
-                "oppScore": 4,
-            }
-        ]
+    let sumoData;
+    function loadPlease() {
+        sumoData = JSON.parse(localStorage['sumo']);
+        createOptions(sumoData);
     }
+
+    function createOptions(sumoData) {
+        let optionBody = document.querySelector('.option-1');
+        let optionBody2 = document.querySelector('.option-2');
+        optionBody.replaceChildren();
+        optionBody2.replaceChildren();
+
+        sumoData.forEach((sumo) => {
+            let option = document.createElement('option');
+            let option2 = document.createElement('option');
+            option.textContent = sumo.surname;
+            option2.textContent = sumo.surname;
+            optionBody.appendChild(option);
+            optionBody2.appendChild(option2);
+        })
+    }
+
+    function selectNames() {
+        if (document.querySelector('.option-1').textContent != document.querySelector('.option-2').textContent) {
+            document.querySelector('.submit').removeAttribute("disabled");
+            console.log("good");
+        } else {
+            document.querySelector('.submit').setAttribute('disabled', "");
+        }
+    }
+
+    const sumo = [
+        {
+            "id": 1,
+            "surname": "Terunofuji",
+            "firstname": "Haruo",
+            "name": "Seizan Suginomori",
+            "rank": "Yokozuna",
+            "rankNum": "1",
+            "w": 50,
+            "l": 26,
+        },
+        {
+            "id": 2,
+            "surname": "Takakeishō",
+            "firstname": "Mitsunobu",
+            "name": "Takanobu Satō",
+            "rank": "Ōzeki",
+            "rankNum": "2",
+            "w": 50,
+            "l": 29,
+        },
+        {
+            "id": 3,
+            "surname": "Shōdai",
+            "firstname": "Naoya",
+            "name": "Shōdai Naoya",
+            "rank": "Ōzeki",
+            "rankNum": "2",
+            "w": 43,
+            "l": 47,
+        },
+        {
+            "id": 4,
+            "surname": "Wakatakakage",
+            "firstname": "Atsushi",
+            "name": "Atsushi Ōnami",
+            "rank": "Sekiwake",
+            "rankNum": "3",
+            "w": 51,
+            "l": 28
+        },
+        {
+            "id": 5,
+            "surname": "Hōshōryu",
+            "firstname": "Tomokatsu",
+            "name": "Sugarragchaa Byambasuren",
+            "rank": "Sekiwake",
+            "rankNum": "3",
+            "w": 47,
+            "l": 32
+        },
+        {
+            "id": 6,
+            "surname": "Mitakeumi",
+            "firstname": "Hisashi",
+            "name": "Hisashi Ōmichi",
+            "rank": "Sekiwake",
+            "rankNum": "3",
+            "w": 40,
+            "l": 33
+        },
+        {
+            "id": 7,
+            "surname": "Tamawashi",
+            "firstname": "Ichirō",
+            "name": "Batjargal Munkh-orgil",
+            "rank": "Komusubi",
+            "rankNum": "4",
+            "w": 43,
+            "l": 36
+        },
+        {
+            "id": 8,
+            "surname": "Kiribayama",
+            "firstname": "Tetsuo",
+            "name": "Byambachuluun Lkhagvasuren",
+            "rank": "Komusubi",
+            "rankNum": "4",
+            "w": 46,
+            "l": 35
+        },
+        {
+            "id": 9,
+            "surname": "Tobizaru",
+            "firstname": "Masaya",
+            "name": "Masaya Iwazaki",
+            "rank": "Komusubi",
+            "rankNum": "4",
+            "w": 43,
+            "l": 36
+        },
+        {
+            "id": 10,
+            "surname": "Daieishō",
+            "firstname": "Hayato",
+            "name": "Hayato Takanishi",
+            "rank": "Komusubi",
+            "rankNum": "4",
+            "w": 42,
+            "l": 37
+        },
+        {
+            "id": 11,
+            "surname": "Takayasu",
+            "firstname": "Akira",
+            "name": "Akira Takayasu",
+            "rank": "Maegashira 1",
+            "rankNum": "5",
+            "w": 33,
+            "l": 18
+        },
+        {
+            "id": 12,
+            "surname": "Kotonowaka",
+            "firstname": "Masahiro",
+            "name": "Masakatsu Kamatani",
+            "rank": "Maegashira 1",
+            "rankNum": "5",
+            "w": 48,
+            "l": 29
+        }
     ];
 
+    const games = [
+        {
+            "id": 1,
+            "east": 12,
+            "west": 5,
+            "winner": "west",
+            "date": "2022-11-13"
+        },
+        {
+            "id": 2,
+            "east": 9,
+            "west": 3,
+            "winner": "east",
+            "date": "2022-11-13"
+        },
+        {
+            "id": 3,
+            "east": 2,
+            "west": 10,
+            "winner": "east",
+            "date": "2022-11-13"
+        },
+        {
+            "id": 4,
+            "east": 4,
+            "west": 8,
+            "winner": "east",
+            "date": "2022-11-14"
+        },
+        {
+            "id": 4,
+            "east": 7,
+            "west": 5,
+            "winner": "west",
+            "date": "2022-11-14"
+        },
+        {
+            "id": 4,
+            "east": 2,
+            "west": 12,
+            "winner": "east",
+            "date": "2022-11-14"
+        },
+        {
+            "id": 4,
+            "east": 11,
+            "west": 3,
+            "winner": "west",
+            "date": "2022-11-14"
+        }
+    ]
+
     localStorage.setItem('sumo', JSON.stringify(sumo));
+    localStorage.setItem('games', JSON.stringify(games));
 
     // add game
     // update data in js

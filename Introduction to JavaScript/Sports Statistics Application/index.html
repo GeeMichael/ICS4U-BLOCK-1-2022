@@ -7,16 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Home | Sumo League</title>
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
+
     * {
         font-family: 'Manrope', sans-serif;
         font-weight: 500;
     }
 
-    .extrabold{
+    .extrabold {
         font-weight: 800;
     }
 </style>
@@ -25,51 +26,71 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <h1 class="title"><a class="navbar-item has-text-danger extrabold" href="index.html">Sumo League</a></h1>
-          
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-      
+
         <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">
-                Wrestlers
-            </a>
-      
-            <a class="navbar-item">
-                Matches
-            </a>
-      
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    More
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Wrestlers
                 </a>
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        Admin Page
+
+                <a class="navbar-item" href="matches.html">
+                    Matches
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
                     </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="admin.html">
+                            Admin Page
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-      </nav>
+    </nav>
 
     <div>
-        <table class="table is-striped" id="standings">
-            <thead>
-                <tr>
-                    <th onclick="sort('Surname')" class="extrabold">Name <i id="namesort" class="fa-solid fa-sort"></i></th>
-                    <th onclick="sort('Name')" class="extrabold">Real Name</th>
-                    <th onclick="sort('Wins')" class="extrabold">W</th>
-                    <th onclick="sort('Losses')" class="extrabold">L</th>
-                    <th onclick="sort('Rank')" class="extrabold">Rank</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <section class="hero">
+            <div class="hero-body">
+                <table class="table is-striped is-9" id="standings">
+                    <thead>
+                        <tr>
+                            <th onclick="sort('Surname')" class="extrabold">Name <i id="namesort"
+                                    class="fa-solid fa-sort"></i></th>
+                            <th onclick="sort('Name')" class="extrabold">Real Name</th>
+                            <th onclick="sort('Wins')" class="extrabold">W</th>
+                            <th onclick="sort('Losses')" class="extrabold">L</th>
+                            <th onclick="sort('Rank')" class="extrabold">Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous" disabled>Previous</a>
+                    <a class="pagination-next">Next page</a>
+                    <ul class="pagination-list">
+                        <li>
+                            <a class="pagination-link is-current">1</a>
+                        </li>
+                        <li>
+                            <a class="pagination-link">2</a>
+                        </li>
+                        <li>
+                            <a class="pagination-link">3</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
     </div>
 
 </body>
@@ -77,10 +98,9 @@
     let sumoData;
     let currentSort = "none";
 
-
     function getData() {
-      sumoData = JSON.parse(localStorage['sumo']);
-   }
+        sumoData = JSON.parse(localStorage['sumo']);
+    }
 
     sumoData = JSON.parse(localStorage.getItem('sumo'));
     console.log(sumoData);
@@ -122,19 +142,19 @@
 
     function sort(field) {
         if (field === 'Surname') {
-            if (currentSort === 'surname'){
+            if (currentSort === 'surname') {
                 sumoData = sumoData.sort((teamA, teamB) => {
-                return (teamA.surname > teamB.surname) ? -1 : 1;
+                    return (teamA.surname > teamB.surname) ? -1 : 1;
                 });
                 currentSort = 'none';
             } else {
                 sumoData = sumoData.sort((teamA, teamB) => {
-                return (teamA.surname < teamB.surname) ? -1 : 1;
+                    return (teamA.surname < teamB.surname) ? -1 : 1;
                 });
                 currentSort = 'surname';
             }
         } else if (field === 'Name') {
-            if (currentSort === 'name'){
+            if (currentSort === 'name') {
                 sumoData = sumoData.sort((teamA, teamB) => {
                     return (teamA.name > teamB.name) ? -1 : 1;
                 });
@@ -173,4 +193,5 @@
         createTable(sumoData);
     }
 </script>
+
 </html>

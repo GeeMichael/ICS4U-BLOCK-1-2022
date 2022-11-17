@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
+    <title>Matches | Sumo League</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
+
+    * {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 500;
+    }
+
+    .extrabold {
+        font-weight: 800;
+    }
+</style>
+<body onload="getData();">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="title"><a class="navbar-item has-text-danger extrabold" href="index.html">Sumo League</a></h1>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Wrestlers
+                </a>
+
+                <a class="navbar-item" href="matches.html">
+                    Matches
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="admin.html">
+                            Admin Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-body">
+            <table class="table is-striped is-9" id="games">
+                <thead>
+                    <tr>
+                        <th class="extrabold">Date</th>
+                        <th class="extrabold">East</th>
+                        <th class="extrabold">West</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+<script>
+    let gameData;
+    let sumoData;
+
+    function getData() {
+        gameData = JSON.parse(localStorage['games']);
+        sumoData = JSON.parse(localStorage['sumo']);
+    }
+
+    gameData = JSON.parse(localStorage.getItem('games'));
+    sumoData = JSON.parse(localStorage.getItem('sumo'));
+
+    createTable(gameData);
+
+    function createTable(gameData) {
+        let tableBody = document.querySelector('#games tbody');
+        tableBody.replaceChildren();
+
+        gameData.forEach((game) => {
+            const row = document.createElement('tr');
+            let td = document.createElement('td');
+            let link1 = document.createElement('a');
+            let link2 = document.createElement('a');
+
+            td.textContent = game.date;
+            row.appendChild(td);
+
+            td = document.createElement('td');
+            let sumo = sumoData.filter(sumo => sumo.id == game.east);
+            link1.href = 'sumos.html?id=' + game.east;            
+            link1.textContent = sumo[0].surname
+            td.appendChild(link1);
+            row.appendChild(td);
+
+            td = document.createElement('td');
+            sumo = sumoData.filter(sumo => sumo.id == game.west);
+            link2.href = 'sumos.html?id=' + game.west;
+            link2.textContent = sumo[0].surname;
+            td.appendChild(link2);
+            row.appendChild(td);  
+            
+            
+
+            tableBody.appendChild(row);
+        });
+    }
+</script>
+</html>
