@@ -59,6 +59,15 @@
     </nav>
 
     <div>
+        <section class="hero is-info welcome is-small">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Add Game
+                    </h1>
+                </div>
+            </div>
+        </section>
         <section class="hero">
             <div class="hero-body">
                 <div class="columns">
@@ -76,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="control">
-                                <input class="input score-1" type="text" placeholder="Score">
+                                <input class="input score-1" type="text" placeholder="Points">
                             </div>
                         </div>
                     </div>
@@ -94,43 +103,31 @@
                                 </div>
                             </div>
                             <div class="control">
-                                <input class="input score-2" type="text" placeholder="Score">
+                                <input class="input score-2" type="text" placeholder="Points">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                            I agree that I am not violating any <a
-                                href="https://en.wikipedia.org/wiki/Terms_and_Conditions">sitewide rules</a> and that I
-                            am a good person!
-                        </label>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio" name="question">
-                            Yes
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="question">
-                            No
-                        </label>
-                    </div>
-                </div>
-
                 <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link submit" disabled>Add Game</button>
-                    </div>
                     <div class="control">
                         <button class="button is-link is-light"><a href="admin.html">Cancel</a></button>
                     </div>
+                    <div class="control">
+                        <button class="button is-link submit" onclick="selectNames();">Add Game</button>
+                    </div>
+                    <div class="send"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div>
+        <section class="hero is-info welcome is-small">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Add Wrestler
+                    </h1>
                 </div>
             </div>
         </section>
@@ -149,23 +146,42 @@
         let optionBody2 = document.querySelector('.option-2');
         optionBody.replaceChildren();
         optionBody2.replaceChildren();
+        let i = 0;
 
         sumoData.forEach((sumo) => {
             let option = document.createElement('option');
             let option2 = document.createElement('option');
+            option.setAttribute("id", i);
             option.textContent = sumo.surname;
             option2.textContent = sumo.surname;
             optionBody.appendChild(option);
             optionBody2.appendChild(option2);
+            i++
         })
     }
 
     function selectNames() {
-        if (document.querySelector('.option-1').textContent != document.querySelector('.option-2').textContent) {
-            document.querySelector('.submit').removeAttribute("disabled");
-            console.log("good");
+        const wrestler1 = document.querySelector(".option-1").value;
+        const wrestler2 = document.querySelector(".option-2").value;
+        const score1 = document.querySelector(".score-1").value;
+        const score2 = document.querySelector(".score-2").value; 
+        let nameError = document.createElement('p');
+        let buttonText = document.querySelector('.send');
+        buttonText.replaceChildren();
+        if (wrestler1 == wrestler2) {
+            nameError.setAttribute("class", "help is-danger");
+            nameError.textContent = "Please choose two different names.";
+            buttonText.appendChild(nameError);
+        } else if (isNaN(parseInt(score1)) || isNaN(parseInt(score2)) || score1 < 0 || score2 < 0) {
+            nameError.setAttribute("class", "help is-danger");
+            nameError.textContent = "Please enter valid scores.";
+            buttonText.appendChild(nameError);
+        } else if (score1 == score2) {
+            nameError.setAttribute("class", "help is-danger");
+            nameError.textContent = "Please choose different values for score.";
+            buttonText.appendChild(nameError);
         } else {
-            document.querySelector('.submit').setAttribute('disabled', "");
+            console.log("good!");
         }
     }
 
