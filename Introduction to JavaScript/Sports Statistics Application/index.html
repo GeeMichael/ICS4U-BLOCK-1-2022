@@ -36,7 +36,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a class="navbar-item" href="wrestlers.html">
                     Wrestlers
                 </a>
 
@@ -69,6 +69,9 @@
                             <th onclick="sort('Wins')" class="extrabold">W</th>
                             <th onclick="sort('Losses')" class="extrabold">L</th>
                             <th onclick="sort('Rank')" class="extrabold">Rank</th>
+                            <th onclick="sort('Stable')" class="extrabold">Stable</th>
+                            <th onclick="sort('Height')" class="extrabold">Height</th>
+                            <th onclick="sort('Weight')" class="extrabold">Weight</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -136,6 +139,18 @@
             td.textContent = sumo.rank;
             row.appendChild(td);
 
+            td = document.createElement('td');
+            td.textContent = sumo.stable;
+            row.appendChild(td);
+
+            td = document.createElement('td');
+            td.textContent = sumo.height;
+            row.appendChild(td);
+
+            td = document.createElement('td');
+            td.textContent = sumo.weight;
+            row.appendChild(td);
+
             tableBody.appendChild(row);
         });
     }
@@ -188,6 +203,42 @@
             } else {
                 sumoData = sumoData.sort((teamA, teamB) => teamB.rankNum - teamA.rankNum);
                 currentSort = 'rank';
+            }
+        } else if (field === 'Stable') {
+            if (currentSort === 'stable') {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (teamA.stable > teamB.stable) ? -1 : 1;
+                });
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (teamA.stable < teamB.stable) ? -1 : 1;
+                });
+                currentSort = 'stable';
+            }
+        } else if (field === 'Height') {
+            if (currentSort === 'height') {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (parseFloat(teamA.height.substring(0, 1) * 12) + parseFloat(teamA.height.substring(4, teamA.height.indexOf(".") + 2)) > parseFloat(teamB.height.substring(0, 1) * 12) + parseFloat(teamB.height.substring(4, teamB.height.indexOf(".") + 2))) ? -1 : 1;
+                });
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (parseFloat(teamA.height.substring(0, 1) * 12) + parseFloat(teamA.height.substring(4, teamA.height.indexOf(".") + 2)) < parseFloat(teamB.height.substring(0, 1) * 12) + parseFloat(teamB.height.substring(4, teamB.height.indexOf(".") + 2))) ? -1 : 1;
+                });
+                currentSort = 'height';
+            }
+        } else if (field === 'Weight') {
+            if (currentSort === 'weight') {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (parseFloat(teamA.weight.substring(0, 5))) > (parseFloat(teamB.weight.substring(0, 5))) ? -1 : 1;
+                });
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => {
+                    return (parseFloat(teamA.weight.substring(0, 5))) < (parseFloat(teamB.weight.substring(0, 5))) ? -1 : 1;
+                });
+                currentSort = 'weight';
             }
         }
         createTable(sumoData);

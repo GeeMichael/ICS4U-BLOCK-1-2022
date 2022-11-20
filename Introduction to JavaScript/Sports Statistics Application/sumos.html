@@ -19,6 +19,10 @@
     .extrabold {
         font-weight: 800;
     }
+
+    .bigger {
+        font-size: 40px;
+    }
 </style>
 
 <body onload="start();">
@@ -36,11 +40,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a class="navbar-item" href="wrestlers.html">
                     Wrestlers
                 </a>
 
-                <a class="navbar-item">
+                <a class="navbar-item" href="matches.html">
                     Matches
                 </a>
 
@@ -78,20 +82,46 @@
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="subtitle">Real Name</p>
-                                <p class="title" id="real-name"></p>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
                                 <p class="subtitle">Wins - Losses</p>
-                                <p class="title" id="win-loss"></p>
+                                <p class="title bigger" id="win-loss"></p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 <p class="subtitle">Rank</p>
                                 <p class="title" id="rank"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Height</p>
+                                <p class="title bigger" id="height"></p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Real Name</p>
+                                <p class="title" id="real-name"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Win Percent</p>
+                                <p class="title bigger" id="win-percent"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Stable</p>
+                                <p class="title" id="stable"></p>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="subtitle">Weight</p>
+                                <p class="title bigger" id="weight"></p>
                             </article>
                         </div>
                     </div>
@@ -113,6 +143,10 @@
         document.querySelector('#real-name').textContent = sumo[0].name;
         document.querySelector('#win-loss').textContent = sumo[0].w + " - " + sumo[0].l;
         document.querySelector('#rank').textContent = sumo[0].rank;
+        document.querySelector('#win-percent').textContent = Math.round((sumo[0].w / (sumo[0].w + sumo[0].l) * 100) * 10) / 10 + "%";
+        document.querySelector('#stable').textContent = sumo[0].stable + " Stable";
+        document.querySelector('#height').textContent = sumo[0].height;
+        document.querySelector('#weight').textContent = sumo[0].weight;
     }
 
 </script>

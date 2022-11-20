@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <title>Sumo List | Sumo League</title>
 </head>
 <style>
@@ -17,8 +18,65 @@
     .extrabold {
         font-weight: 800;
     }
-</style>
-<body>
+
     
+</style>
+<body onload="getData();">
+    <div>
+        <section class="hero">
+            <div class="hero-body">
+                <section class="info-tiles">
+                    <div class="tile is-ancestor has-text-centered sumos is-vertical">
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
 </body>
+
+<script>
+    let sumoData;
+
+    function getData() {
+        sumoData = JSON.parse(localStorage['sumo']);
+    }
+
+    sumoData = JSON.parse(localStorage.getItem('sumo'));
+
+    createBoxes(sumoData);
+
+    function createBoxes(sumoData) {
+        let sumoBody = document.querySelector('.sumos');
+        let row = 0;
+
+        sumoData.forEach((sumo) => {
+            const div = document.createElement('div');
+            div.classList.add("tile");
+            div.classList.add("is-parent");
+
+            const article = document.createElement('article');
+            article.classList.add("tile");
+            article.classList.add("is-child");
+            article.classList.add("box");
+            
+
+            let link = document.createElement('a');
+            link.classList.add("title");
+            link.classList.add("is-underlined");
+
+            link.href = 'sumos.html?id=' + sumo.id;
+            link.textContent = sumo.surname;
+
+            article.appendChild(link);
+            div.appendChild(article);
+            row++;
+
+            if(row == 4){
+
+            }
+            sumoBody.appendChild(div);
+            
+        });
+    }
+</script>
 </html>
