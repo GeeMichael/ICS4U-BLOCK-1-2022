@@ -631,9 +631,11 @@
     ]
 
     function submitSumo() {
+        let sumoData = JSON.parse(localStorage['sumo']);
         let id = 1;
-        sumo.forEach((wrestler) => {
-            if (id == wrestler.id) {
+
+        sumoData.forEach((sumo) => {
+            if (id == sumo.id) {
                 id++;
             }
         })        
@@ -656,9 +658,8 @@
             "height": document.querySelector(".feet").value + "ft " + document.querySelector(".inches").value + "in",
             "weight": document.querySelector(".weight").value + "lb"
         }
-
-        sumo.push(newSumo);
-        localStorage.setItem('sumo', JSON.stringify(sumo));
+        sumoData.push(newSumo);
+        localStorage.setItem('sumo', JSON.stringify(sumoData));
         location.reload();
     }
 

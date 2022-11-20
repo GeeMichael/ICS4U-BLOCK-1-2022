@@ -60,7 +60,7 @@
     <div>
         <section class="hero">
             <div class="hero-body">
-                <table class="table is-striped is-9" id="standings">
+                <table class="table is-striped is-9 is-fullwidth" id="standings">
                     <thead>
                         <tr>
                             <th onclick="sort('Surname')" class="extrabold">Name <i id="namesort"
@@ -68,6 +68,7 @@
                             <th onclick="sort('Name')" class="extrabold">Real Name</th>
                             <th onclick="sort('Wins')" class="extrabold">W</th>
                             <th onclick="sort('Losses')" class="extrabold">L</th>
+                            <th onclick="sort('Rate')" class="extrabold">Win Rate</th>
                             <th onclick="sort('Rank')" class="extrabold">Rank</th>
                             <th onclick="sort('Stable')" class="extrabold">Stable</th>
                             <th onclick="sort('Height')" class="extrabold">Height</th>
@@ -78,17 +79,17 @@
                     </tbody>
                 </table>
                 <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous" disabled>Previous</a>
-                    <a class="pagination-next">Next page</a>
+                    <a class="pagination-previous" onclick="backPage();" disabled>Previous</a>
+                    <a class="pagination-next" onclick="nextPage();">Next page</a>
                     <ul class="pagination-list">
                         <li>
-                            <a class="pagination-link is-current">1</a>
+                            <a class="pagination-link is-current" id="page1">1</a>
                         </li>
                         <li>
-                            <a class="pagination-link">2</a>
+                            <a class="pagination-link" id="page2">2</a>
                         </li>
                         <li>
-                            <a class="pagination-link">3</a>
+                            <a class="pagination-link" id="page3">3</a>
                         </li>
                     </ul>
                 </nav>
@@ -100,20 +101,30 @@
 <script>
     let sumoData;
     let currentSort = "none";
+    let startId = 0;
+    let currentPage = 1;
 
     function getData() {
         sumoData = JSON.parse(localStorage['sumo']);
     }
 
     sumoData = JSON.parse(localStorage.getItem('sumo'));
-    console.log(sumoData);
-    createTable(sumoData);
+    createTable(sumoData);    
 
     function createTable(sumoData) {
         let tableBody = document.querySelector('#standings tbody');
         tableBody.replaceChildren();
-
+        let counter = startId + 10;
+        console.log(currentPage);
+        let currentPageId = "page" + currentPage;
+        if (document.querySelector(".is-current").id !== currentPageId) {
+            document.querySelector(".is-current").classList.remove("is-current");
+            document.querySelector("#" + currentPageId).classList.add("is-current");
+        }
+       
         sumoData.forEach((sumo) => {
+            if (sumoData.indexOf(sumo) >= startId){
+            if (counter > startId){
             const row = document.createElement('tr');
             let td = document.createElement('td');
             let link = document.createElement('a');
@@ -136,6 +147,10 @@
             row.appendChild(td);
 
             td = document.createElement('td');
+            td.textContent = (Math.round((sumo.w / (parseInt(sumo.w) + parseInt(sumo.l)) * 100) * 10) / 10 + "%");
+            row.appendChild(td);
+
+            td = document.createElement('td');
             td.textContent = sumo.rank;
             row.appendChild(td);
 
@@ -152,7 +167,10 @@
             row.appendChild(td);
 
             tableBody.appendChild(row);
-        });
+            counter--;
+            }
+        }
+    });
     }
 
     function sort(field) {
@@ -195,6 +213,14 @@
             } else {
                 sumoData = sumoData.sort((teamA, teamB) => teamB.l - teamA.l);
                 currentSort = 'losses';
+            }
+        } else if (field === 'Rate') {
+            if (currentSort === 'rate') {
+                sumoData = sumoData.sort((teamA, teamB) => (teamA.w / (parseInt(teamA.w) + parseInt(teamA.l))) - (teamB.w / (parseInt(teamB.w) + parseInt(teamB.l))));
+                currentSort = 'none';
+            } else {
+                sumoData = sumoData.sort((teamA, teamB) => (teamB.w / (parseInt(teamB.w) + parseInt(teamB.l))) - (teamA.w / (parseInt(teamA.w) + parseInt(teamA.l))));
+                currentSort = 'rate';
             }
         } else if (field === 'Rank') {
             if (currentSort === 'rank') {
@@ -242,6 +268,41 @@
             }
         }
         createTable(sumoData);
+    }
+
+    function nextPage() {
+        startId+=10;
+        if(startId > sumoData.length){
+            startId = sumoData.length - (sumoData.length % 10);
+        }
+        if(startId + 10 >= sumoData.length){
+            document.querySelector(".pagination-next").setAttribute("disabled", "");
+        }
+        if (startId < sumoData.length){
+            document.querySelector(".pagination-previous").removeAttribute("disabled", "");
+            
+            if (currentPage < sumoData.length / 10){
+                currentPage++;
+            }
+            createTable(sumoData);
+        }
+    }
+
+    function backPage() {
+        startId-=10;
+        if (startId < 0){
+            startId = 0;
+        }
+        if (startId - 10 < 0) {
+            document.querySelector(".pagination-previous").setAttribute("disabled", "");
+        }
+        if (startId >= 0){
+            document.querySelector(".pagination-next").removeAttribute("disabled", "");
+            if (currentPage > 1) {
+                currentPage--;
+            };
+            createTable(sumoData);
+        }
     }
 </script>
 
