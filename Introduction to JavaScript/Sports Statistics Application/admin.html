@@ -10,27 +10,39 @@
     <title>Admin | Sumo League</title>
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap');
 
     *, input {
-        font-family: 'Manrope';
+        font-family: 'Albert Sans';
         font-weight: 500;
     }
 
     .extrabold {
-        font-weight: 800;
+        font-weight: 600;
     }
 
-    .date {
-        margin-bottom: 20px;
+    .fullheight {
+        height: 500px;
+    }
+
+    .logo {
+        margin: 0px 5px;
+    }
+
+    .topbar {
+        font-family: 'Albert Sans', Arial;
+        font-weight: 900;
+    }
+
+    .logos {
+        margin-top: 20px;
     }
 </style>
 
 <body onload="loadPlease();">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <h1 class="title"><a class="navbar-item has-text-danger extrabold" href="index.html">Sumo League</a></h1>
-
+            <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -41,6 +53,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
+                
                 <a class="navbar-item" href="wrestlers.html">
                     Wrestlers
                 </a>
@@ -130,7 +143,7 @@
                                             <label>Date</label>
                                             <input type="date" class="date input" value="2022-11-21">
                                         </div>
-                                        <div class="field is-grouped is-grouped-right">
+                                        <div class="field is-grouped is-grouped-right has-addons">
                                             <div class="control">
                                                 <button class="button is-link is-light"><a
                                                         href="admin.html">Cancel</a></button>
@@ -301,9 +314,9 @@
                                                     </div>
                                                     <p class="control">
                                                         <a class="button is-static">
-                                                          lb
+                                                            lb
                                                         </a>
-                                                      </p>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -338,7 +351,7 @@
     function loadPlease() {
         sumoData = JSON.parse(localStorage['sumo']);
         createOptions(sumoData);
-        //fixData(sumoData);
+        fixData(sumoData);
     }
 
     function createOptions(sumoData) {
@@ -727,16 +740,15 @@
         //location.reload();
     }
 
-    // function fixData(sumoData) {
-    //     console.log(sumoData[24]);
+    function fixData(sumoData) {
+        console.log(sumoData[32]);
 
-    //     sumoData[24].rank = "Maegashira 8";
-    //     sumoData[24].rankNum = 12;
+        sumoData.pop();
 
-    //     console.log(sumoData);
-    //     localStorage.setItem('sumo', JSON.stringify(sumo));
+        console.log(sumoData);
+    //  localStorage.setItem('sumo', JSON.stringify(sumoData));
     //     //sumoData[24]
-    // }
+    }
 
     //localStorage.setItem('sumo', JSON.stringify(sumo));
     //localStorage.setItem('games', JSON.stringify(games));
