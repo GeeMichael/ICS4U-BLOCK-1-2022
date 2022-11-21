@@ -10,22 +10,40 @@
     <title>Home | Sumo League</title>
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap');
 
     * {
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Albert Sans', sans-serif;
         font-weight: 500;
     }
 
     .extrabold {
-        font-weight: 800;
+        font-weight: 600;
+    }
+
+    .fullheight {
+        height: 500px;
+    }
+
+    .logo {
+        margin: 0px 5px;
+    }
+
+    .topbar {
+        font-family: 'Albert Sans', Arial;
+        font-weight: 900;
+    }
+
+    .logos {
+        margin-top: 20px;
     }
 </style>
 
 <body onload="getData();">
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <h1 class="title"><a class="navbar-item has-text-danger extrabold" href="index.html">Sumo League</a></h1>
+            <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -56,15 +74,23 @@
                 </div>
             </div>
     </nav>
-
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Standings
+                </h1>
+            </div>
+        </div>
+    </section>
     <div>
         <section class="hero">
             <div class="hero-body">
+                <div class="box fullheight">
                 <table class="table is-striped is-9 is-fullwidth" id="standings">
                     <thead>
                         <tr>
-                            <th onclick="sort('Surname')" class="extrabold">Name <i id="namesort"
-                                    class="fa-solid fa-sort"></i></th>
+                            <th onclick="sort('Surname')" class="extrabold">Name</th>
                             <th onclick="sort('Name')" class="extrabold">Real Name</th>
                             <th onclick="sort('Wins')" class="extrabold">W</th>
                             <th onclick="sort('Losses')" class="extrabold">L</th>
@@ -78,10 +104,12 @@
                     <tbody>
                     </tbody>
                 </table>
-                <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous" onclick="backPage();" disabled>Previous</a>
-                    <a class="pagination-next" onclick="nextPage();">Next page</a>
+            </div>
+                <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
                     <ul class="pagination-list">
+                        <li>
+                            <a class="pagination-previous" onclick="backPage();" disabled><i class="fa-solid fa-caret-left"></i></a>
+                        </li>
                         <li>
                             <a class="pagination-link is-current" id="page1" onclick="setPage(1);">1</a>
                         </li>
@@ -93,6 +121,9 @@
                         </li>
                         <li>
                             <a class="pagination-link" id="page4" onclick="setPage(4);">4</a>
+                        </li>
+                        <li>
+                            <a class="pagination-next" onclick="nextPage();"><i class="fa-solid fa-caret-right"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -112,79 +143,89 @@
     }
 
     sumoData = JSON.parse(localStorage.getItem('sumo'));
-    createTable(sumoData);    
+    createTable(sumoData);
 
     function createTable(sumoData) {
         let tableBody = document.querySelector('#standings tbody');
         tableBody.replaceChildren();
         let counter = startId + 10;
-        console.log(currentPage);
         let currentPageId = "page" + currentPage;
         if (document.querySelector(".is-current").id !== currentPageId) {
             document.querySelector(".is-current").classList.remove("is-current");
             document.querySelector("#" + currentPageId).classList.add("is-current");
         }
-       
+
         sumoData.forEach((sumo) => {
-            if (sumoData.indexOf(sumo) >= startId){
-            if (counter > startId){
-            const row = document.createElement('tr');
-            let td = document.createElement('td');
-            let link = document.createElement('a');
+            if (sumoData.indexOf(sumo) >= startId) {
+                if (counter > startId) {
+                    const row = document.createElement('tr');
+                    let td = document.createElement('td');
+                    let link = document.createElement('a');
 
-            link.href = 'sumos.html?id=' + sumo.id;
-            link.textContent = sumo.surname;
-            td.appendChild(link);
-            row.appendChild(td);
+                    link.href = 'sumos.html?id=' + sumo.id;
+                    link.textContent = sumo.surname;
+                    td.appendChild(link);
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.name;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.name;
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.w;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.w;
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.l;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.l;
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = (Math.round((sumo.w / (parseInt(sumo.w) + parseInt(sumo.l)) * 100) * 10) / 10 + "%");
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = (Math.round((sumo.w / (parseInt(sumo.w) + parseInt(sumo.l)) * 100) * 10) / 10 + "%");
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.rank;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.rank;
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.stable;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.stable;
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.height;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.height;
+                    row.appendChild(td);
 
-            td = document.createElement('td');
-            td.textContent = sumo.weight;
-            row.appendChild(td);
+                    td = document.createElement('td');
+                    td.textContent = sumo.weight;
+                    row.appendChild(td);
 
-            tableBody.appendChild(row);
-            counter--;
+                    tableBody.appendChild(row);
+                    counter--;
+                }
             }
-        }
-    });
+        });
     }
 
     function sort(field) {
         if (field === 'Surname') {
             if (currentSort === 'surname') {
                 sumoData = sumoData.sort((teamA, teamB) => {
+                    if (teamA.surname.substring(0, 1) == "Ō") {
+                        teamA.surname = "O" + teamA.surname.substring(1);
+                    } else if (teamB.surname.substring(0, 1) == "Ō") {
+                        teamB.surname = "O" + teamB.surname.substring(1);
+                    }
+                    console.log(teamA.surname);
                     return (teamA.surname > teamB.surname) ? -1 : 1;
                 });
                 currentSort = 'none';
             } else {
                 sumoData = sumoData.sort((teamA, teamB) => {
+                    if (teamA.surname.substring(0, 1) == "Ō") {
+                        teamA.surname = "O" + teamA.surname.substring(1);
+                    } else if (teamB.surname.substring(0, 1) == "Ō") {
+                        teamB.surname = "O" + teamB.surname.substring(1);
+                    }
                     return (teamA.surname < teamB.surname) ? -1 : 1;
                 });
                 currentSort = 'surname';
@@ -274,17 +315,17 @@
     }
 
     function nextPage() {
-        startId+=10;
-        if(startId > sumoData.length){
+        startId += 10;
+        if (startId > sumoData.length) {
             startId = sumoData.length - (sumoData.length % 10);
         }
-        if(startId + 10 >= sumoData.length){
+        if (startId + 10 >= sumoData.length) {
             document.querySelector(".pagination-next").setAttribute("disabled", "");
         }
-        if (startId < sumoData.length){
+        if (startId < sumoData.length) {
             document.querySelector(".pagination-previous").removeAttribute("disabled", "");
-            
-            if (currentPage < sumoData.length / 10){
+
+            if (currentPage < sumoData.length / 10) {
                 currentPage++;
             }
             createTable(sumoData);
@@ -292,14 +333,14 @@
     }
 
     function backPage() {
-        startId-=10;
-        if (startId < 0){
+        startId -= 10;
+        if (startId < 0) {
             startId = 0;
         }
         if (startId - 10 < 0) {
             document.querySelector(".pagination-previous").setAttribute("disabled", "");
         }
-        if (startId >= 0){
+        if (startId >= 0) {
             document.querySelector(".pagination-next").removeAttribute("disabled", "");
             if (currentPage > 1) {
                 currentPage--;
@@ -311,6 +352,16 @@
     function setPage(page) {
         startId = (page - 1) * 10;
         currentPage = page;
+        if (page == 1) {
+            document.querySelector(".pagination-previous").setAttribute("disabled", "");
+            document.querySelector(".pagination-next").removeAttribute("disabled", "");
+        } else if (page == 4) {
+            document.querySelector(".pagination-previous").removeAttribute("disabled", "");
+            document.querySelector(".pagination-next").setAttribute("disabled", "");
+        } else {
+            document.querySelector(".pagination-next").removeAttribute("disabled", "")
+            document.querySelector(".pagination-previous").removeAttribute("disabled", "");
+        }
         createTable(sumoData);
     }
 </script>

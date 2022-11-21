@@ -128,7 +128,7 @@
                                     <div class="box">
                                         <div>
                                             <label>Date</label>
-                                            <input type="date" class="date" value="2022-11-21">
+                                            <input type="date" class="date input" value="2022-11-21">
                                         </div>
                                         <div class="field is-grouped is-grouped-right">
                                             <div class="control">
@@ -414,6 +414,9 @@
             buttonText.appendChild(error);
         } else if (isNaN(parseInt(newWeight))) {
             error.textContent = "Please input numbers for wrestler weight.";
+            buttonText.appendChild(error);
+        } else if (newW < 0 || newL < 0 || newFeet < 0 || newInches < 0 || newWeight < 0) {
+            error.textContent = "Please input positive numbers.";
             buttonText.appendChild(error);
         } else {
             submitSumo();
