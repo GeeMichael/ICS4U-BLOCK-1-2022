@@ -12,8 +12,8 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;300;400;500;700;800;900&display=swap');
 
-    * input {
-        font-family: 'Manrope', Helvetica, Arial;
+    *, input {
+        font-family: 'Manrope';
         font-weight: 500;
     }
 
@@ -227,7 +227,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
+                                                            <i class="fa-solid fa-crown"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -239,13 +239,13 @@
                                                     <div class="control has-icons-left">
                                                         <input class="input w" type="text" placeholder="Wins">
                                                         <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
+                                                            <i class="fa-solid fa-trophy"></i>
                                                         </div>
                                                     </div>
                                                     <div class="control has-icons-left">
                                                         <input class="input l" type="text" placeholder="Losses">
                                                         <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
+                                                            <i class="fa-solid fa-circle-xmark"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -290,13 +290,13 @@
                                                         <input class="input stable" type="text"
                                                             placeholder="Sumo Stable">
                                                         <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
+                                                            <i class="fa-solid fa-people-roof"></i>
                                                         </div>
                                                     </div>
                                                     <div class="control has-icons-left">
                                                         <input class="input weight" type="text" placeholder="Weight">
                                                         <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
+                                                            <i class="fa-solid fa-weight-hanging"></i>
                                                         </div>
                                                     </div>
                                                     <p class="control">
@@ -338,6 +338,7 @@
     function loadPlease() {
         sumoData = JSON.parse(localStorage['sumo']);
         createOptions(sumoData);
+        //fixData(sumoData);
     }
 
     function createOptions(sumoData) {
@@ -581,52 +582,66 @@
     const games = [
         {
             "id": 0,
-            "east": 12,
-            "west": 5,
-            "winner": "west",
-            "date": "2022-11-13"
-        },
-        {
-            "id": 1,
-            "east": 9,
-            "west": 3,
-            "winner": "east",
-            "date": "2022-11-13"
-        },
-        {
-            "id": 2,
             "east": 2,
             "west": 10,
             "winner": "east",
             "date": "2022-11-13"
-        },
+        }, 
         {
-            "id": 3,
-            "east": 4,
-            "west": 8,
+            "id": 0,
+            "east": 9,
+            "west": 3,
             "winner": "east",
-            "date": "2022-11-14"
-        },
+            "date": "2022-11-13"
+        }, 
         {
-            "id": 4,
-            "east": 7,
+            "id": 0,
+            "east": 4,
+            "west": 11,
+            "winner": "west",
+            "date": "2022-11-13"
+        }, 
+        {
+            "id": 0,
+            "east": 12,
             "west": 5,
             "winner": "west",
-            "date": "2022-11-14"
-        },
+            "date": "2022-11-13"
+        }, 
         {
-            "id": 5,
-            "east": 2,
-            "west": 12,
-            "winner": "east",
-            "date": "2022-11-14"
-        },
-        {
-            "id": 6,
-            "east": 11,
-            "west": 3,
+            "id": 0,
+            "east": 13,
+            "west": 6,
             "winner": "west",
-            "date": "2022-11-14"
+            "date": "2022-11-13"
+        }, 
+        {
+            "id": 0,
+            "east": 7,
+            "west": 14,
+            "winner": "west",
+            "date": "2022-11-13"
+        }, 
+        {
+            "id": 0,
+            "east": 15,
+            "west": 8,
+            "winner": "west",
+            "date": "2022-11-13"
+        }, 
+        {
+            "id": 0,
+            "east": 17,
+            "west": 16,
+            "winner": "east",
+            "date": "2022-11-13"
+        }, 
+        {
+            "id": 0,
+            "east": 19,
+            "west": 18,
+            "winner": "west",
+            "date": "2022-11-13"
         }
     ]
 
@@ -665,38 +680,63 @@
 
     function submitGame() {
         let id = 0;
+        let sumoData = JSON.parse(localStorage['sumo']);
+
         games.forEach((game) => {
             if (id == game.id) {
                 id++;
             }
         })
 
-        const east = sumo.filter(wrestler => wrestler.surname == document.querySelector(".option-1").value);
-        const west = sumo.filter(wrestler => wrestler.surname == document.querySelector(".option-2").value);
+        let east;
+        let west;
+        sumoData.forEach((sumo) => {
+            if (sumo.surname == document.querySelector(".option-1").options[document.querySelector(".option-1").selectedIndex].text) {
+                east = sumo;
+            } else if (sumo.surname == document.querySelector(".option-2").options[document.querySelector(".option-2").selectedIndex].text) {
+                west = sumo;
+            }
+        })
+
         let winner;
         if (document.querySelector(".win-1").value == "Won") {
             winner = "east";
-            east[0].w++;
-            west[0].l++;
+            sumoData[sumoData.indexOf(east)].w++;
+            sumoData[sumoData.indexOf(west)].l++;
         } else {
             winner = "west";
-            west[0].w++;
-            east[0].l++;
+            sumoData[sumoData.indexOf(west)].w++;
+            sumoData[sumoData.indexOf(east)].l++;
         }
+
+        console.log(sumoData[sumoData.indexOf(east)].w);
 
         let newGame = {
             "id": id,
-            "east": east[0].id,
-            "west": west[0].id,
+            "east": east.id,
+            "west": west.id,
             "winner": winner,
             "date": document.querySelector(".date").value
         };
         games.push(newGame);
+        localStorage.setItem('sumo', JSON.stringify(sumoData));
         localStorage.setItem('games', JSON.stringify(games));
-        location.reload();
+        //location.reload();
     }
 
+    // function fixData(sumoData) {
+    //     console.log(sumoData[24]);
+
+    //     sumoData[24].rank = "Maegashira 8";
+    //     sumoData[24].rankNum = 12;
+
+    //     console.log(sumoData);
+    //     localStorage.setItem('sumo', JSON.stringify(sumo));
+    //     //sumoData[24]
+    // }
+
     //localStorage.setItem('sumo', JSON.stringify(sumo));
+    //localStorage.setItem('games', JSON.stringify(games));
 </script>
 
 </html>

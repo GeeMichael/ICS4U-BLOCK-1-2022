@@ -83,13 +83,16 @@
                     <a class="pagination-next" onclick="nextPage();">Next page</a>
                     <ul class="pagination-list">
                         <li>
-                            <a class="pagination-link is-current" id="page1">1</a>
+                            <a class="pagination-link is-current" id="page1" onclick="setPage(1);">1</a>
                         </li>
                         <li>
-                            <a class="pagination-link" id="page2">2</a>
+                            <a class="pagination-link" id="page2" onclick="setPage(2);">2</a>
                         </li>
                         <li>
-                            <a class="pagination-link" id="page3">3</a>
+                            <a class="pagination-link" id="page3" onclick="setPage(3);">3</a>
+                        </li>
+                        <li>
+                            <a class="pagination-link" id="page4" onclick="setPage(4);">4</a>
                         </li>
                     </ul>
                 </nav>
@@ -303,6 +306,12 @@
             };
             createTable(sumoData);
         }
+    }
+
+    function setPage(page) {
+        startId = (page - 1) * 10;
+        currentPage = page;
+        createTable(sumoData);
     }
 </script>
 
