@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/@creativebulma/bulma-divider">
     <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
     <title>Matches | Sumo League</title>
 </head>
@@ -37,11 +39,13 @@
         margin-top: 20px;
     }
 </style>
+
 <body onload="getData();">
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
+                <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i
+                            class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -49,49 +53,46 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-          <div id="navbarMenuHeroA" class="navbar-menu">
-            <div class="navbar-end">
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="index.html">
-                  <span>Home</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="wrestlers.html">
-                  <span>Wrestlers</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="matches.html">
-                  <span>Matches</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-primary is-inverted" href="admin.html">
-                  <span class="icon">
-                    <i class="fa-solid fa-wrench"></i>
-                  </span>
-                  <span>Admin</span>
-                </a>
-              </span>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                    <span class="navbar-item">
+                        <a class="button is-dark is-inverted" href="index.html">
+                            <span>Home</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button is-dark is-inverted" href="wrestlers.html">
+                            <span>Wrestlers</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button is-dark is-inverted" href="matches.html">
+                            <span>Matches</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button is-primary is-inverted" href="admin.html">
+                            <span class="icon">
+                                <i class="fa-solid fa-wrench"></i>
+                            </span>
+                            <span>Admin</span>
+                        </a>
+                    </span>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
-      
+    </nav>
+
     <section class="hero">
         <div class="hero-body">
-            <table class="table is-striped is-9" id="games">
-                <thead>
-                    <tr>
-                        <th class="extrabold">Date</th>
-                        <th class="extrabold">East</th>
-                        <th class="extrabold">West</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="info-tiles games-list">
+                <div class="tile is-ancestor has-text-centered row-1">
+                </div>
+                <div class="tile is-ancestor has-text-centered row-2">
+                </div>
+                <div class="tile is-ancestor has-text-centered row-3">
+                </div>
+            </div>
         </div>
     </section>
 </body>
@@ -110,34 +111,78 @@
     createTable(gameData);
 
     function createTable(gameData) {
-        let tableBody = document.querySelector('#games tbody');
-        tableBody.replaceChildren();
+        // let tableBody = document.querySelector('#games tbody');
+        // tableBody.replaceChildren();
+        let rowNum = 1;
 
         gameData.forEach((game) => {
-            const row = document.createElement('tr');
-            let td = document.createElement('td');
-            let link1 = document.createElement('a');
-            let link2 = document.createElement('a');
+            rowNum = Math.floor((game.id) / 4) + 1;
+            console.log(Math.floor((game.id) / 4) + 1);
 
-            td.textContent = game.date;
-            row.appendChild(td);
+            console.log(game.id);
+            const row = document.querySelector(".row-" + rowNum);
+            let div = document.createElement('div');
+            div.classList.add('tile');
+            div.classList.add('is-parent');
+            div.classList.add('is-3');
 
-            td = document.createElement('td');
+            let article = document.createElement('article');
+            article.classList.add('tile');
+            article.classList.add('is-child');
+            article.classList.add('box');
+
             let sumo = sumoData.filter(sumo => sumo.id == game.east);
-            link1.href = 'sumos.html?id=' + game.east;            
-            link1.textContent = sumo[0].surname
-            td.appendChild(link1);
-            row.appendChild(td);
+            let east = document.createElement('a');
+            east.classList.add('title');
+            east.textContent = sumo[0].surname;
+            east.href = 'sumos.html?id=' + sumo[0].id;
 
-            td = document.createElement('td');
+            let vs = document.createElement('a');
+            vs.classList.add('subtitle');
+            vs.textContent = "vs.";
+
+            let br = document.createElement('br');
+            let br2 = document.createElement('br');
+
             sumo = sumoData.filter(sumo => sumo.id == game.west);
-            link2.href = 'sumos.html?id=' + game.west;
-            link2.textContent = sumo[0].surname;
-            td.appendChild(link2);
-            row.appendChild(td);  
-            
-            tableBody.appendChild(row);
+            let west = document.createElement('a');
+            west.classList.add('title');
+            west.textContent = sumo[0].surname;
+            west.href = 'sumos.html?id=' + sumo[0].id;
+
+            article.appendChild(east);
+            article.appendChild(br);
+            article.appendChild(vs);
+            article.appendChild(br2);
+            article.appendChild(west);
+            div.appendChild(article);
+            row.appendChild(div);            
+
+            // const row = document.createElement('tr');
+            // let td = document.createElement('td');
+            // let link1 = document.createElement('a');
+            // let link2 = document.createElement('a');
+
+            // td.textContent = game.date;
+            // row.appendChild(td);
+
+            // td = document.createElement('td');
+            // let sumo = sumoData.filter(sumo => sumo.id == game.east);
+            // link1.href = 'sumos.html?id=' + game.east;            
+            // link1.textContent = sumo[0].surname
+            // td.appendChild(link1);
+            // row.appendChild(td);
+
+            // td = document.createElement('td');
+            // sumo = sumoData.filter(sumo => sumo.id == game.west);
+            // link2.href = 'sumos.html?id=' + game.west;
+            // link2.textContent = sumo[0].surname;
+            // td.appendChild(link2);
+            // row.appendChild(td);  
+
+            // tableBody.appendChild(row);
         });
     }
 </script>
+
 </html>

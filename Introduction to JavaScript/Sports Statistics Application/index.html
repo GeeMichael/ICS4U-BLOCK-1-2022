@@ -175,6 +175,10 @@
                     let td = document.createElement('td');
                     let link = document.createElement('a');
 
+                    td.textContent = sumo.rank;
+                    row.appendChild(td);
+
+                    td = document.createElement('td');
                     link.href = 'sumos.html?id=' + sumo.id;
                     link.textContent = sumo.surname;
                     td.appendChild(link);
@@ -194,10 +198,6 @@
 
                     td = document.createElement('td');
                     td.textContent = (Math.round((sumo.w / (parseInt(sumo.w) + parseInt(sumo.l)) * 100) * 10) / 10 + "%");
-                    row.appendChild(td);
-
-                    td = document.createElement('td');
-                    td.textContent = sumo.rank;
                     row.appendChild(td);
 
                     td = document.createElement('td');
