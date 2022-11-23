@@ -739,21 +739,21 @@
         games.push(newGame);
         localStorage.setItem('sumo', JSON.stringify(sumoData));
         localStorage.setItem('games', JSON.stringify(games));
-        //location.reload();
+        location.reload();
     }
 
-    function fixData(sumoData) {
-        console.log(sumoData[32]);
+    // function fixData(sumoData) {
+    //     console.log(sumoData[32]);
 
-        sumoData.pop();
+    //     sumoData.pop();
 
-        console.log(sumoData);
-    //  localStorage.setItem('sumo', JSON.stringify(sumoData));
+    //     console.log(sumoData);
+    //     localStorage.setItem('sumo', JSON.stringify(sumoData));
     //     //sumoData[24]
-    }
+    // }
 
     //localStorage.setItem('sumo', JSON.stringify(sumo));
-    localStorage.setItem('games', JSON.stringify(games));
+    //localStorage.setItem('games', JSON.stringify(games));
 </script>
 
 </html>

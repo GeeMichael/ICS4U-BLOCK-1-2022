@@ -34,16 +34,17 @@
         font-weight: 900;
     }
 
-    .logos {
-        margin-top: 20px;
+    .topheight {
+        height: 65px;
     }
+    
 </style>
 
 <body onload="getData();">
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-brand">
-                <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
+            <div class="navbar-brand topheight">
+                <h1 class="title topheight"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -51,7 +52,7 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-          <div id="navbarMenuHeroA" class="navbar-menu">
+          <div id="navbarMenuHeroA" class="navbar-menu topheight">
             <div class="navbar-end">
               <span class="navbar-item">
                 <a class="button is-dark is-inverted" href="index.html">
@@ -94,6 +95,7 @@
         <section class="hero">
             <div class="hero-body">
                 <div class="box fullheight">
+                    <div class="table-container">
                 <table class="table is-striped is-9 is-fullwidth" id="standings">
                     <thead>
                         <tr>
@@ -112,7 +114,8 @@
                     </tbody>
                 </table>
             </div>
-                <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
+        </div>
+        <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
                     <ul class="pagination-list">
                         <li>
                             <a class="pagination-link max-left" onclick="setPage(1);" disabled><i class="fa-solid fa-caret-left"></i><i class="fa-solid fa-caret-left"></i></a>
@@ -157,6 +160,7 @@
 
     sumoData = JSON.parse(localStorage.getItem('sumo'));
     createTable(sumoData);
+    sortData();
 
     function createTable(sumoData) {
         let tableBody = document.querySelector('#standings tbody');
@@ -325,6 +329,12 @@
             }
         }
         createTable(sumoData);
+    }
+
+    function sortData() {
+        currentSort = 'rank'
+        sort('Rank');
+        console.log("hi");
     }
 
     function nextPage() {

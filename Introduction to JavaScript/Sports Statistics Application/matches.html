@@ -38,6 +38,10 @@
     .logos {
         margin-top: 20px;
     }
+
+    .datetext {
+        margin-bottom: 20px;
+    }
 </style>
 
 <body onload="getData();">
@@ -83,6 +87,23 @@
         </div>
     </nav>
 
+    <section class="hero is-info welcome is-small">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns">
+                    <div class="column is-3 is-offset-one-quarter">
+                        <label for="">Start date</label>
+                        <input type="date" class="date input" value="2022-11-21">
+                    </div>
+                    <div class="column is-3">
+                        <label for="">End date</label>
+                        <input type="date" class="date input" value="2022-11-21">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="hero">
         <div class="hero-body">
             <div class="info-tiles games-list">
@@ -91,6 +112,14 @@
                 <div class="tile is-ancestor has-text-centered row-2">
                 </div>
                 <div class="tile is-ancestor has-text-centered row-3">
+                </div>
+                <div class="tile is-ancestor has-text-centered row-4">
+                </div>
+                <div class="tile is-ancestor has-text-centered row-5">
+                </div>
+                <div class="tile is-ancestor has-text-centered row-6">
+                </div>
+                <div class="tile is-ancestor has-text-centered row-7">
                 </div>
             </div>
         </div>
@@ -116,72 +145,123 @@
         let rowNum = 1;
 
         gameData.forEach((game) => {
-            rowNum = Math.floor((game.id) / 4) + 1;
-            console.log(Math.floor((game.id) / 4) + 1);
+            rowNum = Math.floor((game.id) / 2) + 1;
+            console.log(Math.floor((game.id) / 2) + 1);
 
             console.log(game.id);
             const row = document.querySelector(".row-" + rowNum);
             let div = document.createElement('div');
             div.classList.add('tile');
             div.classList.add('is-parent');
-            div.classList.add('is-3');
+            div.classList.add('is-6');
 
             let article = document.createElement('article');
             article.classList.add('tile');
             article.classList.add('is-child');
             article.classList.add('box');
 
+            let date = document.createElement('p');
+            date.classList.add('has-text-weight-light');
+            date.classList.add('datetext');
+            date.textContent = getDate(game.date);
+
+            let columns = document.createElement('div');
+            columns.classList.add('columns');
+            let columnEast = document.createElement('div');
+            columnEast.classList.add('column');
+            columnEast.classList.add('has-text-left');
+            let columnWest = document.createElement('div');
+            columnWest.classList.add('column');
+            columnWest.classList.add('has-text-right');
+            
+            let textEast = document.createElement('p');
+            textEast.textContent = "EAST";
+            textEast.classList.add('subtitle');
+            let textWest = document.createElement('p');
+            textWest.textContent = "WEST";
+            textWest.classList.add('subtitle');
+
+            let eastSpan = document.createElement('span');
+            eastSpan.classList.add('is-pulled-right');
+            let westSpan = document.createElement('span');
+            westSpan.classList.add('is-pulled-left');
+
             let sumo = sumoData.filter(sumo => sumo.id == game.east);
             let east = document.createElement('a');
             east.classList.add('title');
             east.textContent = sumo[0].surname;
             east.href = 'sumos.html?id=' + sumo[0].id;
-
-            let vs = document.createElement('a');
-            vs.classList.add('subtitle');
-            vs.textContent = "vs.";
-
-            let br = document.createElement('br');
-            let br2 = document.createElement('br');
-
+            eastSpan.appendChild(east);
+            
             sumo = sumoData.filter(sumo => sumo.id == game.west);
             let west = document.createElement('a');
             west.classList.add('title');
             west.textContent = sumo[0].surname;
             west.href = 'sumos.html?id=' + sumo[0].id;
+            westSpan.appendChild(west);
 
-            article.appendChild(east);
-            article.appendChild(br);
-            article.appendChild(vs);
-            article.appendChild(br2);
-            article.appendChild(west);
+            let trophy = document.createElement('i');
+            trophy.classList.add('fa-solid');
+            trophy.classList.add('fa-trophy');
+            trophy.classList.add('has-text-success');
+
+            if (game.winner == "east"){
+                columnEast.classList.add('has-background-success-light');
+                textEast.classList.add('has-text-success');
+                eastSpan.appendChild(trophy);
+            } else {
+                columnWest.classList.add('has-background-success-light');
+                textWest.classList.add('has-text-success');
+                westSpan.appendChild(trophy);
+            }
+
+            columnEast.appendChild(eastSpan);
+            columnWest.appendChild(westSpan);
+
+            columnEast.appendChild(textEast);
+            columnEast.appendChild(east);
+            columnWest.appendChild(textWest);
+            columnWest.appendChild(west);
+
+            columns.appendChild(columnEast);
+            columns.appendChild(columnWest);
+            article.appendChild(date);
+            article.appendChild(columns);
             div.appendChild(article);
             row.appendChild(div);            
-
-            // const row = document.createElement('tr');
-            // let td = document.createElement('td');
-            // let link1 = document.createElement('a');
-            // let link2 = document.createElement('a');
-
-            // td.textContent = game.date;
-            // row.appendChild(td);
-
-            // td = document.createElement('td');
-            // let sumo = sumoData.filter(sumo => sumo.id == game.east);
-            // link1.href = 'sumos.html?id=' + game.east;            
-            // link1.textContent = sumo[0].surname
-            // td.appendChild(link1);
-            // row.appendChild(td);
-
-            // td = document.createElement('td');
-            // sumo = sumoData.filter(sumo => sumo.id == game.west);
-            // link2.href = 'sumos.html?id=' + game.west;
-            // link2.textContent = sumo[0].surname;
-            // td.appendChild(link2);
-            // row.appendChild(td);  
-
-            // tableBody.appendChild(row);
         });
+    }
+
+    function getDate(date) {
+        let final = "";
+
+        if (date.substring(5, 7) == "1"){
+            final += "Jan. ";
+        } else if (date.substring(5, 7) == "2"){
+            final += "Feb. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Mar. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Apr. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "May ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Jun. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Jul. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Aug. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Sep. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Oct. ";
+        } else if (date.substring(5, 7) == "11"){
+            final += "Nov. ";
+        } else if (date.substring(5, 7) == "3"){
+            final += "Dec. ";
+        } 
+
+        return final + date.substring(8, 10) + ", " + date.substring(0, 4);
     }
 </script>
 
