@@ -22,7 +22,7 @@
     }
 
     .fullheight {
-        height: 500px;
+        height: auto;
     }
 
     .logo {
@@ -37,116 +37,137 @@
     .topheight {
         height: 65px;
     }
-    
+
+    div .hero-body {
+        padding-top: 15px;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    #app {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    .table-container {
+        display: grid;
+    }
 </style>
 
 <body onload="getData();">
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand topheight">
-                <h1 class="title topheight"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
+    <div id="app">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand topheight">
+                    <h1 class="title topheight"><a class="navbar-item has-text-danger extrabold topbar"
+                            href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu topheight">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-dark is-inverted" href="index.html">
+                                <span>Standings</span>
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button is-dark is-inverted" href="matches.html">
+                                <span>Matches</span>
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button is-primary is-inverted" href="admin.html">
+                                <span class="icon">
+                                    <i class="fa-solid fa-wrench"></i>
+                                </span>
+                                <span>Admin</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
             </div>
-          <div id="navbarMenuHeroA" class="navbar-menu topheight">
-            <div class="navbar-end">
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="index.html">
-                  <span>Home</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="wrestlers.html">
-                  <span>Wrestlers</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="matches.html">
-                  <span>Matches</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-primary is-inverted" href="admin.html">
-                  <span class="icon">
-                    <i class="fa-solid fa-wrench"></i>
-                  </span>
-                  <span>Admin</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-    </nav>
+        </nav>
 
-    <section class="hero is-info welcome is-small">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">
-                    Standings
-                </h1>
-            </div>
-        </div>
-    </section>
-    <div>
-        <section class="hero">
+        <section class="hero has-background-link-dark welcome is-small">
             <div class="hero-body">
-                <div class="box fullheight">
-                    <div class="table-container">
-                <table class="table is-striped is-9 is-fullwidth" id="standings">
-                    <thead>
-                        <tr>
-                            <th onclick="sort('Rank')" class="extrabold">Rank</th>
-                            <th onclick="sort('Surname')" class="extrabold">Name</th>
-                            <th onclick="sort('Name')" class="extrabold">Real Name</th>
-                            <th onclick="sort('Wins')" class="extrabold">W</th>
-                            <th onclick="sort('Losses')" class="extrabold">L</th>
-                            <th onclick="sort('Rate')" class="extrabold">Win Rate</th>
-                            <th onclick="sort('Stable')" class="extrabold">Stable</th>
-                            <th onclick="sort('Height')" class="extrabold">Height</th>
-                            <th onclick="sort('Weight')" class="extrabold">Weight</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
-                    <ul class="pagination-list">
-                        <li>
-                            <a class="pagination-link max-left" onclick="setPage(1);" disabled><i class="fa-solid fa-caret-left"></i><i class="fa-solid fa-caret-left"></i></a>
-                        </li>
-                        <li>
-                            <a class="pagination-previous" onclick="backPage();" disabled><i class="fa-solid fa-caret-left"></i></a>
-                        </li>
-                        <li>
-                            <a class="pagination-link is-current" id="page1" onclick="setPage(1);">1</a>
-                        </li>
-                        <li>
-                            <a class="pagination-link" id="page2" onclick="setPage(2);">2</a>
-                        </li>
-                        <li>
-                            <a class="pagination-link" id="page3" onclick="setPage(3);">3</a>
-                        </li>
-                        <li>
-                            <a class="pagination-link" id="page4" onclick="setPage(4);">4</a>
-                        </li>
-                        <li>
-                            <a class="pagination-next" onclick="nextPage();"><i class="fa-solid fa-caret-right"></i></a>
-                        </li>
-                        <li>
-                            <a class="pagination-link max-right" onclick="setPage(4);"><i class="fa-solid fa-caret-right"></i><i class="fa-solid fa-caret-right"></i></a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="container has-text-centered">
+                    <h1 class="title has-text-white">
+                        Standings
+                    </h1>
+                </div>
             </div>
         </section>
+        <div>
+            <section class="hero">
+                <div class="hero-body">
+                    <div class="box fullheight table-container">
+                        <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
+                            <ul class="pagination-list">
+                                <li>
+                                    <a class="pagination-link max-left is-hidden-mobile" onclick="setPage(1, sumoData);" disabled><i
+                                            class="fa-solid fa-caret-left"></i><i
+                                            class="fa-solid fa-caret-left"></i></a>
+                                </li>
+                                <li>
+                                    <a class="pagination-previous" onclick="backPage();" disabled><i
+                                            class="fa-solid fa-caret-left"></i></a>
+                                </li>
+                                <li>
+                                    <a class="pagination-next" onclick="nextPage();"><i
+                                            class="fa-solid fa-caret-right"></i></a>
+                                </li>
+                                <li>
+                                    <a class="pagination-link max-right is-hidden-mobile"><i class="fa-solid fa-caret-right"></i><i
+                                            class="fa-solid fa-caret-right"></i></a>
+                                </li>                                
+                            </ul>
+                        </nav>
+                        <div class="table-container">
+                            <table class="table is-striped is-9 is-fullwidth" id="standings">
+                                <thead>
+                                    <tr>
+                                        <th onclick="sort('Rank')" class="extrabold">Rank</th>
+                                        <th onclick="sort('Surname')" class="extrabold">Name</th>
+                                        <th onclick="sort('Name')" class="extrabold">Real Name</th>
+                                        <th onclick="sort('Wins')" class="extrabold">W</th>
+                                        <th onclick="sort('Losses')" class="extrabold">L</th>
+                                        <th onclick="sort('Rate')" class="extrabold">Win Rate</th>
+                                        <th onclick="sort('Stable')" class="extrabold">Stable</th>
+                                        <th onclick="sort('Height')" class="extrabold">Height</th>
+                                        <th onclick="sort('Weight')" class="extrabold">Weight</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Sumo League</strong><br>Copyright <a href="https://michaelgee.stefanoesposto.com">Michael
+                        Gee</a> 2022
+                </p>
+            </div>
+        </footer>
     </div>
-
 </body>
 <script>
     let sumoData;
@@ -160,17 +181,14 @@
 
     sumoData = JSON.parse(localStorage.getItem('sumo'));
     createTable(sumoData);
-    sortData();
 
     function createTable(sumoData) {
         let tableBody = document.querySelector('#standings tbody');
         tableBody.replaceChildren();
         let counter = startId + 10;
         let currentPageId = "page" + currentPage;
-        if (document.querySelector(".is-current").id !== currentPageId) {
-            document.querySelector(".is-current").classList.remove("is-current");
-            document.querySelector("#" + currentPageId).classList.add("is-current");
-        }
+
+        createPagination(sumoData, currentPage);
 
         sumoData.forEach((sumo) => {
             if (sumoData.indexOf(sumo) >= startId) {
@@ -223,6 +241,40 @@
         });
     }
 
+    function createPagination(sumoData, currentPage) {
+        const list = document.querySelector('.pagination-list');
+        const maxPage = Math.ceil(sumoData.length / 10);
+
+        const maxRight = document.querySelector('.max-right');
+        maxRight.setAttribute('onclick', 'setPage(' + maxPage + ', sumoData);');
+
+        for (let page = maxPage; page > -1; page--) {
+            let previous = document.querySelector('#page-' + (parseInt(page) + 1));
+            if (previous != null) {
+                previous.remove();
+            }
+        }
+
+        for (let page = maxPage; page > 0; page--) {
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+
+            a.classList.add('pagination-link', 'page-index');
+            a.id = "page-" + page;
+            a.setAttribute('onclick', 'setPage(' + page + ', sumoData);');
+            a.textContent = page;
+
+            if (page == currentPage) {
+                a.classList.add('is-current');
+            } else {
+                a.classList.remove('is-current');
+            }
+
+            li.appendChild(a);
+            list.insertBefore(li, list.children[2]);
+        }
+    }
+
     function sort(field) {
         if (field === 'Surname') {
             if (currentSort === 'surname') {
@@ -232,7 +284,6 @@
                     } else if (teamB.surname.substring(0, 1) == "Ō") {
                         teamB.surname = "O" + teamB.surname.substring(1);
                     }
-                    console.log(teamA.surname);
                     return (teamA.surname > teamB.surname) ? -1 : 1;
                 });
                 currentSort = 'none';
@@ -331,12 +382,6 @@
         createTable(sumoData);
     }
 
-    function sortData() {
-        currentSort = 'rank'
-        sort('Rank');
-        console.log("hi");
-    }
-
     function nextPage() {
         startId += 10;
         if (startId > sumoData.length) {
@@ -347,7 +392,7 @@
             document.querySelector(".max-left").removeAttribute("disabled", "");
             document.querySelector(".max-right").setAttribute("disabled", "");
         }
-        if (startId < sumoData.length) {
+        if (startId <= sumoData.length) {
             document.querySelector(".pagination-previous").removeAttribute("disabled", "");
             document.querySelector(".max-left").removeAttribute("disabled", "");
             if (currentPage < sumoData.length / 10) {
@@ -377,7 +422,8 @@
         }
     }
 
-    function setPage(page) {
+    function setPage(page, sumoData) {
+        let maxPage = Math.ceil(sumoData.length / 10);
         startId = (page - 1) * 10;
         currentPage = page;
         if (page == 1) {
@@ -385,7 +431,7 @@
             document.querySelector(".pagination-next").removeAttribute("disabled", "");
             document.querySelector(".max-left").setAttribute("disabled", "");
             document.querySelector(".max-right").removeAttribute("disabled", "");
-        } else if (page == 4) {
+        } else if (page == maxPage) {
             document.querySelector(".pagination-previous").removeAttribute("disabled", "");
             document.querySelector(".pagination-next").setAttribute("disabled", "");
             document.querySelector(".max-left").removeAttribute("disabled", "");

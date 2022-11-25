@@ -6,24 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/@creativebulma/bulma-divider">
     <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
     <title>Matches | Sumo League</title>
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap');
 
-    * {
+    *,
+    input {
         font-family: 'Albert Sans', sans-serif;
         font-weight: 500;
     }
 
     .extrabold {
         font-weight: 600;
-    }
-
-    .fullheight {
-        height: 500px;
     }
 
     .logo {
@@ -35,21 +31,25 @@
         font-weight: 900;
     }
 
-    .logos {
-        margin-top: 20px;
-    }
-
     .datetext {
         margin-bottom: 20px;
+    }
+
+    .topheight {
+        height: 65px;
+    }
+
+    .notop {
+        padding-top: 20px;
     }
 </style>
 
 <body onload="getData();">
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-brand">
-                <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i
-                            class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
+            <div class="navbar-brand topheight">
+                <h1 class="title topheight"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i
+                            class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -57,16 +57,11 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="navbarMenuHeroA" class="navbar-menu">
+            <div id="navbarMenuHeroA" class="navbar-menu topheight">
                 <div class="navbar-end">
                     <span class="navbar-item">
                         <a class="button is-dark is-inverted" href="index.html">
-                            <span>Home</span>
-                        </a>
-                    </span>
-                    <span class="navbar-item">
-                        <a class="button is-dark is-inverted" href="wrestlers.html">
-                            <span>Wrestlers</span>
+                            <span>Standings</span>
                         </a>
                     </span>
                     <span class="navbar-item">
@@ -87,16 +82,16 @@
         </div>
     </nav>
 
-    <section class="hero is-info welcome is-small">
+    <section class="hero has-background-link-dark welcome is-small">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="columns">
                     <div class="column is-3 is-offset-one-quarter">
-                        <label for="">Start date</label>
+                        <label class="has-text-white">Start date</label>
                         <input type="date" class="date input" value="2022-11-21">
                     </div>
                     <div class="column is-3">
-                        <label for="">End date</label>
+                        <label class="has-text-white">End date</label>
                         <input type="date" class="date input" value="2022-11-21">
                     </div>
                 </div>
@@ -105,7 +100,26 @@
     </section>
 
     <section class="hero">
-        <div class="hero-body">
+        <div class="hero-body notop">
+            <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
+                <ul class="pagination-list">
+                    <li>
+                        <a class="pagination-link max-left" onclick="setPage(1, gameData);" disabled><i
+                                class="fa-solid fa-caret-left"></i><i class="fa-solid fa-caret-left"></i></a>
+                    </li>
+                    <li>
+                        <a class="pagination-previous" onclick="backPage();" disabled><i
+                                class="fa-solid fa-caret-left"></i></a>
+                    </li>
+                    <li>
+                        <a class="pagination-next" onclick="nextPage();"><i class="fa-solid fa-caret-right"></i></a>
+                    </li>
+                    <li>
+                        <a class="pagination-link max-right"><i class="fa-solid fa-caret-right"></i><i
+                                class="fa-solid fa-caret-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
             <div class="info-tiles games-list">
                 <div class="tile is-ancestor has-text-centered row-1">
                 </div>
@@ -115,12 +129,6 @@
                 </div>
                 <div class="tile is-ancestor has-text-centered row-4">
                 </div>
-                <div class="tile is-ancestor has-text-centered row-5">
-                </div>
-                <div class="tile is-ancestor has-text-centered row-6">
-                </div>
-                <div class="tile is-ancestor has-text-centered row-7">
-                </div>
             </div>
         </div>
     </section>
@@ -128,6 +136,8 @@
 <script>
     let gameData;
     let sumoData;
+    let startId = 0;
+    let currentPage = 1;
 
     function getData() {
         gameData = JSON.parse(localStorage['games']);
@@ -139,127 +149,228 @@
 
     createTable(gameData);
 
-    function createTable(gameData) {
-        // let tableBody = document.querySelector('#games tbody');
-        // tableBody.replaceChildren();
+    function createTable(gameData, reset) {
         let rowNum = 1;
+        let counter = startId + 8;
+        let currentPageId = "page" + currentPage;
+        let isFirst = 0;
+
+        createPagination(gameData, rowNum);
 
         gameData.forEach((game) => {
-            rowNum = Math.floor((game.id) / 2) + 1;
-            console.log(Math.floor((game.id) / 2) + 1);
+            if (gameData.indexOf(game) - 1 >= startId) {
+                if (counter > startId) {
+                    rowNum = Math.ceil((counter - startId) / 2);
+                    console.log(rowNum);
+                    const row = document.querySelector(".row-" + rowNum);
+                    if(isFirst == 0){
+                        row.replaceChildren();
+                        isFirst = 1;
+                    } else {
+                        isFirst = 0;
+                    }
 
-            console.log(game.id);
-            const row = document.querySelector(".row-" + rowNum);
-            let div = document.createElement('div');
-            div.classList.add('tile');
-            div.classList.add('is-parent');
-            div.classList.add('is-6');
+                    let div = document.createElement('div');
+                    div.classList.add('tile', 'is-parent', 'is-6');
 
-            let article = document.createElement('article');
-            article.classList.add('tile');
-            article.classList.add('is-child');
-            article.classList.add('box');
+                    let article = document.createElement('article');
+                    article.classList.add('tile', 'is-child', 'box');
 
-            let date = document.createElement('p');
-            date.classList.add('has-text-weight-light');
-            date.classList.add('datetext');
-            date.textContent = getDate(game.date);
+                    let date = document.createElement('p');
+                    date.classList.add('has-text-weight-light', 'datetext');
+                    date.textContent = getDate(game.date);
 
-            let columns = document.createElement('div');
-            columns.classList.add('columns');
-            let columnEast = document.createElement('div');
-            columnEast.classList.add('column');
-            columnEast.classList.add('has-text-left');
-            let columnWest = document.createElement('div');
-            columnWest.classList.add('column');
-            columnWest.classList.add('has-text-right');
-            
-            let textEast = document.createElement('p');
-            textEast.textContent = "EAST";
-            textEast.classList.add('subtitle');
-            let textWest = document.createElement('p');
-            textWest.textContent = "WEST";
-            textWest.classList.add('subtitle');
+                    let columns = document.createElement('div');
+                    columns.classList.add('columns');
+                    let columnEast = document.createElement('div');
+                    columnEast.classList.add('column', 'has-text-left');
+                    let columnWest = document.createElement('div');
+                    columnWest.classList.add('column', 'has-text-right');
 
-            let eastSpan = document.createElement('span');
-            eastSpan.classList.add('is-pulled-right');
-            let westSpan = document.createElement('span');
-            westSpan.classList.add('is-pulled-left');
+                    let textEast = document.createElement('p');
+                    textEast.textContent = "EAST";
+                    textEast.classList.add('subtitle');
+                    let textWest = document.createElement('p');
+                    textWest.textContent = "WEST";
+                    textWest.classList.add('subtitle');
 
-            let sumo = sumoData.filter(sumo => sumo.id == game.east);
-            let east = document.createElement('a');
-            east.classList.add('title');
-            east.textContent = sumo[0].surname;
-            east.href = 'sumos.html?id=' + sumo[0].id;
-            eastSpan.appendChild(east);
-            
-            sumo = sumoData.filter(sumo => sumo.id == game.west);
-            let west = document.createElement('a');
-            west.classList.add('title');
-            west.textContent = sumo[0].surname;
-            west.href = 'sumos.html?id=' + sumo[0].id;
-            westSpan.appendChild(west);
+                    let eastSpan = document.createElement('span');
+                    eastSpan.classList.add('is-pulled-right');
+                    let westSpan = document.createElement('span');
+                    westSpan.classList.add('is-pulled-left');
 
-            let trophy = document.createElement('i');
-            trophy.classList.add('fa-solid');
-            trophy.classList.add('fa-trophy');
-            trophy.classList.add('has-text-success');
+                    let sumo = sumoData.filter(sumo => sumo.id == game.east);
+                    let east = document.createElement('a');
+                    east.classList.add('title');
+                    east.textContent = sumo[0].surname;
+                    east.href = 'sumos.html?id=' + sumo[0].id;
+                    eastSpan.appendChild(east);
 
-            if (game.winner == "east"){
-                columnEast.classList.add('has-background-success-light');
-                textEast.classList.add('has-text-success');
-                eastSpan.appendChild(trophy);
+                    sumo = sumoData.filter(sumo => sumo.id == game.west);
+                    let west = document.createElement('a');
+                    west.classList.add('title');
+                    west.textContent = sumo[0].surname;
+                    west.href = 'sumos.html?id=' + sumo[0].id;
+                    westSpan.appendChild(west);
+
+                    let trophy = document.createElement('i');
+                    trophy.classList.add('fa-solid', 'fa-trophy', 'has-text-success');
+
+                    if (game.winner == "east") {
+                        columnEast.classList.add('has-background-success-light');
+                        textEast.classList.add('has-text-success');
+                        eastSpan.appendChild(trophy);
+                    } else {
+                        columnWest.classList.add('has-background-success-light');
+                        textWest.classList.add('has-text-success');
+                        westSpan.appendChild(trophy);
+                    }
+
+                    columnEast.appendChild(eastSpan);
+                    columnWest.appendChild(westSpan);
+
+                    columnEast.appendChild(textEast);
+                    columnEast.appendChild(east);
+                    columnWest.appendChild(textWest);
+                    columnWest.appendChild(west);
+
+                    columns.appendChild(columnEast);
+                    columns.appendChild(columnWest);
+                    article.appendChild(date);
+                    article.appendChild(columns);
+                    div.appendChild(article);
+                    row.appendChild(div);
+                    counter--;
+                }
+            }
+        });
+    }
+
+    function createPagination(gameData, currentPage) {
+        const list = document.querySelector('.pagination-list');
+        const maxPage = Math.ceil(gameData.length / 8);
+
+        const maxRight = document.querySelector('.max-right');
+        maxRight.setAttribute('onclick', 'setPage(' + maxPage + ', gameData);');
+
+        for (let page = maxPage; page > -1; page--) {
+            let previous = document.querySelector('#page-' + (parseInt(page) + 1));
+            if (previous != null) {
+                previous.remove();
+            }
+        }
+
+        for (let page = maxPage; page > 0; page--) {
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+
+            a.classList.add('pagination-link', 'page-index');
+            a.id = "page-" + page;
+            a.setAttribute('onclick', 'setPage(' + page + ', gameData);');
+            a.textContent = page;
+
+            if (page == currentPage) {
+                a.classList.add('is-current');
             } else {
-                columnWest.classList.add('has-background-success-light');
-                textWest.classList.add('has-text-success');
-                westSpan.appendChild(trophy);
+                a.classList.remove('is-current');
             }
 
-            columnEast.appendChild(eastSpan);
-            columnWest.appendChild(westSpan);
+            li.appendChild(a);
+            list.insertBefore(li, list.children[2]);
+        }
+    }
 
-            columnEast.appendChild(textEast);
-            columnEast.appendChild(east);
-            columnWest.appendChild(textWest);
-            columnWest.appendChild(west);
+    function nextPage() {
+        startId += 8;
+        if (startId > gameData.length) {
+            startId = gameData.length - (gameData.length % 8);
+        }
+        if (startId + 8 >= gameData.length) {
+            document.querySelector(".pagination-next").setAttribute("disabled", "");
+            document.querySelector(".max-left").removeAttribute("disabled", "");
+            document.querySelector(".max-right").setAttribute("disabled", "");
+        }
+        if (startId <= gameData.length) {
+            document.querySelector(".pagination-previous").removeAttribute("disabled", "");
+            document.querySelector(".max-left").removeAttribute("disabled", "");
+            if (currentPage < gameData.length / 8) {
+                currentPage++;
+            }
+            createTable(gameData);
+        }
+    }
 
-            columns.appendChild(columnEast);
-            columns.appendChild(columnWest);
-            article.appendChild(date);
-            article.appendChild(columns);
-            div.appendChild(article);
-            row.appendChild(div);            
-        });
+    function backPage() {
+        startId -= 8;
+        if (startId < 0) {
+            startId = 0;
+        }
+        if (startId - 8 < 0) {
+            document.querySelector(".pagination-previous").setAttribute("disabled", "");
+            document.querySelector(".max-left").setAttribute("disabled", "");
+            document.querySelector(".max-right").removeAttribute("disabled", "");
+        }
+        if (startId >= 0) {
+            document.querySelector(".pagination-next").removeAttribute("disabled", "");
+            document.querySelector(".max-right").removeAttribute("disabled", "");
+            if (currentPage > 1) {
+                currentPage--;
+            };
+            createTable(gameData);
+        }
+    }
+
+    function setPage(page, gameData) {
+        let maxPage = Math.ceil(gameData.length / 8);
+        startId = (page - 1) * 8;
+        currentPage = page;
+        if (page == 1) {
+            document.querySelector(".pagination-previous").setAttribute("disabled", "");
+            document.querySelector(".pagination-next").removeAttribute("disabled", "");
+            document.querySelector(".max-left").setAttribute("disabled", "");
+            document.querySelector(".max-right").removeAttribute("disabled", "");
+        } else if (page == maxPage) {
+            document.querySelector(".pagination-previous").removeAttribute("disabled", "");
+            document.querySelector(".pagination-next").setAttribute("disabled", "");
+            document.querySelector(".max-left").removeAttribute("disabled", "");
+            document.querySelector(".max-right").setAttribute("disabled", "");
+        } else {
+            document.querySelector(".pagination-next").removeAttribute("disabled", "")
+            document.querySelector(".pagination-previous").removeAttribute("disabled", "");
+            document.querySelector(".max-left").removeAttribute("disabled", "");
+            document.querySelector(".max-right").removeAttribute("disabled", "");
+        }
+        createTable(gameData);
     }
 
     function getDate(date) {
         let final = "";
 
-        if (date.substring(5, 7) == "1"){
+        if (date.substring(5, 7) == "1") {
             final += "Jan. ";
-        } else if (date.substring(5, 7) == "2"){
+        } else if (date.substring(5, 7) == "2") {
             final += "Feb. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Mar. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Apr. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "May ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Jun. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Jul. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Aug. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Sep. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Oct. ";
-        } else if (date.substring(5, 7) == "11"){
+        } else if (date.substring(5, 7) == "11") {
             final += "Nov. ";
-        } else if (date.substring(5, 7) == "3"){
+        } else if (date.substring(5, 7) == "3") {
             final += "Dec. ";
-        } 
+        }
 
         return final + date.substring(8, 10) + ", " + date.substring(0, 4);
     }

@@ -12,17 +12,14 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap');
 
-    *, input {
+    *,
+    input {
         font-family: 'Albert Sans';
         font-weight: 500;
     }
 
     .extrabold {
         font-weight: 600;
-    }
-
-    .fullheight {
-        height: 500px;
     }
 
     .logo {
@@ -34,318 +31,362 @@
         font-weight: 900;
     }
 
-    .logos {
+    .topheight {
+        height: 65px;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    #app {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    .lessmargintop {
         margin-top: 20px;
     }
 </style>
 
 <body onload="loadPlease();">
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <h1 class="title logos"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League<i class="fa-solid fa-baby logo"></i></a></h1>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-          <div id="navbarMenuHeroA" class="navbar-menu">
-            <div class="navbar-end">
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="index.html">
-                  <span>Home</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="wrestlers.html">
-                  <span>Wrestlers</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-dark is-inverted" href="matches.html">
-                  <span>Matches</span>
-                </a>
-              </span>
-              <span class="navbar-item">
-                <a class="button is-primary is-inverted" href="admin.html">
-                  <span class="icon">
-                    <i class="fa-solid fa-wrench"></i>
-                  </span>
-                  <span>Admin</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-    <div>
-        <div class="columns">
-            <div class="column">
-                <div class="box">
-                    <div class="container has-text-centered">
-                        <h1 class="title">
-                            Add Game
-                        </h1>
+    <div id="app">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand topheight">
+                    <h1 class="title topheight"><a class="navbar-item has-text-danger extrabold topbar"
+                            href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu topheight">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button is-dark is-inverted" href="index.html">
+                                <span>Standings</span>
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button is-dark is-inverted" href="matches.html">
+                                <span>Matches</span>
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button is-primary is-inverted" href="admin.html">
+                                <span class="icon">
+                                    <i class="fa-solid fa-wrench"></i>
+                                </span>
+                                <span>Admin</span>
+                            </a>
+                        </span>
                     </div>
-                    <section class="hero">
-                        <div class="hero-body">
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="box">
-                                        <label class="label">East Wrestler</label>
-                                        <div class="field has-addons">
-                                            <div class="control has-icons-left">
-                                                <div class="select is-rounded">
-                                                    <select class="option-1">
-                                                    </select>
-                                                </div>
-                                                <div class="icon is-small is-left">
-                                                    <i class="fa-solid fa-baby"></i>
-                                                </div>
-                                            </div>
-                                            <div class="select">
-                                                <select class="win-1">
-                                                    <option id="won">Won</option>
-                                                    <option id="lost">Lost</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="box">
-                                        <label class="label">West Wrestler</label>
-                                        <div class="field has-addons">
-                                            <div class="control has-icons-left">
-                                                <div class="select is-rounded">
-                                                    <select class="option-2">
-                                                    </select>
-                                                </div>
-                                                <div class="icon is-small is-left">
-                                                    <i class="fa-solid fa-baby"></i>
-                                                </div>
-                                            </div>
-                                            <div class="control select">
-                                                <select class="win-2">
-                                                    <option id="won">Won</option>
-                                                    <option id="lost">Lost</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="box">
-                                        <div>
-                                            <label>Date</label>
-                                            <input type="date" class="date input" value="2022-11-21">
-                                        </div>
-                                        <div class="field is-grouped is-grouped-right has-addons">
-                                            <div class="control">
-                                                <button class="button is-link is-light"><a
-                                                        href="admin.html">Cancel</a></button>
-                                            </div>
-                                            <div class="control">
-                                                <button class="button is-link submit" onclick="checkGame();">Add
-                                                    Game</button>
-                                            </div>
-                                        </div>
-                                        <div class="send"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
-            <div class="column">
-                <div class="box">
-                    <section class="hero is-info welcome is-small">
-                        <div class="hero-body">
-                            <div class="container">
-                                <h1 class="title">
-                                    Add Wrestler
-                                </h1>
-                            </div>
-                        </div>
-                    </section>
+        </nav>
 
-                    <section class="hero">
-                        <div class="hero-body">
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="box">
-                                        <label class="label">New Wrestler</label>
-                                        <div class="columns">
-                                            <div class="column">
-                                                <div class="field has-addons">
-                                                    <div class="control has-icons-left">
-                                                        <input class="input surname" type="text" placeholder="Surname">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="control has-icons-left">
-                                                        <input class="input firstname" type="text"
-                                                            placeholder="First Name">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="columns">
-                                            <div class="column">
+        <section class="hero has-background-link-dark welcome is-small">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title has-text-white">
+                        Admin Page
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+        <div>
+            <div class="columns lessmargintop">
+                <div class="column is-four-fifths is-offset-one-fifth">
+                    <div class="box">
+                        <div class="container has-text-centered">
+                            <h1 class="title">
+                                Add Game
+                            </h1>
+                        </div>
+                        <section class="hero">
+                            <div class="hero-body">
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="box">
+                                            <label class="label">East Wrestler</label>
+                                            <div class="field has-addons">
                                                 <div class="control has-icons-left">
-                                                    <input class="input realname" type="text" placeholder="Real Name">
+                                                    <div class="select is-rounded">
+                                                        <select class="option-1">
+                                                        </select>
+                                                    </div>
                                                     <div class="icon is-small is-left">
                                                         <i class="fa-solid fa-baby"></i>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box">
-                                        <div class="columns">
-                                            <div class="column">
-                                                <label>Rank</label>
-                                                <div class="field has-addons">
-                                                    <div class="control is-expanded has-icons-left">
-                                                        <div class="select is-fullwidth is-rounded">
-                                                            <select class="rank">
-                                                                <option value="0">Yokozuna</option>
-                                                                <option value="1">Ōzeki</option>
-                                                                <option value="2">Sekiwake</option>
-                                                                <option value="3">Komusubi</option>
-                                                                <option value="4">Maegashira 1</option>
-                                                                <option value="5">Maegashira 2</option>
-                                                                <option value="6">Maegashira 3</option>
-                                                                <option value="7">Maegashira 4</option>
-                                                                <option value="8">Maegashira 5</option>
-                                                                <option value="9">Maegashira 6</option>
-                                                                <option value="10">Maegashira 7</option>
-                                                                <option value="11">Maegashira 8</option>
-                                                                <option value="12">Maegashira 9</option>
-                                                                <option value="13">Maegashira 10</option>
-                                                                <option value="14">Maegashira 11</option>
-                                                                <option value="15">Maegashira 12</option>
-                                                                <option value="16">Maegashira 13</option>
-                                                                <option value="17">Maegashira 14</option>
-                                                                <option value="18">Maegashira 15</option>
-                                                                <option value="19">Maegashira 16</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-crown"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="columns">
-                                            <div class="column">
-                                                <div class="field has-addons">
-                                                    <div class="control has-icons-left">
-                                                        <input class="input w" type="text" placeholder="Wins">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-trophy"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="control has-icons-left">
-                                                        <input class="input l" type="text" placeholder="Losses">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-circle-xmark"></i>
-                                                        </div>
-                                                    </div>
+                                                <div class="select">
+                                                    <select class="win-1">
+                                                        <option id="won">Won</option>
+                                                        <option id="lost">Lost</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="box">
-                                        <div class="columns">
-                                            <div class="column">
-                                                <label>Height</label>
-                                                <div class="field has-addons">
-                                                    <div class="control has-icons-left">
-                                                        <input class="input feet" type="text" placeholder="Feet">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
-                                                        </div>
+                                    <div class="column">
+                                        <div class="box">
+                                            <label class="label">West Wrestler</label>
+                                            <div class="field has-addons">
+                                                <div class="control has-icons-left">
+                                                    <div class="select is-rounded">
+                                                        <select class="option-2">
+                                                        </select>
                                                     </div>
-                                                    <p class="control">
-                                                        <a class="button is-static">
-                                                          ft
-                                                        </a>
-                                                      </p>
-                                                    <div class="control has-icons-left">
-                                                        <input class="input inches" type="text"
-                                                            placeholder="Inches">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
-                                                        </div>
+                                                    <div class="icon is-small is-left">
+                                                        <i class="fa-solid fa-baby"></i>
                                                     </div>
-                                                    <p class="control">
-                                                        <a class="button is-static">
-                                                          in
-                                                        </a>
-                                                      </p>
+                                                </div>
+                                                <div class="control select">
+                                                    <select class="win-2">
+                                                        <option id="won">Won</option>
+                                                        <option id="lost">Lost</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="columns">
-                                            <div class="column">
-                                                <div class="field has-addons">
-                                                    <div class="control has-icons-left">
-                                                        <input class="input stable" type="text"
-                                                            placeholder="Sumo Stable">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-people-roof"></i>
+                                    </div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="box">
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <div>
+                                                        <label>Date</label>
+                                                        <input type="date" class="date input" value="2022-11-21">
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="field is-grouped is-grouped-right has-addons">
+                                                        <div class="control">
+                                                            <button class="button is-link is-light"><a
+                                                                    href="admin.html">Cancel</a></button>
+                                                        </div>
+                                                        <div class="control">
+                                                            <button class="button is-link submit"
+                                                                onclick="checkGame();">Add
+                                                                Game</button>
                                                         </div>
                                                     </div>
-                                                    <div class="control has-icons-left">
-                                                        <input class="input weight" type="text" placeholder="Weight">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-weight-hanging"></i>
-                                                        </div>
-                                                    </div>
-                                                    <p class="control">
-                                                        <a class="button is-static">
-                                                            lb
-                                                        </a>
-                                                    </p>
+                                                    <div class="send"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="box">
-                                        <div class="field is-grouped">
-                                            <div class="control">
-                                                <button class="button is-link is-light"><a
-                                                        href="admin.html">Cancel</a></button>
-                                            </div>
-                                            <div class="control">
-                                                <button class="button is-link submit-2" onclick="checkSumo();">Add
-                                                    Wrestler</button>
-                                            </div>
-                                        </div>
-                                        <div class="send-2"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
                 </div>
             </div>
+            <div class="columns lessmargintop">
+                <div class="column is-three-fifths is-offset-one-fifth">
+                    <div class="box">
+                        <div class="container has-text-centered">
+                            <h1 class="title">
+                                Add Wrestler
+                            </h1>
+                        </div>
+                        <section class="hero">
+                            <div class="hero-body">
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="box">
+                                            <label class="label">New Wrestler</label>
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <div class="field has-addons">
+                                                        <div class="control has-icons-left">
+                                                            <input class="input surname" type="text"
+                                                                placeholder="Surname">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-baby"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="control has-icons-left">
+                                                            <input class="input firstname" type="text"
+                                                                placeholder="First Name">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-baby"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <div class="control has-icons-left">
+                                                        <input class="input realname" type="text"
+                                                            placeholder="Real Name">
+                                                        <div class="icon is-small is-left">
+                                                            <i class="fa-solid fa-baby"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <label>Rank</label>
+                                                    <div class="field has-addons">
+                                                        <div class="control is-expanded has-icons-left">
+                                                            <div class="select is-fullwidth is-rounded">
+                                                                <select class="rank">
+                                                                    <option value="0">Yokozuna</option>
+                                                                    <option value="1">Ōzeki</option>
+                                                                    <option value="2">Sekiwake</option>
+                                                                    <option value="3">Komusubi</option>
+                                                                    <option value="4">Maegashira 1</option>
+                                                                    <option value="5">Maegashira 2</option>
+                                                                    <option value="6">Maegashira 3</option>
+                                                                    <option value="7">Maegashira 4</option>
+                                                                    <option value="8">Maegashira 5</option>
+                                                                    <option value="9">Maegashira 6</option>
+                                                                    <option value="10">Maegashira 7</option>
+                                                                    <option value="11">Maegashira 8</option>
+                                                                    <option value="12">Maegashira 9</option>
+                                                                    <option value="13">Maegashira 10</option>
+                                                                    <option value="14">Maegashira 11</option>
+                                                                    <option value="15">Maegashira 12</option>
+                                                                    <option value="16">Maegashira 13</option>
+                                                                    <option value="17">Maegashira 14</option>
+                                                                    <option value="18">Maegashira 15</option>
+                                                                    <option value="19">Maegashira 16</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-crown"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <div class="field has-addons">
+                                                        <div class="control has-icons-left">
+                                                            <input class="input w" type="text" placeholder="Wins">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-trophy"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="control has-icons-left">
+                                                            <input class="input l" type="text" placeholder="Losses">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-circle-xmark"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <label>Height</label>
+                                                    <div class="field has-addons">
+                                                        <div class="control has-icons-left">
+                                                            <input class="input feet" type="text" placeholder="Feet">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-baby"></i>
+                                                            </div>
+                                                        </div>
+                                                        <p class="control">
+                                                            <a class="button is-static">
+                                                                ft
+                                                            </a>
+                                                        </p>
+                                                        <div class="control has-icons-left">
+                                                            <input class="input inches" type="text"
+                                                                placeholder="Inches">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-baby"></i>
+                                                            </div>
+                                                        </div>
+                                                        <p class="control">
+                                                            <a class="button is-static">
+                                                                in
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <div class="field has-addons">
+                                                        <div class="control has-icons-left">
+                                                            <input class="input stable" type="text"
+                                                                placeholder="Sumo Stable">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-people-roof"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="control has-icons-left">
+                                                            <input class="input weight" type="text"
+                                                                placeholder="Weight">
+                                                            <div class="icon is-small is-left">
+                                                                <i class="fa-solid fa-weight-hanging"></i>
+                                                            </div>
+                                                        </div>
+                                                        <p class="control">
+                                                            <a class="button is-static">
+                                                                lb
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column">
+                                        <div class="box">
+                                            <div class="field is-grouped">
+                                                <div class="control">
+                                                    <button class="button is-link is-light"><a
+                                                            href="admin.html">Cancel</a></button>
+                                                </div>
+                                                <div class="control">
+                                                    <button class="button is-link submit-2" onclick="checkSumo();">Add
+                                                        Wrestler</button>
+                                                </div>
+                                            </div>
+                                            <div class="send-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>Sumo League</strong><br>Copyright <a
+                            href="https://michaelgee.stefanoesposto.com">Michael
+                            Gee</a> 2022
+                    </p>
+                </div>
+            </footer>
         </div>
 </body>
 <script>
@@ -353,7 +394,6 @@
     function loadPlease() {
         sumoData = JSON.parse(localStorage['sumo']);
         createOptions(sumoData);
-        fixData(sumoData);
     }
 
     function createOptions(sumoData) {
@@ -381,7 +421,7 @@
         const win1 = document.querySelector(".win-1").value;
         const win2 = document.querySelector(".win-2").value;
         let error = document.createElement('p');
-        error.setAttribute("class", "help is-danger");
+        error.setAttribute("class", "help is-danger has-text-right");
         let buttonText = document.querySelector('.send');
         buttonText.replaceChildren();
         if (wrestler1 == wrestler2) {
@@ -414,14 +454,14 @@
         const newWeight = document.querySelector(".weight").value;
 
         let error = document.createElement('p');
-        error.setAttribute("class", "help is-danger");
+        error.classList.add('help', 'is-danger');
         let buttonText = document.querySelector('.send-2');
         buttonText.replaceChildren();
 
         if (newSurname == "" || newFirstname == "" || newRealname == "" || newW == "" || newL == "" || newFeet == "" || newInches == "" || newWeight == "" || newStable == "") {
             error.textContent = "Please fill out all inputs.";
             buttonText.appendChild(error);
-        } else if (isNaN(parseInt(newW)) || isNaN(parseInt(newL))){
+        } else if (isNaN(parseInt(newW)) || isNaN(parseInt(newL))) {
             error.textContent = "Please input numbers for wins and losses.";
             buttonText.appendChild(error);
         } else if (isNaN(parseInt(newFeet)) || isNaN(parseInt(newInches))) {
@@ -435,7 +475,7 @@
             buttonText.appendChild(error);
         } else {
             submitSumo();
-        }        
+        }
     }
 
     const sumo = [
@@ -599,63 +639,63 @@
 
     const games = [
         {
-            "id": 0,
+            "id": 1,
             "east": 2,
             "west": 10,
             "winner": "east",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 1,
+            "id": 2,
             "east": 9,
             "west": 3,
             "winner": "east",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 2,
+            "id": 3,
             "east": 4,
             "west": 11,
             "winner": "west",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 3,
+            "id": 4,
             "east": 12,
             "west": 5,
             "winner": "west",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 4,
+            "id": 5,
             "east": 13,
             "west": 6,
             "winner": "west",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 5,
+            "id": 6,
             "east": 7,
             "west": 14,
             "winner": "west",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 6,
+            "id": 7,
             "east": 15,
             "west": 8,
             "winner": "west",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 7,
+            "id": 8,
             "east": 17,
             "west": 16,
             "winner": "east",
             "date": "2022-11-13"
-        }, 
+        },
         {
-            "id": 8,
+            "id": 9,
             "east": 19,
             "west": 18,
             "winner": "west",
@@ -671,7 +711,7 @@
             if (id == sumo.id) {
                 id++;
             }
-        })        
+        })
 
         let ranks = document.querySelector(".rank");
 
