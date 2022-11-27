@@ -142,13 +142,13 @@
                                     <tr>
                                         <th onclick="sort('Rank')" class="extrabold">Rank</th>
                                         <th onclick="sort('Surname')" class="extrabold">Name</th>
-                                        <th onclick="sort('Name')" class="extrabold">Real Name</th>
+                                        <th onclick="sort('Name')" class="extrabold is-hidden-mobile">Real Name</th>
                                         <th onclick="sort('Wins')" class="extrabold">W</th>
-                                        <th onclick="sort('Losses')" class="extrabold">L</th>
-                                        <th onclick="sort('Rate')" class="extrabold">Win Rate</th>
-                                        <th onclick="sort('Stable')" class="extrabold">Stable</th>
-                                        <th onclick="sort('Height')" class="extrabold">Height</th>
-                                        <th onclick="sort('Weight')" class="extrabold">Weight</th>
+                                        <th onclick="sort('Losses')" class="extrabold is-hidden-mobile">L</th>
+                                        <th onclick="sort('Rate')" class="extrabold is-hidden-touch">Win Rate</th>
+                                        <th onclick="sort('Stable')" class="extrabold is-hidden-touch">Stable</th>
+                                        <th onclick="sort('Height')" class="extrabold is-hidden-touch">Height</th>
+                                        <th onclick="sort('Weight')" class="extrabold is-hidden-touch">Weight</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -208,6 +208,7 @@
 
                     td = document.createElement('td');
                     td.textContent = sumo.name;
+                    td.classList.add('is-hidden-mobile');
                     row.appendChild(td);
 
                     td = document.createElement('td');
@@ -216,22 +217,27 @@
 
                     td = document.createElement('td');
                     td.textContent = sumo.l;
+                    td.classList.add('is-hidden-mobile');
                     row.appendChild(td);
 
                     td = document.createElement('td');
                     td.textContent = (Math.round((sumo.w / (parseInt(sumo.w) + parseInt(sumo.l)) * 100) * 10) / 10 + "%");
+                    td.classList.add('is-hidden-touch');
                     row.appendChild(td);
 
                     td = document.createElement('td');
                     td.textContent = sumo.stable;
+                    td.classList.add('is-hidden-touch');
                     row.appendChild(td);
 
                     td = document.createElement('td');
                     td.textContent = sumo.height;
+                    td.classList.add('is-hidden-touch');
                     row.appendChild(td);
 
                     td = document.createElement('td');
                     td.textContent = sumo.weight;
+                    td.classList.add('is-hidden-touch');
                     row.appendChild(td);
 
                     tableBody.appendChild(row);

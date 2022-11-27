@@ -37,9 +37,26 @@
     .topheight {
         height: 65px;
     }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    #app {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    footer {
+        margin-top: auto;
+    }
 </style>
 
 <body onload="start();">
+    <div id="app">
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand topheight">
@@ -155,20 +172,36 @@
     </section>
     <section class="hero">
         <div class="hero-body">
-            <table class="table is-striped is-9" id="games">
-                <thead>
-                    <tr>
-                        <th class="extrabold">Date</th>
-                        <th class="extrabold">East</th>
-                        <th class="extrabold">West</th>
-                        <th class="extrabold">Won?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <div class="box">
+                    <table class="table is-striped is-9" id="games">
+                        <thead>
+                            <tr>
+                                <th class="extrabold">Date</th>
+                                <th class="extrabold">East</th>
+                                <th class="extrabold">West</th>
+                                <th class="extrabold">Won?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
         </div>
     </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Sumo League</strong><br>Copyright <a href="https://michaelgee.stefanoesposto.com">Michael
+                    Gee</a> 2022
+            </p>
+        </div>
+    </footer>
+</div>
 </body>
 <script>
     function start() {

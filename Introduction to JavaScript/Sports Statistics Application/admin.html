@@ -107,7 +107,7 @@
 
         <div>
             <div class="columns lessmargintop">
-                <div class="column is-four-fifths is-offset-one-fifth">
+                <div class="column is-8 is-offset-2">
                     <div class="box">
                         <div class="container has-text-centered">
                             <h1 class="title">
@@ -116,7 +116,7 @@
                         </div>
                         <section class="hero">
                             <div class="hero-body">
-                                <div class="columns">
+                                <div class="columns is-desktop">
                                     <div class="column">
                                         <div class="box">
                                             <label class="label">East Wrestler</label>
@@ -132,8 +132,8 @@
                                                 </div>
                                                 <div class="select">
                                                     <select class="win-1">
-                                                        <option id="won">Won</option>
-                                                        <option id="lost">Lost</option>
+                                                        <option id="won">W</option>
+                                                        <option id="lost">L</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -154,18 +154,18 @@
                                                 </div>
                                                 <div class="control select">
                                                     <select class="win-2">
-                                                        <option id="won">Won</option>
-                                                        <option id="lost">Lost</option>
+                                                        <option id="won">W</option>
+                                                        <option id="lost">L</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="columns">
+                                <div class="columns is-desktop">
                                     <div class="column">
                                         <div class="box">
-                                            <div class="columns">
+                                            <div class="columns is-desktop">
                                                 <div class="column">
                                                     <div>
                                                         <label>Date</label>
@@ -196,7 +196,7 @@
                 </div>
             </div>
             <div class="columns lessmargintop">
-                <div class="column is-three-fifths is-offset-one-fifth">
+                <div class="column is-8 is-offset-2">
                     <div class="box">
                         <div class="container has-text-centered">
                             <h1 class="title">
@@ -207,95 +207,103 @@
                             <div class="hero-body">
                                 <div class="columns">
                                     <div class="column">
-                                        <div class="box">
-                                            <label class="label">New Wrestler</label>
-                                            <div class="columns">
-                                                <div class="column">
-                                                    <div class="field has-addons">
-                                                        <div class="control has-icons-left">
-                                                            <input class="input surname" type="text"
-                                                                placeholder="Surname">
-                                                            <div class="icon is-small is-left">
-                                                                <i class="fa-solid fa-baby"></i>
+                                        <div class="columns is-desktop">
+                                            <div class="column">
+                                                <div class="box">
+                                                    <label class="label">New Wrestler</label>
+                                                    <div class="columns is-desktop">
+                                                        <div class="column">
+                                                            <div class="field has-addons">
+                                                                <div class="control has-icons-left">
+                                                                    <input class="input surname" type="text"
+                                                                        placeholder="Surname">
+                                                                    <div class="icon is-small is-left">
+                                                                        <i class="fa-solid fa-baby"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="control has-icons-left">
+                                                                    <input class="input firstname" type="text"
+                                                                        placeholder="First Name">
+                                                                    <div class="icon is-small is-left">
+                                                                        <i class="fa-solid fa-baby"></i>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="control has-icons-left">
-                                                            <input class="input firstname" type="text"
-                                                                placeholder="First Name">
-                                                            <div class="icon is-small is-left">
-                                                                <i class="fa-solid fa-baby"></i>
+                                                    </div>
+                                                    <div class="columns">
+                                                        <div class="column">
+                                                            <div class="control has-icons-left">
+                                                                <input class="input realname" type="text"
+                                                                    placeholder="Real Name">
+                                                                <div class="icon is-small is-left">
+                                                                    <i class="fa-solid fa-baby"></i>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="columns">
-                                                <div class="column">
-                                                    <div class="control has-icons-left">
-                                                        <input class="input realname" type="text"
-                                                            placeholder="Real Name">
-                                                        <div class="icon is-small is-left">
-                                                            <i class="fa-solid fa-baby"></i>
+                                            <div class="column">
+                                                <div class="box">
+                                                    <div class="columns">
+                                                        <div class="column">
+                                                            <label>Rank</label>
+                                                            <div class="field has-addons">
+                                                                <div class="control is-expanded has-icons-left">
+                                                                    <div class="select is-fullwidth is-rounded">
+                                                                        <select class="rank">
+                                                                            <option value="0">Yokozuna</option>
+                                                                            <option value="1">Ōzeki</option>
+                                                                            <option value="2">Sekiwake</option>
+                                                                            <option value="3">Komusubi</option>
+                                                                            <option value="4">Maegashira 1</option>
+                                                                            <option value="5">Maegashira 2</option>
+                                                                            <option value="6">Maegashira 3</option>
+                                                                            <option value="7">Maegashira 4</option>
+                                                                            <option value="8">Maegashira 5</option>
+                                                                            <option value="9">Maegashira 6</option>
+                                                                            <option value="10">Maegashira 7</option>
+                                                                            <option value="11">Maegashira 8</option>
+                                                                            <option value="12">Maegashira 9</option>
+                                                                            <option value="13">Maegashira 10</option>
+                                                                            <option value="14">Maegashira 11</option>
+                                                                            <option value="15">Maegashira 12</option>
+                                                                            <option value="16">Maegashira 13</option>
+                                                                            <option value="17">Maegashira 14</option>
+                                                                            <option value="18">Maegashira 15</option>
+                                                                            <option value="19">Maegashira 16</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="icon is-small is-left">
+                                                                        <i class="fa-solid fa-crown"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="columns">
+                                                        <div class="column">
+                                                            <div class="field has-addons">
+                                                                <div class="control has-icons-left">
+                                                                    <input class="input w" type="text" placeholder="Wins">
+                                                                    <div class="icon is-small is-left">
+                                                                        <i class="fa-solid fa-trophy"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="control has-icons-left">
+                                                                    <input class="input l" type="text" placeholder="Losses">
+                                                                    <div class="icon is-small is-left">
+                                                                        <i class="fa-solid fa-circle-xmark"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </div>
                                         </div>
-                                        <div class="box">
-                                            <div class="columns">
-                                                <div class="column">
-                                                    <label>Rank</label>
-                                                    <div class="field has-addons">
-                                                        <div class="control is-expanded has-icons-left">
-                                                            <div class="select is-fullwidth is-rounded">
-                                                                <select class="rank">
-                                                                    <option value="0">Yokozuna</option>
-                                                                    <option value="1">Ōzeki</option>
-                                                                    <option value="2">Sekiwake</option>
-                                                                    <option value="3">Komusubi</option>
-                                                                    <option value="4">Maegashira 1</option>
-                                                                    <option value="5">Maegashira 2</option>
-                                                                    <option value="6">Maegashira 3</option>
-                                                                    <option value="7">Maegashira 4</option>
-                                                                    <option value="8">Maegashira 5</option>
-                                                                    <option value="9">Maegashira 6</option>
-                                                                    <option value="10">Maegashira 7</option>
-                                                                    <option value="11">Maegashira 8</option>
-                                                                    <option value="12">Maegashira 9</option>
-                                                                    <option value="13">Maegashira 10</option>
-                                                                    <option value="14">Maegashira 11</option>
-                                                                    <option value="15">Maegashira 12</option>
-                                                                    <option value="16">Maegashira 13</option>
-                                                                    <option value="17">Maegashira 14</option>
-                                                                    <option value="18">Maegashira 15</option>
-                                                                    <option value="19">Maegashira 16</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="icon is-small is-left">
-                                                                <i class="fa-solid fa-crown"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="columns">
-                                                <div class="column">
-                                                    <div class="field has-addons">
-                                                        <div class="control has-icons-left">
-                                                            <input class="input w" type="text" placeholder="Wins">
-                                                            <div class="icon is-small is-left">
-                                                                <i class="fa-solid fa-trophy"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="control has-icons-left">
-                                                            <input class="input l" type="text" placeholder="Losses">
-                                                            <div class="icon is-small is-left">
-                                                                <i class="fa-solid fa-circle-xmark"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        
+                                        
                                         </div>
                                         <div class="box">
                                             <div class="columns">
@@ -391,8 +399,10 @@
 </body>
 <script>
     let sumoData;
+    let gameData
     function loadPlease() {
         sumoData = JSON.parse(localStorage['sumo']);
+        gameData = JSON.parse(localStorage['games']);
         createOptions(sumoData);
     }
 
@@ -427,10 +437,10 @@
         if (wrestler1 == wrestler2) {
             error.textContent = "Please choose two different names.";
             buttonText.appendChild(error);
-        } else if (win1 == win2 && win1 == "Lost") {
+        } else if (win1 == win2 && win1 == "L") {
             error.textContent = "Please choose a winning wrestler.";
             buttonText.appendChild(error);
-        } else if (win1 == win2 && win1 == "Won") {
+        } else if (win1 == win2 && win1 == "W") {
             error.textContent = "Please choose a losing wrestler.";
             buttonText.appendChild(error);
         } else if (document.querySelector(".date").value == "") {
@@ -737,10 +747,11 @@
     }
 
     function submitGame() {
-        let id = 0;
+        let id = 1;
         let sumoData = JSON.parse(localStorage['sumo']);
+        let gameData = JSON.parse(localStorage['games']);
 
-        games.forEach((game) => {
+        gameData.forEach((game) => {
             if (id == game.id) {
                 id++;
             }
@@ -767,8 +778,6 @@
             sumoData[sumoData.indexOf(east)].l++;
         }
 
-        console.log(sumoData[sumoData.indexOf(east)].w);
-
         let newGame = {
             "id": id,
             "east": east.id,
@@ -776,21 +785,12 @@
             "winner": winner,
             "date": document.querySelector(".date").value
         };
-        games.push(newGame);
+
+        gameData.push(newGame);
         localStorage.setItem('sumo', JSON.stringify(sumoData));
-        localStorage.setItem('games', JSON.stringify(games));
+        localStorage.setItem('games', JSON.stringify(gameData));
         location.reload();
     }
-
-    // function fixData(sumoData) {
-    //     console.log(sumoData[32]);
-
-    //     sumoData.pop();
-
-    //     console.log(sumoData);
-    //     localStorage.setItem('sumo', JSON.stringify(sumoData));
-    //     //sumoData[24]
-    // }
 
     //localStorage.setItem('sumo', JSON.stringify(sumo));
     //localStorage.setItem('games', JSON.stringify(games));
