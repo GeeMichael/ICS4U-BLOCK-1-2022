@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap");
+
+*,
+input {
+    font-family: 'Albert Sans';
+    font-weight: 500;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
+
+#app {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#padding-less {
+    padding-top: 10px;
+}
+
+.padding-less {
+    padding-top: 20px;
+}
+
+.padding-none {
+    padding-bottom: 0px;
+}
+
+.navbar-text {
+    font-family: 'Albert Sans', Arial;
+    font-weight: 900;
+}
+
+.navbar-height {
+    height: 65px;
+}
+
+.logo {
+    margin: 0px 5px;
+}
+
+.date-text {
+    margin-bottom: 20px;
+}
+
+.sort {
+    margin: none;
+    margin-left: 10px;
+}

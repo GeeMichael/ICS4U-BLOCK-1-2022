@@ -7,60 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Sumo Profile | Sumo League</title>
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap');
-
-    * {
-        font-family: 'Albert Sans', sans-serif;
-        font-weight: 500;
-    }
-
-    .extrabold {
-        font-weight: 600;
-    }
-
-    .logo {
-        margin: 0px 5px;
-    }
-
-    .topbar {
-        font-family: 'Albert Sans', Arial;
-        font-weight: 900;
-    }
-
-    .bigger {
-        font-size: 40px;
-    }
-
-    .topheight {
-        height: 65px;
-    }
-
-    body {
-        display: flex;
-        min-height: 100vh;
-    }
-
-    #app {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    footer {
-        margin-top: auto;
-    }
-</style>
 
 <body onload="start();">
     <div id="app">
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-brand topheight">
-                <h1 class="title topheight"><a class="navbar-item has-text-danger extrabold topbar" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
+            <div class="navbar-brand navbar-height">
+                <h1 class="title"><a class="navbar-item has-text-danger navbar-text" href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -115,7 +71,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 <p class="subtitle">Wins - Losses</p>
-                                <p class="title bigger" id="win-loss"></p>
+                                <p class="title is-size-2" id="win-loss"></p>
                             </article>
                         </div>
                         <div class="tile is-parent">
@@ -127,7 +83,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 <p class="subtitle">Height</p>
-                                <p class="title bigger" id="height"></p>
+                                <p class="title is-size-2" id="height"></p>
                             </article>
                         </div>
                     </div>
@@ -141,7 +97,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 <p class="subtitle">Win Percent</p>
-                                <p class="title bigger" id="win-percent"></p>
+                                <p class="title is-size-2" id="win-percent"></p>
                             </article>
                         </div>
                         <div class="tile is-parent">
@@ -153,7 +109,7 @@
                         <div class="tile is-parent">
                             <article class="tile is-child box">
                                 <p class="subtitle">Weight</p>
-                                <p class="title bigger" id="weight"></p>
+                                <p class="title is-size-2" id="weight"></p>
                             </article>
                         </div>
                     </div>
@@ -203,88 +159,5 @@
     </footer>
 </div>
 </body>
-<script>
-    function start() {
-        const dataString = localStorage.getItem('sumo');
-        const gameData = localStorage.getItem('games');
-
-        const sumos = JSON.parse(dataString);
-        const games = JSON.parse(gameData);
-
-        let params = (new URL(document.location)).searchParams;
-        const sumo = sumos.filter(sumo => sumo.id == params.get('id'));
-        let tableBody = document.querySelector('#standings tbody');
-
-        document.querySelector('#name').textContent = sumo[0].surname + " " + sumo[0].firstname;
-        document.querySelector('#sumo-name').textContent = document.querySelector('#name').textContent;
-        document.querySelector('#real-name').textContent = sumo[0].name;
-        document.querySelector('#win-loss').textContent = sumo[0].w + " - " + sumo[0].l;
-        document.querySelector('#rank').textContent = sumo[0].rank;
-
-        if(sumo[0].w + sumo[0].l <= 0){
-            document.querySelector('#win-percent').textContent = "0%";
-        } else  {
-            document.querySelector('#win-percent').textContent = Math.round((sumo[0].w / (parseInt(sumo[0].w) + parseInt(sumo[0].l)) * 100) * 10) / 10 + "%";
-        }
-        
-        document.querySelector('#stable').textContent = sumo[0].stable + " Stable";
-        document.querySelector('#height').textContent = sumo[0].height;
-        document.querySelector('#weight').textContent = sumo[0].weight;
-
-        createTable(sumos, sumo, games);
-    }
-
-    function createTable(sumos, sumo, games) {
-        let gameBody = document.querySelector('#games tbody');
-        gameBody.replaceChildren();
-
-        games.forEach((game) => {
-            if (game.east == sumo[0].id || game.west == sumo[0].id) {
-                addGame(sumos, sumo, game, gameBody);
-            }
-        });
-    }
-
-    function addGame(sumos, sumo, game, gameBody) {
-        const row = document.createElement('tr');
-        let td = document.createElement('td');
-        let link1 = document.createElement('a');
-        let link2 = document.createElement('a');
-        let winIcon = document.createElement('i');
-        winIcon.classList.add("fa-solid", 'fa-trophy');
-        let loseIcon = document.createElement('i');
-        loseIcon.classList.add("fa-solid", 'fa-circle-xmark');
-
-        td.textContent = game.date;
-        row.appendChild(td);
-
-        td = document.createElement('td');
-        //let sumo = sumoData.filter(sumo => sumo.id == game.east);
-        link1.href = 'sumos.html?id=' + game.east;            
-        link1.textContent = sumos[game.east - 1].surname;
-        td.appendChild(link1);
-        row.appendChild(td);
-        
-
-        td = document.createElement('td');
-        //sumo = sumoData.filter(sumo => sumo.id == game.west);
-        link2.href = 'sumos.html?id=' + game.west;
-        link2.textContent = sumos[game.west - 1].surname;
-        td.appendChild(link2);
-        row.appendChild(td); 
-
-        td = document.createElement('td');
-        td.classList.add("has-text-centered");
-        if (game.winner == "east" && game.east == sumo[0].id || game.winner == "west" && game.west == sumo[0].id) {
-            td.appendChild(winIcon);
-        } else {
-            td.appendChild(loseIcon);
-        }
-        row.appendChild(td);
-          
-        gameBody.appendChild(row);
-    }
-
-</script>
-
+<script src="JS/sumos.js"></script>
 </html>
