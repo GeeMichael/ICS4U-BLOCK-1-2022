@@ -31,22 +31,38 @@ function checkGame() {
     const win1 = document.querySelector(".win-1").value;
     const win2 = document.querySelector(".win-2").value;
     let error = document.createElement('p');
-    error.setAttribute("class", "help is-danger has-text-right");
+    let popup = document.querySelector('.send-parent')
+    error.setAttribute("class", "is-danger");
     let buttonText = document.querySelector('.send');
     buttonText.replaceChildren();
     if (wrestler1 == wrestler2) {
         error.textContent = "Please choose two different names.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else if (win1 == win2 && win1 == "L") {
         error.textContent = "Please choose a winning wrestler.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else if (win1 == win2 && win1 == "W") {
         error.textContent = "Please choose a losing wrestler.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else if (document.querySelector(".date").value == "") {
         error.textContent = "Please choose a valid date.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else {
+        popup.classList.add("is-white");
+        popup.classList.add("error-height");
+        popup.classList.remove("is-danger");
         submitGame();
     }
 }
@@ -64,26 +80,45 @@ function checkSumo() {
     const newWeight = document.querySelector(".weight").value;
 
     let error = document.createElement('p');
-    error.classList.add('help', 'is-danger');
+    error.classList.add('is-danger');
     let buttonText = document.querySelector('.send-2');
     buttonText.replaceChildren();
+    let popup = document.querySelector('.send-parent-2');
 
     if (newSurname == "" || newFirstname == "" || newRealname == "" || newW == "" || newL == "" || newFeet == "" || newInches == "" || newWeight == "" || newStable == "") {
         error.textContent = "Please fill out all inputs.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else if (isNaN(parseInt(newW)) || isNaN(parseInt(newL))) {
         error.textContent = "Please input numbers for wins and losses.";
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
         buttonText.appendChild(error);
     } else if (isNaN(parseInt(newFeet)) || isNaN(parseInt(newInches))) {
         error.textContent = "Please input numbers for wrestler height.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else if (isNaN(parseInt(newWeight))) {
         error.textContent = "Please input numbers for wrestler weight.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else if (newW < 0 || newL < 0 || newFeet < 0 || newInches < 0 || newWeight < 0) {
         error.textContent = "Please input positive numbers.";
         buttonText.appendChild(error);
+        popup.classList.remove("is-white");
+        popup.classList.remove("error-height");
+        popup.classList.add("is-danger");
     } else {
+        popup.classList.add("is-white");
+        popup.classList.add("error-height");
+        popup.classList.remove("is-danger");
         submitSumo();
     }
 }

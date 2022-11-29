@@ -16,8 +16,8 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-brand navbar-height">
-                    <h1 class="title"><a class="navbar-item has-text-danger navbar-text"
-                            href="index.html"><i class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
+                    <h1 class="title"><a class="navbar-item has-text-danger navbar-text" href="index.html"><i
+                                class="fa-solid fa-baby logo"></i>Sumo League</a></h1>
                     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
                         data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
@@ -75,9 +75,15 @@
                         <div class="column padding-none">
                             <button class="button is-primary is-rounded" onclick="checkMatches();">Sort by dates<i
                                     class="fa-solid fa-circle-chevron-right sort"></i></button>
-                            <div class="error is-center padding-less"></div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="hero has-background-danger is-error welcome is-small error-height">
+            <div class="hero-body">
+                <div class="error is-center container has-text-centered">
                 </div>
             </div>
         </section>
@@ -95,11 +101,12 @@
                                     class="fa-solid fa-caret-left"></i></a>
                         </li>
                         <li>
-                            <a class="pagination-next is-hidden-mobile" onclick="nextPage();"><i class="fa-solid fa-caret-right"></i></a>
+                            <a class="pagination-next is-hidden-mobile" onclick="nextPage();"><i
+                                    class="fa-solid fa-caret-right"></i></a>
                         </li>
                         <li>
-                            <a class="pagination-link max-right is-hidden-mobile"><i class="fa-solid fa-caret-right"></i><i
-                                    class="fa-solid fa-caret-right"></i></a>
+                            <a class="pagination-link max-right is-hidden-mobile"><i
+                                    class="fa-solid fa-caret-right"></i><i class="fa-solid fa-caret-right"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -117,4 +124,5 @@
     </div>
 </body>
 <script src="JS/matches.js"></script>
+
 </html>

@@ -22,13 +22,19 @@ function checkMatches() {
     date1Val = document.querySelector('.date1');
     date2Val = document.querySelector('.date2');
     let error = document.createElement('p');
-    error.setAttribute("class", "help is-danger is-centered");
+    let i = document.createElement('i');
+    i.classList.add("fa-solid", "fa-triangle-exclamation", "has-text-white")
+    error.setAttribute("class", "help has-text-white is-centered");
+    let hero = document.querySelector('.is-error');
     let buttonText = document.querySelector('.error');
     buttonText.replaceChildren();
     if (date1Val.value > date2Val.value || date1Val.value == null || date2Val.value == null) {
         error.textContent = "Invalid dates!";
+        buttonText.appendChild(i);
         buttonText.appendChild(error);
+        hero.classList.remove('error-height');
     } else {
+        hero.classList.add('error-height');
         isSorted = true;
         currentPage = 1;
         startId = 0;
@@ -139,34 +145,44 @@ function createPagination() {
     const gamesList = document.querySelector('.games-list');
     const list = document.querySelector('.pagination-list');
     const maxMaxPage = Math.ceil(gameData.length / 8);
+    const maxLeft = document.querySelector('.max-left');
+    const back = document.querySelector('.pagination-previous')
     const next = document.querySelector('.pagination-next');
     const maxRight = document.querySelector('.max-right');
     let maxPage = Math.ceil(numGames / 8);
+    let hero = document.querySelector('.is-error');
 
     maxRight.setAttribute('onclick', 'setPage(' + maxPage + ', gameData);');
 
     if (maxPage == 0) {
-        let column = document.createElement('column');
-        let p = document.createElement('p');
+        let error = document.createElement('p');
+        let hero = document.querySelector('.is-error');
+        let buttonText = document.querySelector('.error');
+        let i = document.createElement('i');
 
-        p.classList.add("help", "is-danger");
-        p.textContent = "No games found";
+        error.setAttribute("class", "help has-text-white is-centered");
+        i.classList.add("fa-solid", "fa-triangle-exclamation", "has-text-white")
+        error.textContent = "No games found!";
+        buttonText.replaceChildren();
+        buttonText.appendChild(i);
+        buttonText.appendChild(error);
 
-        column.appendChild(p);
-        column.classList.add('has-text-centered');
+        hero.classList.remove('error-height');
 
-        gamesList.replaceChildren();
-        gamesList.classList.add('is-centered');
-        gamesList.appendChild(column);
-        maxPage = 1;
-    } else if (maxPage == 1) {
         next.setAttribute('disabled', '');
         maxRight.setAttribute('disabled', '');
-        gamesList.classList.remove('is-centered');
-    } else if (currentPage == 1) {
+        maxPage = 1;
+    } else if (maxPage == 1) {
+        hero.classList.add('error-height');
+        next.setAttribute('disabled', '');
+        maxRight.setAttribute('disabled', '');
+    }
+    if (currentPage == 1 && maxPage !== 1) {
+        hero.classList.add('error-height');
+        back.setAttribute('disabled', '');
+        maxLeft.setAttribute('disabled', '');
         next.removeAttribute('disabled');
         maxRight.removeAttribute('disabled');
-        gamesList.classList.remove('is-centered');
     }
 
     for (let page = maxMaxPage; page > 0; page--) {
@@ -212,12 +228,12 @@ function nextPage() {
         document.querySelector(".max-left").removeAttribute("disabled", "");
         document.querySelector(".max-right").setAttribute("disabled", "");
     }
-    if (startId <= numGames) {
+    if (startId < numGames) {
         document.querySelector(".pagination-previous").removeAttribute("disabled", "");
         document.querySelector(".max-left").removeAttribute("disabled", "");
-        console.log("4");
         if (currentPage < numGames / 8) {
             currentPage++;
+            console.log(currentPage);
         }
         createTable();
     }
@@ -238,6 +254,7 @@ function backPage() {
         document.querySelector(".max-right").removeAttribute("disabled", "");
         if (currentPage > 1) {
             currentPage--;
+            console.log(currentPage);
         };
         createTable(date1, date2);
     }
@@ -247,6 +264,7 @@ function setPage(page, date1, date2) {
     let maxPage = Math.ceil(gameData.length / 8);
     startId = (page - 1) * 8;
     currentPage = page;
+    console.log(currentPage);
     if (page == 1) {
         document.querySelector(".pagination-previous").setAttribute("disabled", "");
         document.querySelector(".pagination-next").removeAttribute("disabled", "");

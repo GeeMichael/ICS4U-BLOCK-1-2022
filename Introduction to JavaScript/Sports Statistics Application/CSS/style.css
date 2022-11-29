@@ -56,3 +56,7 @@ footer {
     margin: none;
     margin-left: 10px;
 }
+
+.error-height {
+    max-height: 0px;
+}
