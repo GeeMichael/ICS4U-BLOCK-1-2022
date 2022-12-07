@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // if we are using await, we need to define the function as async(hronous)
+
+    /*
+    async function fetchUsers() {
+        const res = await fetch('http://jsonplaceholder.typicode.com/users');
+        // await waits for the asynchronous request to be made
+        // then stores the response in res
+
+        console.log(res);
+
+        const data = await res.json();
+        console.log(data);
+    }
+    fetchUsers();
+    */
+
+    // option 2, uglier
+    
+    function fetchUsers() {
+        // calls fetch, waits for request, THEN return it as json, THEN console log
+        const res = fetch('http://jsonplaceholder.typicode.com/users')
+        .then(res => {return res.json()}).then(body => {console.log(body)});
+    }
+    fetchUsers();
+</script>
+<body>
+    
+</body>
+</html>
