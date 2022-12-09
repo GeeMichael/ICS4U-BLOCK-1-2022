@@ -5,25 +5,147 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/1f552ceadb.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap");
+
+    *,
+    input {
+        font-family: 'Albert Sans';
+    }
+</style>
 <script>
-    (async () => {
-        const rawResponse = await fetch('https://httpbin.org/post', {
+    let number;
+    let message;
+
+    function validate() {
+        let phone = document.querySelector('#phone').value;
+        let body = document.querySelector('#message').value;
+
+        if (phone == "") {
+            let p = document.querySelector('#error-1');
+            p.textContent = "This phone number is not valid";
+            document.querySelector('#phone').classList.add("is-danger");
+        } else if (body == "") {
+            let p = document.querySelector('#error-2');
+            p.textContent = "This message is not valid";
+            document.querySelector('#message').classList.add("is-danger");
+        } else {
+            if (phone.indexOf("+1") == -1) {
+                phone = "+1" + phone;
+            }
+
+            document.querySelector('#error-1').textContent = "";
+            document.querySelector('#error-2').textContent = "";
+            document.querySelector('#phone').classList.remove("is-danger");
+            document.querySelector('#message').classList.remove("is-danger");
+
+            let parent = document.querySelector('.message-top');
+            parent.replaceChildren();
+
+            let article = document.createElement('article');
+            article.classList.add("message", "is-primary");
+
+            let div = document.createElement('div');
+            div.classList.add('message-body');
+            div.textContent = "'" + body + "' sent to " + phone + "!";
+
+            article.appendChild(div);
+            parent.appendChild(article);
+
+            number = phone;
+            message = body;
+            send();
+        }
+    }
+
+    function send() {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic QUM2MjEyZTAzZmYyZWY2ZDdmNmE2OTZiYWY1N2RkYzg2Njo1OGU0OWEyNzE0OWM5YmVmM2I5YzkwYWJkMDAwODkzYQ==");
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("To", number);
+        urlencoded.append("From", "+19499904045");
+        urlencoded.append("Body", message);
+
+        var requestOptions = {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ a: 1, b: 'Textual content' })
-        });
-        const content = await rawResponse.json();
-        console.log(content);
-    })();
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        };
+
+        fetch("https://api.twilio.com/2010-04-01/Accounts/AC6212e03ff2ef6d7f6a696baf57ddc866/Messages.json", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => display(error));
+    }
+
+    function display(error) {
+        let parent = document.querySelector('.message-top');
+        parent.replaceChildren();
+
+        let article = document.createElement('article');
+        article.classList.add("message", "is-danger");
+
+        let div = document.createElement('div');
+        div.classList.add('message-body');
+        div.textContent = "Error:" + error;
+
+        article.appendChild(div);
+        parent.appendChild(article);
+    }
 </script>
 
 <body>
-
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <div class="container has-text-centered">
+                <div class="hero is-danger">
+                    <div class="hero-body">
+                        <h1 class="title">
+                            send a text
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-top"></div>
+                <div class="field">
+                    <label class="label">Receiving number</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="phone" type="number" placeholder="Who's this for?">
+                        <span class="icon is-small is-left">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger" id="error-1"></p>
+                </div>
+                <div class="field">
+                    <label class="label">Message body</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="message" type="text" placeholder="What's it say?">
+                        <span class="icon is-small is-left">
+                            <i class="fa-solid fa-message"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger" id="error-2"></p>
+                </div>
+                <div class="field is-grouped is-grouped-right has-addons">
+                    <div class="control">
+                        <button class="button is-link is-light"><a href="sms.html">Cancel</a></button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link submit" onclick="validate();">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
