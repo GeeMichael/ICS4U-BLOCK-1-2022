@@ -9,9 +9,10 @@ public class IntLinkedList {
 
     public boolean add(Integer data) { // add data to end of linked list
         IntNode temp = new IntNode(data);
-        if (head == null)
+        if (head == null) {
             head = temp;
-        else {
+            manyItems++;
+        } else {
             IntNode curr = head; // current node (index)
             while(curr.getLink() != null){
                 curr = curr.getLink();
@@ -40,13 +41,18 @@ public class IntLinkedList {
                 curr = curr.getLink();      
             }
             curr.setLink(new IntNode(data, curr.getLink()));
+            manyItems++;
         }
         return true;
     }
 
     public Integer remove(Integer data) { // removes first instance of data in linked list
+        if (head == null)
+            return null;
+        
         if (head != null && head.getData() == data){
             head = head.getLink();
+            manyItems--;
             return data;
         }
         
@@ -56,6 +62,7 @@ public class IntLinkedList {
         }
         if (curr.getLink() != null){ 
             curr.setLink(curr.getLink().getLink());
+            manyItems--;
             return data;
         } else {
             return null;
@@ -69,4 +76,21 @@ public class IntLinkedList {
     public int size() {
         return manyItems;
     }
+
+    public String toString() {
+        IntNode curr = head;
+        String list = "{";
+
+        while(curr != null) {
+            list += curr.getData() + ", ";
+            curr = curr.getLink();
+        }
+        if (!isEmpty())
+            list = list.substring(0, list.length() - 2);
+        
+
+        list += "}";
+        return list;
+    }
+
 }
