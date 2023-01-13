@@ -23,6 +23,23 @@ public class IntLinkedList {
         return true;
     }
 
+    public Integer find(Integer data){
+        if (head == null)
+            return -1;
+
+        if (head.getData() == data)
+            return 0;
+        else {
+            IntNode curr = head;
+            for (Integer i = 0; i < manyItems; i++){
+                curr = curr.getLink();
+                if (curr.getData() == data)
+                    return i;
+            }
+        }
+        return -1;
+    }
+
     public boolean addFront(Integer data) { // add data to beginning of linked list
         head = new IntNode(data, head);
         manyItems++;
@@ -66,6 +83,17 @@ public class IntLinkedList {
             return data;
         } else {
             return null;
+        }
+    }
+
+    public Integer removeFront() {
+        if (head == null)
+            return null;
+        else {
+            Integer temp = head.getData();
+            head = head.getLink();
+            manyItems--;
+            return temp;
         }
     }
 

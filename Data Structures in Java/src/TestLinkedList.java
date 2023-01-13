@@ -1,7 +1,7 @@
 public class TestLinkedList {
     public static void main(String[] args) {
         testRemoveNodes();
-        //testAddNodes();
+        testAddNodes();
     }
 
     private static void testRemoveNodes() {
@@ -16,8 +16,12 @@ public class TestLinkedList {
 
         list.remove(1);
         System.out.println(list);
-
         System.out.println(list.remove(3));
+
+        list.removeFront();
+        System.out.println(list);
+        System.out.println(list.removeFront());
+        System.out.println(list);
     }
 
     private static void testAddNodes() {
@@ -32,7 +36,6 @@ public class TestLinkedList {
 
         list.addFront(4);
         list.addFront(5);
-
         System.out.println(list);
 
         list.add(1, 6);
