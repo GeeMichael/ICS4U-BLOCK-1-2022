@@ -121,4 +121,19 @@ public class IntLinkedList {
         return list;
     }
 
+    public Integer get(int index) {
+        if (head == null)
+            throw new IllegalStateException("Can't get an element from an empty list.");
+        else if (index < 0)
+            throw new IndexOutOfBoundsException("Invalid index " + index + ". Min index is 0");
+        else if (index > size())
+            throw new IndexOutOfBoundsException("Invalid index " + index + ". Max index is " + (size()-1));
+
+        IntNode curr = head;
+        for (int i = 0; i < index; i++)
+            curr = curr.getLink();
+
+        return curr.getData();        
+    }
+
 }
