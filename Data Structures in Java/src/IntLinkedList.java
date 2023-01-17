@@ -41,10 +41,14 @@ public class IntLinkedList {
     }
 
     public boolean addFront(Integer data) { // add data to beginning of linked list
-        head = new IntNode(data, head);
+        IntNode temp = new IntNode(data);
+        if (head == null) 
+            head = temp;
+        else 
+            head = new IntNode(data, head);
         manyItems++;
         return true;
-    }
+     }
 
     public boolean add(int index, Integer data) {
         if (index > manyItems)
@@ -88,7 +92,7 @@ public class IntLinkedList {
 
     public Integer removeFront() {
         if (head == null)
-            return null;
+            return -1;
         else {
             Integer temp = head.getData();
             head = head.getLink();

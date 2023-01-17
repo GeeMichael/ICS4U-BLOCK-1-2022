@@ -24,7 +24,7 @@ public class IntArrayStack {
         top--;
     }
 
-    public Integer peek(Integer data) {
+    public Integer peek() {
         return list[top];
     }
 

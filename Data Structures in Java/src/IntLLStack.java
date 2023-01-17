@@ -5,12 +5,17 @@ public class IntLLStack {
         list.addFront(data);
     }
 
-    public void pop() {
-        list.removeFront();
+    public Integer pop() {
+        return list.removeFront();
     }
 
     public Integer peek() {
-        return list.removeFront();
+        if (list.removeFront() == null){
+            return -1;
+        }
+        int temp = list.removeFront();
+        list.addFront(temp);
+        return temp;
     }
 
     public Integer search(Integer data) {
