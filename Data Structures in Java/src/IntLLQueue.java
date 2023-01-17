@@ -1,30 +1,30 @@
 public class IntLLQueue {
-    private IntLinkedList data;
+    private IntLinkedList list;
 
     /* Linked List implementation of a Queue
     where the front of the Linked List is the front of the Queue */
 
     public IntLLQueue() {
-        data = new IntLinkedList();
+        list = new IntLinkedList();
     }
 
     public boolean isEmpty() {
-        return data.isEmpty();
+        return list.isEmpty();
     }
 
     public void clear() {
-        data = new IntLinkedList();
+        list = new IntLinkedList();
     }
 
-    public boolean enqueue(Integer el) {
-        return data.add(el);
+    public boolean enqueue(Integer data) {
+        return list.add(data);
     }
 
     public Integer dequeue() {
-        return data.removeFront();
+        return list.removeFront();
     }
 
     public Integer peek() {
-        return data.get(0);
+        return list.get(0);
     }
 }

@@ -2,7 +2,7 @@ public class IntLLStack {
     private IntLinkedList list;
 
     public void push(Integer data) {
-        list.addFront(data);
+        list.add(0, data);
     }
 
     public Integer pop() {

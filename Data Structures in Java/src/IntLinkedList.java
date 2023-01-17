@@ -14,16 +14,16 @@ public class IntLinkedList {
             manyItems++;
         } else {
             IntNode curr = head; // current node (index)
-            while(curr.getLink() != null){
+            while (curr.getLink() != null) // checks end of list
                 curr = curr.getLink();
-            }
+
             curr.setLink(temp);
             manyItems++;
         }
         return true;
     }
 
-    public Integer find(Integer data){
+    public Integer find(Integer data){ // find first instance of data in list
         if (head == null)
             return -1;
 
@@ -31,7 +31,7 @@ public class IntLinkedList {
             return 0;
         else {
             IntNode curr = head;
-            for (Integer i = 0; i < manyItems; i++){
+            for (Integer i = 0; i < manyItems; i++){ // iterate through list
                 curr = curr.getLink();
                 if (curr.getData() == data)
                     return i;
@@ -40,17 +40,18 @@ public class IntLinkedList {
         return -1;
     }
 
-    public boolean addFront(Integer data) { // add data to beginning of linked list
-        IntNode temp = new IntNode(data);
+    public boolean addFront(int data) { // add data to beginning of linked list
+        IntNode temp = new IntNode(data); // creates new head
         if (head == null) 
             head = temp;
         else 
             head = new IntNode(data, head);
+
         manyItems++;
         return true;
      }
 
-    public boolean add(int index, Integer data) {
+    public boolean add(int index, int data) { // add data at index
         if (index > manyItems)
             throw new IndexOutOfBoundsException("Index " + index + " is not allowed. Max index value is " + manyItems);
         
@@ -58,9 +59,9 @@ public class IntLinkedList {
             addFront(data);
         else {
             IntNode curr = head;
-            for (int i = 0; i < index - 1; i++){
+            for (int i = 0; i < index - 1; i++)
                 curr = curr.getLink();      
-            }
+
             curr.setLink(new IntNode(data, curr.getLink()));
             manyItems++;
         }
@@ -78,16 +79,15 @@ public class IntLinkedList {
         }
         
         IntNode curr = head;
-        while(curr.getLink() != null && curr.getLink().getData() != data) { // if next element is data
+        while(curr.getLink() != null && curr.getLink().getData() != data) // if next element is data
             curr = curr.getLink();
-        }
+        
         if (curr.getLink() != null){ 
             curr.setLink(curr.getLink().getLink());
             manyItems--;
             return data;
-        } else {
+        } else 
             return null;
-        }
     }
 
     public Integer removeFront() {
@@ -119,7 +119,6 @@ public class IntLinkedList {
         }
         if (!isEmpty())
             list = list.substring(0, list.length() - 2);
-        
 
         list += "}";
         return list;
@@ -139,5 +138,4 @@ public class IntLinkedList {
 
         return curr.getData();        
     }
-
 }
