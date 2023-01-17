@@ -6,6 +6,10 @@ public class IntBST {
     }
 
     public IntBSTNode add(Integer data) {
+        if (root == null){
+            root = new IntBSTNode(data);
+            return root;
+        }
         return add(root, data);
     }
 
@@ -17,16 +21,65 @@ public class IntBST {
      */
     private IntBSTNode add(IntBSTNode root, Integer data) { 
         if (data < root.getData()){
-            if(root.hasLeftChild()) return add(root.getLeftChild(), data);
+            if (root.hasLeftChild()) return add(root.getLeftChild(), data);
             IntBSTNode child = new IntBSTNode(data);
             root.setLeftChild(child);
             return child;
         } else if (data > root.getData()){
-            if(root.hasRightChild()) return add(root.getRightChild(), data);
+            if (root.hasRightChild()) return add(root.getRightChild(), data);
             IntBSTNode child = new IntBSTNode(data);
             root.setRightChild(child);
             return child;
         }
         return root;
+    }
+
+    private IntBSTNode find(Integer data) {
+        return find(root, data);
+    }
+
+    /**
+     * Only one of each value possible
+     * @param root root of subtree we are checking
+     * @param data value we are finding
+     * @return reference to IntBSTNode if found, null if not found
+     */
+    private IntBSTNode find(IntBSTNode root, Integer data) {
+        if (data == root.getData()) return root;
+        else if (data < root.getData() && root.hasLeftChild())
+            return find(root.getLeftChild(), data);
+        else if (data > root.getData() && root.hasRightChild())
+            return find(root.getRightChild(), data);
+        return null;
+    }
+
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    private void preOrder(IntBSTNode root) {
+        System.out.println(root.getData());
+        if (root.hasLeftChild()) preOrder(root.getLeftChild());
+        if (root.hasRightChild()) preOrder(root.getRightChild());
+    }
+
+    public void postOrder() {
+        postOrder(root);   
+    }
+
+    private void postOrder(IntBSTNode root) {
+        if (root.hasLeftChild()) postOrder(root.getLeftChild());
+        if (root.hasRightChild()) postOrder(root.getRightChild());
+        System.out.println(root.getData());
+    }
+
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    private void inOrder(IntBSTNode root) {
+        if (root.hasLeftChild()) inOrder(root.getLeftChild());
+        System.out.println(root.getData());
+        if (root.hasRightChild()) inOrder(root.getRightChild());
     }
 }

@@ -20,11 +20,14 @@ public class IntArrayStack {
     }
 
     public void pop(Integer data) {
-        list[top] = 0;
-        top--;
+        if (top != -1) {
+            list[top] = 0;
+            top--;
+        }
     }
 
     public Integer peek() {
+        if (top == -1) return -1;
         return list[top];
     }
 
