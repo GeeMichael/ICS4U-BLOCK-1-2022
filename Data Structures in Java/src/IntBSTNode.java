@@ -19,6 +19,10 @@ public class IntBSTNode {
         return data;
     }
 
+    public void setData(Integer data) {
+        this.data = data;
+    }
+
     public IntBSTNode getLeftChild() {
         return leftChild;
     }

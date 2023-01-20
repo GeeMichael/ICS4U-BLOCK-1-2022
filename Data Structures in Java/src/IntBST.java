@@ -14,9 +14,9 @@ public class IntBST {
     }
 
     /**
-     * No duplicate values!
+     * No duplicate Datas!
      * @param root root of subtree we are adding data to
-     * @param data value we are adding
+     * @param data Data we are adding
      * @return reference to IntBSTNode we inserted into
      */
     private IntBSTNode add(IntBSTNode root, Integer data) { 
@@ -39,9 +39,9 @@ public class IntBST {
     }
 
     /**
-     * Only one of each value possible
+     * Only one of each Data possible
      * @param root root of subtree we are checking
-     * @param data value we are finding
+     * @param data Data we are finding
      * @return reference to IntBSTNode if found, null if not found
      */
     private IntBSTNode find(IntBSTNode root, Integer data) {
@@ -82,4 +82,48 @@ public class IntBST {
         System.out.println(root.getData());
         if (root.hasRightChild()) inOrder(root.getRightChild());
     }
+
+    private IntBSTNode findLargest(IntBSTNode root) {
+        if (root.hasRightChild() && root.getRightChild().hasRightChild())
+            findLargest(root.getRightChild());
+        else if (root.hasRightChild())
+            return root.getRightChild();
+        return root;
+    }
+
+    private Integer findSmallest(IntBSTNode root) {
+        if (root.hasLeftChild() && root.getLeftChild().hasLeftChild())
+            findSmallest(root.getLeftChild());
+        else if (root.hasLeftChild())
+            return root.getLeftChild().getData();
+        return root.getData();
+    }
+
+    // removes root node of binary search tree
+    public void remove(Integer val) {
+        root = remove(root, val);
+     }
+
+    //  recursive remove method
+    private IntBSTNode remove(IntBSTNode root, Integer data) {
+        if (root == null)
+           return root;
+  
+        if (data < root.getData())
+            root.setLeftChild(remove(root.getLeftChild(), data));
+        else if (data > root.getData())
+            root.setRightChild(remove(root.getRightChild(), data));
+        else {
+            if (root.getLeftChild() == null)
+                return root.getRightChild();
+            else if (root.getRightChild() == null)
+                return root.getLeftChild();
+            else {
+              Integer biggest = findSmallest(root.getRightChild());
+              root.setData(biggest);
+              root.setRightChild(remove(root.getRightChild(), root.getData()));
+           }
+        }
+        return root;
+     }
 }
