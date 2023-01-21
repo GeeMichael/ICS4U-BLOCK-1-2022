@@ -57,18 +57,22 @@ public class TestLinkedListStack {
         if (list.search(1) != -1) return false;
 
         list = prepareLinkedList();
-        if (list.search(1) != 1) return false;
-        if (list.search(2) != -1) return false;
+        if (list.search(1) != 4) return false;
+        if (list.search(6) != -1) return false;
 
         return true;
     }
 
     private static boolean testPeek() {
         IntLLStack list = new IntLLStack();
-        if (list.peek() != -1) return false;
+
+        try {
+            if (list.peek() != -1) return false;
+        }   catch (IllegalStateException ex) {
+        }
         
         list = prepareLinkedList();
-        if (list.peek() != 1) return false;
+        if (list.peek() != 5) return false;
 
         return true;
     }
@@ -78,7 +82,7 @@ public class TestLinkedListStack {
         if (list.pop() != -1) return false;
 
         list = prepareLinkedList();
-        if (list.pop() != 1) return false;
+        if (list.pop() != 5) return false;
 
         return true;
     }

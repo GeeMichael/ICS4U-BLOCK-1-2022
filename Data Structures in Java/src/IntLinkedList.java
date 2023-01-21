@@ -23,20 +23,16 @@ public class IntLinkedList {
         return true;
     }
 
-    public Integer find(Integer data){ // find first instance of data in list
-        if (head == null)
-            return -1;
+    public int find(Integer data) { // first instance of data in list
+        int index = 0;
 
-        if (head.getData() == data)
-            return 0;
-        else {
-            IntNode curr = head;
-            for (Integer i = 0; i < manyItems; i++){ // iterate through list
-                curr = curr.getLink();
-                if (curr.getData() == data)
-                    return i;
-            }
+        IntNode temp = head;
+        while(temp != null) {
+            if (data == temp.getData()) return index;
+            index++;
+            temp = temp.getLink();
         }
+
         return -1;
     }
 
@@ -137,5 +133,12 @@ public class IntLinkedList {
             curr = curr.getLink();
 
         return curr.getData();        
+    }
+
+    public Integer getFront() {
+        if (head == null)
+            throw new IllegalStateException("Can't get an element from an empty list.");
+        
+        return head.getData();
     }
 }

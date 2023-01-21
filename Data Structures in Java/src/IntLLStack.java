@@ -1,8 +1,12 @@
 public class IntLLStack {
     private IntLinkedList list;
 
+    public IntLLStack() {
+        list = new IntLinkedList();
+    }
+
     public void push(Integer data) {
-        list.add(0, data);
+        list.addFront(data);
     }
 
     public Integer pop() {
@@ -10,19 +14,14 @@ public class IntLLStack {
     }
 
     public Integer peek() {
-        if (list.removeFront() == null){
-            return -1;
-        }
-        int temp = list.removeFront();
-        list.addFront(temp);
-        return temp;
+        return list.getFront();
     }
 
-    public Integer search(Integer data) {
+    public int search(Integer data) {
         return list.find(data);
     }
 
-    public Boolean empty() {
-        return list == null;
+    public boolean empty() {
+        return list.isEmpty();
     }
 }

@@ -19,11 +19,14 @@ public class IntArrayStack {
         top++;
     }
 
-    public void pop(Integer data) {
+    public Integer pop() {
         if (top != -1) {
+            Integer temp = list[top];
             list[top] = 0;
             top--;
+            return temp;
         }
+        return -1;
     }
 
     public Integer peek() {

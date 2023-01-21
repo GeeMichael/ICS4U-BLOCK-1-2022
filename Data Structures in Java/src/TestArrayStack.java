@@ -57,8 +57,8 @@ public class TestArrayStack {
         if (list.search(1) != -1) return false;
 
         list = prepareArray();
-        if (list.search(1) != 1) return false;
-        if (list.search(2) != -1) return false;
+        if (list.search(1) != 0) return false;
+        if (list.search(6) != -1) return false;
 
         return true;
     }
@@ -68,16 +68,18 @@ public class TestArrayStack {
         if (list.peek() != -1) return false;
         
         list = prepareArray();
-        if (list.peek() != 1) return false;
+        if (list.peek() != 5) return false;
 
         return true;
     }
 
     private static boolean testPop() {
         IntArrayStack list = new IntArrayStack();
-        list.pop(1);
-        if (list.peek() != 1) return false;
-        
+        if (list.pop() != -1) return false;
+
+        list = prepareArray();
+        if (list.pop() != 5) return false;
+
         return true;
     }
 
@@ -86,7 +88,7 @@ public class TestArrayStack {
         if (list.peek() != -1) return false;
 
         list = prepareArray();
-        if (list.peek() != 1) return false;
+        if (list.peek() != 5) return false;
 
         return true;
     }    

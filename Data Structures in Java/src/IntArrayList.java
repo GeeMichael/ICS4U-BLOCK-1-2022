@@ -23,29 +23,38 @@ public class IntArrayList {
         return -1;
     }
 
-    public void add(int index, Integer data) { // adds data at index
+    public boolean add(Integer data) { // adds data to start (end) of list
         checkLength();
-        if (index - top < 0 && index < 0)
-            throw new IllegalArgumentException("Invalid index");
+        for (int i = top; i >= 0; i--) {
+            list[i + 1] = list[i];
+        }
+        
+        list[0] = data;
+        top++;
+        return true;
+    }
+
+
+    public void add(int index, Integer data) { // adds data at index in list
+        checkLength();
+        if (index - top < 0 && index < 0) throw new IllegalArgumentException("Invalid index");
         for (int i = top; i >= top - index; i--) {
             list[i + 1] = list[i];
         }
         list[top - index] = data;
         top++;
     }
-
-    public void add(Integer data) { // adds to end
-        add(0, data);        
+    
+    public void addFront(Integer data) {
+        checkLength();
+        list[top] = data;
+        top++;
     }
 
-    public void addFront(Integer data) { // adds at start
-        add(top, data);
-    }
-
-    public Integer get(int index) { // gets int at index
-        if (index < 0 || index >= top)
+    public Integer get(int index) { // gets int and index
+        if (index < 0 || index >= top) 
             throw new IndexOutOfBoundsException("Invalid index");
-        return list[index];
+        return list[top - index - 1];
     }
 
     public int size() { // return top
@@ -55,23 +64,20 @@ public class IntArrayList {
     public Integer remove(Integer data) { // removes first instance of data
         boolean found = false;
         for (int i = 0; i < top; i++) {
-            while (!found) {
-                if (list[i] == data) {
-                    found = true;
-                    top--;
-                }
+            if (list[i] == data) {
+                found = true;
+                top--;
             }
-            if (found) {
+            if (found)
                 list[i] = list[i + 1];
-                return data;
-            }
         }
+
+        if (found) return data;
         return null;
     }
 
     public Integer removeFront() { // removes front element
-        Integer temp = get(0);
-        remove(temp);
+        top--;
         return list[top];
     }
 
