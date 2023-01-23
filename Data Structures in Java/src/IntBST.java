@@ -57,6 +57,19 @@ public class IntBST {
         preOrder(root);
     }
 
+    public String preOrderPrintTraversal() {
+        String result = "";
+        result += preOrderPrintTraversal(root, result);
+        return result;
+    }
+
+    private String preOrderPrintTraversal(IntBSTNode root, String result) {
+        result += " " + root.getData();
+        if (root.hasLeftChild()) result = preOrderPrintTraversal(root.getLeftChild(), result);
+        if (root.hasRightChild()) result = preOrderPrintTraversal(root.getRightChild(), result);
+        return result;
+    }
+
     private void preOrder(IntBSTNode root) {
         System.out.println(root.getData());
         if (root.hasLeftChild()) preOrder(root.getLeftChild());
@@ -74,8 +87,8 @@ public class IntBST {
     }
 
     private String postOrderPrintTraversal(IntBSTNode root, String result) {
-        if (root.hasLeftChild()) postOrderPrintTraversal(root.getLeftChild(), result);
-        if (root.hasRightChild()) postOrderPrintTraversal(root.getRightChild(), result);
+        if (root.hasLeftChild()) result = postOrderPrintTraversal(root.getLeftChild(), result);
+        if (root.hasRightChild()) result = postOrderPrintTraversal(root.getRightChild(), result);
         result += " " + root.getData();
         return result;
     }
@@ -112,12 +125,12 @@ public class IntBST {
 
     private String inOrderPrintTraversal(IntBSTNode root, String result) {
         if (root.hasLeftChild())
-            result += inOrderPrintTraversal(root.getLeftChild(), result);
+            result = inOrderPrintTraversal(root.getLeftChild(), result);
 
         result += " " + root.getData();
 
         if (root.hasRightChild())
-            result += inOrderPrintTraversal(root.getRightChild(), result);
+            result = inOrderPrintTraversal(root.getRightChild(), result);
 
         return result;
     }

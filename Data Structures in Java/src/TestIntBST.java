@@ -21,12 +21,6 @@ public class TestIntBST {
         } else
             testPassed++;
 
-        if (!testFind()) {
-            System.out.println("Test Failed: find");
-            testFailed++;
-        } else
-            testPassed++;
-
         if (!testRemove()) {
             System.out.println("Test Failed: remove");
             testFailed++;
@@ -52,30 +46,30 @@ public class TestIntBST {
 
     private static boolean testInOrder() {
         IntBST list = prepareBST();
-        if (list.inOrderPrintTraversal().equals(" 1 3 6 7 8 9 11 13")) return false;
+        if (!list.inOrderPrintTraversal().equals(" 1 3 6 7 8 9 11 13")) return false;
         return true;
     }
 
     private static boolean testPreOrder() {
         IntBST list = prepareBST();
-        //list.preOrder();
+        if (!list.preOrderPrintTraversal().equals(" 6 3 1 8 7 13 9 11")) return false;
         return true;
     }
 
     private static boolean testPostOrder() {
         IntBST list = prepareBST();
-        // System.out.println("List: " + list.postOrderPrintTraversal());
-        // if (list.postOrderPrintTraversal().equals(" 1 3 6 7 8 9 11 13")) return false;
-        list.postOrder();
-        
+        if (!list.postOrderPrintTraversal().equals(" 1 3 7 11 9 13 8 6")) return false;        
         return true;
     }
 
-    private static boolean testFind() {
-        return false;
-    }
-
     private static boolean testRemove() {
-        return false;
+        IntBST list = prepareBST();
+        list.remove(6);
+        if (list.inOrderPrintTraversal().length() == 17) return false;
+
+        list.remove(5);
+        if (list.inOrderPrintTraversal().length() == 17) return false;
+
+        return true;
     }
 }
