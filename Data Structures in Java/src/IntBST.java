@@ -67,10 +67,31 @@ public class IntBST {
         postOrder(root);   
     }
 
+    public String postOrderPrintTraversal() {
+        String result = "";
+        result += postOrderPrintTraversal(root, result);
+        return result;
+    }
+
+    private String postOrderPrintTraversal(IntBSTNode root, String result) {
+        if (root.hasLeftChild()) postOrderPrintTraversal(root.getLeftChild(), result);
+        if (root.hasRightChild()) postOrderPrintTraversal(root.getRightChild(), result);
+        result += " " + root.getData();
+        return result;
+    }
+
     private void postOrder(IntBSTNode root) {
         if (root.hasLeftChild()) postOrder(root.getLeftChild());
         if (root.hasRightChild()) postOrder(root.getRightChild());
         System.out.println(root.getData());
+    }
+
+    private IntBSTNode findLargest(IntBSTNode root) {
+        if (root.hasRightChild() && root.getRightChild().hasRightChild())
+            findLargest(root.getRightChild());
+        else if (root.hasRightChild())
+            return root.getRightChild();
+        return root;
     }
 
     public void inOrder() {
@@ -83,12 +104,22 @@ public class IntBST {
         if (root.hasRightChild()) inOrder(root.getRightChild());
     }
 
-    private IntBSTNode findLargest(IntBSTNode root) {
-        if (root.hasRightChild() && root.getRightChild().hasRightChild())
-            findLargest(root.getRightChild());
-        else if (root.hasRightChild())
-            return root.getRightChild();
-        return root;
+    public String inOrderPrintTraversal() {
+        String result = "";
+        result += inOrderPrintTraversal(root, result);
+        return result;
+    }
+
+    private String inOrderPrintTraversal(IntBSTNode root, String result) {
+        if (root.hasLeftChild())
+            result += inOrderPrintTraversal(root.getLeftChild(), result);
+
+        result += " " + root.getData();
+
+        if (root.hasRightChild())
+            result += inOrderPrintTraversal(root.getRightChild(), result);
+
+        return result;
     }
 
     private Integer findSmallest(IntBSTNode root) {
