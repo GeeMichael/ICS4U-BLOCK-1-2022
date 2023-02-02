@@ -12,11 +12,19 @@
 
 <body>
    <div id="app">
-      <h1>Product goes here</h1>
+      <div class="nav-bar"></div>
+      <div class="cart">Cart ({{ cart }})</div>
+      <product-display :premium="premium"></product-display>
    </div>
 
    <!-- Import Js -->
    <script src="./main.js"></script>
+   <script src="./components/ProductDisplay.js"></script>
+
+   <!-- Mount App -->
+   <script>
+      const mountedApp = app.mount('#app')
+   </script>
 </body>
 
 </html>
