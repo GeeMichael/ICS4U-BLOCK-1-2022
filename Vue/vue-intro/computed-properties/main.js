@@ -34,8 +34,12 @@ const app = Vue.createApp({
          return this.variants[this.selectedVariant].sale;
       },
       description() {
-         if (this.onSale()) return this.inStock() + " - On Sale"
-         return this.inStock();
+         if (this.variants[this.selectedVariant].sale) {
+            if (this.variants[this.selectedVariant].quantity) return "In Stock - On Sale"
+            else return "Out of Stock - On Sale"
+         }
+         if (this.variants[this.selectedVariant].quantity) return "In Stock"
+         return "Out of Stock"
       }
    }
 })
