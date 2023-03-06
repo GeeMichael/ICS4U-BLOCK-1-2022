@@ -13,6 +13,12 @@ let students = [
     { id: 3, name: "Kyle", age: 14 }
 ]
 
+let courses = [
+    { id: 1, name: 'Introduction to Computer Science', instructor: 'John Smith' },
+    { id: 2, name: 'Web Dev Fundamentals', instructor: 'Jane Doe' },
+    { id: 3, name: 'Database Systems', instructor: 'Bob Johnson' }
+]
+
 // create endpoint (routes)
 app.get('/api/students', (req, res) => {
     res.send(students)
@@ -54,5 +60,9 @@ app.delete('/api/students/:id', (req, res) => {
     students.splice(index, 1);
     res.send(student);
 })
+
+app.get('/api/courses', (req, res) => {
+    res.send(courses);
+});
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
